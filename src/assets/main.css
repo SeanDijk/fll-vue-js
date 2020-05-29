@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+hr {
+    display: block;
+    margin: 0.5em auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mission-header {
+    background: #1976d2;
+    color: white;
+    font-weight: bold;
+}
+
+.mission-row, .mission-header{
+    padding: 12px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.mission-main-image{
+    max-height: 150px;
+    /*max-height: inherit;*/
+}
+
+.mission-row{
+    border-width: 0 0 1px 0;
+    border-bottom-color: slategray;
+    border-style: solid;
+}
+
+.flex-filler {
+    flex-grow: 100;
+}
+
+.text-no-wrap {
+    white-space: nowrap;
+}
+
+.card {
+    box-sizing: border-box;
+    padding: 24px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+/*Builder*/
+#newMissions {
+    padding: 8px;
+}
+.builder-part-row {
+    border-width: 1px 0 0 0;
+    border-bottom-color: slategray;
+    border-style: solid;
+}
