@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import AppHeader from "./components/Header";
+    import AppHeader from "./components/AppHeader";
     import AppFooter from "./components/Footer";
 
     // class Mission {

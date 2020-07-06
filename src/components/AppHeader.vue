@@ -1,16 +1,17 @@
 <template>
     <header class="flex-row flex-text-center">
-        <a class="header-item" href="#">FLL Score app</a>
+        <router-link class="header-item" to="/">FLL Score app</router-link>
         <span class="flex-filler"/>
-        <a class="header-item" href="#">Presets</a>
-        <a class="header-item" href="#">Builder</a>
+        <router-link  class="header-item" to="#">Presets</router-link >
+        <router-link  class="header-item" to="#">Builder</router-link >
+        <router-link  class="header-item" to="/test">Test</router-link >
 
     </header>
 </template>
 
 <script>
     export default {
-        name: "Header"
+        name: "AppHeader"
     }
 </script>
 

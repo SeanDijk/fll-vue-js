@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-row mission-row">
+    <div class="flex-row mission-row checkbox-mission-row">
         <label for="checkbox-part">{{description}}</label>
         <input v-model="checked" v-on:change="determineScore" id="checkbox-part" type="checkbox">
     </div>
@@ -33,5 +33,7 @@
 </script>
 
 <style scoped>
-
+    .checkbox-mission-row{
+        align-items: center;
+    }
 </style>

@@ -1,20 +1,39 @@
 <template>
-    <div class="flex-column">
-        <div class="flex-row mission-header">
-            <span>{{name}}</span>
-            <span>{{totalScore}}</span>
+    <div class="flex-column card card-size-medium">
+
+        <header class="card-header">
+            <span class="card-title">{{name}}</span>
+        </header>
+
+        <div v-if="images !== undefined && images.length > 0" class="card-img">
+            <img class="mission-main-image"
+                 :src=images[0].path
+                 :alt=images[0].description
+            >
         </div>
+
+
+        <div class="card-content">
+            <div ref="parts" class="flex-column flex-filler"/>
+
+        </div>
+
+        <div class="card-footer flex-row">
+            Mission score:
+            <span class="flex-filler"></span>
+            {{totalScore}}
+        </div>
+
+
+
+
+<!--        <div class="flex-row mission-header">-->
+<!--            <span>{{name}}</span>-->
+<!--            <span>{{totalScore}}</span>-->
+<!--        </div>-->
 
         <div class="flex-row flex-filler">
 
-<!--            if image-->
-            <div v-if="images !== undefined && images.length > 0">
-                <img class="mission-main-image"
-                     :src=images[0].path
-                     :alt=images[0].description
-                >
-            </div>
-            <div ref="parts" class="flex-column flex-filler"/>
 
         </div>
 

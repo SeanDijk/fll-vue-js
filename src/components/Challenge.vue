@@ -1,6 +1,5 @@
 <template>
     <div>
-<!--        todo add missions and an v-on to listen for events-->
         <mission
                 v-for="mission in missions"
                 v-bind:key=mission.id

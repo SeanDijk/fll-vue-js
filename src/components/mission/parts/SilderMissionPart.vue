@@ -1,22 +1,28 @@
 <template>
-    <div class="flex-row flex-filler mission-row">
-        <span>{{description}}</span>
+    <div class="flex-column flex-filler mission-row">
         <div class="flex-row">
-            <input type="number"
-                   :min="min"
-                   :max="max"
-                   :step="1"
-                   v-model.number="selectedNumber"
-                   v-on:change="determineScore"
-            />
-            <input type="range"
-                   :min="min"
-                   :max="max"
-                   :step="1"
-                   v-model.number="selectedNumber"
-                   v-on:change="determineScore"
-            />
+            <span>{{description}}</span>
+            <span class="flex-filler"></span>
+            <!--  todo make sure that higher (or lower) number input on mobile are not used and adjusted in the gui   -->
+            <div class="flex-row">
+                <input type="number"
+                       :min="min"
+                       :max="max"
+                       :step="1"
+                       v-model.number="selectedNumber"
+                       v-on:change="determineScore"
+                       class="slider-number"
+                />
+            </div>
         </div>
+        <input type="range"
+               :min="min"
+               :max="max"
+               :step="1"
+               v-model.number="selectedNumber"
+               v-on:change="determineScore"
+               class="slider"
+        />
     </div>
 </template>
 
@@ -50,5 +56,13 @@
 </script>
 
 <style scoped>
-
+    .slider-number{
+        width: 3em;
+        margin-left: 8px;
+    }
+    .slider{
+        flex-grow: 1;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
 </style>
