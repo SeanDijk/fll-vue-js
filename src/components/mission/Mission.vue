@@ -2,7 +2,7 @@
     <div class="flex-column card card-size-medium">
 
         <header class="card-header">
-            <span class="card-title">{{name}}</span>
+            <span class="card-title">{{getName}}</span>
         </header>
 
         <div v-if="images !== undefined && images.length > 0" class="card-img">
@@ -18,43 +18,28 @@
 
         </div>
 
+        <div class="flex-row flex-filler"></div>
+
         <div class="card-footer flex-row">
             Mission score:
             <span class="flex-filler"></span>
             {{totalScore}}
         </div>
-
-
-
-
-<!--        <div class="flex-row mission-header">-->
-<!--            <span>{{name}}</span>-->
-<!--            <span>{{totalScore}}</span>-->
-<!--        </div>-->
-
-        <div class="flex-row flex-filler">
-
-
-        </div>
-
-
-
-
     </div>
 </template>
 
 <script>
     import MissionPartViewFactory from "../MissionPartViewFactory";
-
+    import { preferences } from "../../preferences";
 
     export default {
         name: "Mission",
         props: {
             id: String,
-            name: String,
-            description: String,
+            name: Object,
+            description: Object,
             missionParts: Array,
-            images: Array
+            images: Array,
         },
         data: function () {
             return {
@@ -62,9 +47,9 @@
             }
         },
         mounted: function () {
-
+            let factory = new MissionPartViewFactory();
             this.missionParts.forEach((missionPartData) => {
-                let instance = new MissionPartViewFactory().createMissionPartView(
+                let instance = factory.createMissionPartView(
                     missionPartData,
                     (previousScore, newScore) => {
                         this.totalScore = this.totalScore - previousScore + newScore;
@@ -72,15 +57,14 @@
                     }
                 );
                 if(instance !== null) {
-                    if(missionPartData.type === "ExtraPointsForEachMissionWithPoints") {
-                        // todo do somthing to link it to the status of the challenge
-                        // console.log(instance)
-                        // instance.$props.missionsStatus = this.missionsStatus
-                    }
                     this.$refs.parts.appendChild(instance.$el);
                 }
             });
 
+        },
+        computed: {
+            getName(){ return this.name[preferences.language]; },
+            getDescription(){ return this.description[preferences.language]; }
         }
     }
 </script>

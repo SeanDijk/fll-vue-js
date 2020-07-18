@@ -1,16 +1,17 @@
 <template>
     <div class="flex-row mission-row">
-        <label for="checkbox-part">{{description}}</label>
+        <label for="checkbox-part">{{getDescription}}</label>
         <input v-model="checked" v-on:change="determineScore" id="checkbox-part" type="checkbox">
     </div>
 </template>
 
 <script>
     import { EventBus } from "../../../../event-bus.js"
+    import {preferences} from "../../../../preferences";
     export default {
         name: "ExtraPointsForEachMissionWithPointsMissionPart",
         props: {
-            description: String,
+            description: Object,
             scorePerCompletion: Number,
             exceptions: Object,
         },
@@ -48,6 +49,9 @@
                 }
                 this.determineScore();
             });
+        },
+        computed: {
+            getDescription(){ return this.description[preferences.language]; }
         }
     }
 </script>

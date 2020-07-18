@@ -1,7 +1,7 @@
 <template>
     <div class="flex-column flex-filler mission-row">
         <div class="flex-row">
-            <span>{{description}}</span>
+            <span>{{getDescription}}</span>
             <span class="flex-filler"></span>
             <!--  todo make sure that higher (or lower) number input on mobile are not used and adjusted in the gui   -->
             <div class="flex-row">
@@ -27,10 +27,12 @@
 </template>
 
 <script>
+    import {preferences} from "../../../preferences";
+
     export default {
         name: "SilderMissionPart",
         props: {
-            description: String,
+            description: Object,
             min: Number,
             max: Number,
             scoreMap: Object,
@@ -51,6 +53,9 @@
                     this.$emit('score-changed', previous, this.score)
                 }
             }
+        },
+        computed: {
+            getDescription(){ return this.description[preferences.language]; }
         }
     }
 </script>

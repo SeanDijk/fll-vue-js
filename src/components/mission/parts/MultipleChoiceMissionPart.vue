@@ -1,6 +1,6 @@
 <template>
     <div class="flex-row mission-row">
-        <span>{{description}}</span>
+        <span>{{getDescription}}</span>
         <div class="flex-column text-no-wrap">
             <div v-for="(choice, index) in choices" v-bind:key="index">
                 <input type="radio"
@@ -18,11 +18,13 @@
 </template>
 
 <script>
+    import {preferences} from "../../../preferences";
+
     export default {
         name: "MultipleChoiceMissionPart",
         props: {
-            description: String,
-            choices: Array
+            description: Object,
+            choices: Array,
         },
         data: function () {
             return {
@@ -41,6 +43,9 @@
                     this.$emit('score-changed', previous, this.score)
                 }
             },
+        },
+        computed: {
+            getDescription(){ return this.description[preferences.language]; }
         }
     }
 </script>
