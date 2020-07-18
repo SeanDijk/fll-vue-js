@@ -43,7 +43,8 @@ const routes = [
         {
           "id": "M01",
           "name": {
-            "nl": "M01 - Verhoogde Plaatsen"
+            "nl": "M01 - Verhoogde Plaatsen",
+            "en": "M01 - English name"
           },
           "description": {
             "nl": ""

@@ -5,13 +5,15 @@
         <router-link  class="header-item" to="#">Presets</router-link >
         <router-link  class="header-item" to="#">Builder</router-link >
         <router-link  class="header-item" to="/test">Test</router-link >
-
+        <language-picker/>
     </header>
 </template>
 
 <script>
+    import LanguagePicker from "./LanguagePicker";
     export default {
-        name: "AppHeader"
+        name: "AppHeader",
+        components: {LanguagePicker}
     }
 </script>
 
