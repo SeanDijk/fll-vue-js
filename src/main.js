@@ -51,7 +51,7 @@ const routes = [
           },
           "images": [
             {
-              "path": "/mission-img/2019-2020/m01.png",
+              "path": "./mission-img/2019-2020/m01.png",
               "description": ""
             }
           ],
@@ -88,7 +88,7 @@ const routes = [
           },
           "images": [
             {
-              "path": "/mission-img/2019-2020/m02.png",
+              "path": "./mission-img/2019-2020/m02.png",
               "description": "Duidelijk verlaagd"
             },
             {
