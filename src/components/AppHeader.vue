@@ -3,7 +3,7 @@
         <router-link class="header-item" to="/">FLL Score app</router-link>
         <span class="flex-filler"/>
         <router-link  class="header-item" to="#">Presets</router-link >
-        <router-link  class="header-item" to="#">Builder</router-link >
+        <router-link  class="header-item" to="/builder">Builder</router-link >
         <router-link  class="header-item" to="/test">Test</router-link >
         <language-picker/>
     </header>

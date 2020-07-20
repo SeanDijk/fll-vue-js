@@ -45,7 +45,11 @@
         },
         methods: {
             determineScore: function () {
-                console.log(this.selectedNumber)
+                if(this.selectedNumber > this.max)
+                    this.selectedNumber = this.max;
+                else if(this.selectedNumber < this.min)
+                    this.selectedNumber = this.min;
+
                 let previous = this.score;
                 this.score = this.scoreMap[this.selectedNumber]
 

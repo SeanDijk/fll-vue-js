@@ -8,9 +8,11 @@ Vue.config.productionTip = false
 import "@/assets/main.css"
 import HelloWorld from "./components/HelloWorld";
 import Challenge from "./components/Challenge";
+import Builder from "./components/builder/Builder";
 
 const routes = [
   { path: '/', component: HelloWorld },
+  { path: '/builder', component: Builder },
   { path: '/test', component: Challenge, props: {
       "name": {
         "nl": "Challenge 2019"
