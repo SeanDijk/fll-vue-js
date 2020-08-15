@@ -6,6 +6,7 @@ import ExtraPointsForEachMissionWithPointsMissionPart
 import Vue from 'vue'
 
 
+
 class MissionPartViewFactory {
     constructor() {
         this.classMap = {

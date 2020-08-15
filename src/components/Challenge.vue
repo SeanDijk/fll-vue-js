@@ -16,7 +16,7 @@
 
 
         <div class="sticky-bottom">
-            Totals score: {{totalScore}}
+            Total score: {{totalScore}}
         </div>
     </div>
 </template>

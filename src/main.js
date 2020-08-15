@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 import "@/assets/main.css"
 import HelloWorld from "./components/HelloWorld";
 import Challenge from "./components/Challenge";
-import Builder from "./components/builder/Builder";
+import Builder from "./components/builder/ChallengeBuilder";
 
 const routes = [
   { path: '/', component: HelloWorld },
@@ -17,7 +17,6 @@ const routes = [
       "name": {
         "nl": "Challenge 2019"
       },
-      "language": "nl",
       "missions": [
         {
           "id": "M00",
@@ -507,7 +506,6 @@ const routes = [
           ]
         }
       ],
-      "totalChallengeScore": 0
     }
     },
 
