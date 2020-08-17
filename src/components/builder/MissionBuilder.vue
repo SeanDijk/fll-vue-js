@@ -1,29 +1,31 @@
 <template>
     <fieldset class="container">
-        <legend>Mission</legend>
+        <!--        <legend>Mission</legend>-->
         <button v-on:click="remove" class="btn-danger">X</button>
 
         <label>Name: <input id="name" v-model="value.name"></label>
 
+        <div id="imgs">
+            <img src="https://via.placeholder.com/150"/>
+        </div>
+        <button>Add image</button>
+
+
         <br>
         <b>Parts</b>
-        <div id="missionParts">
-            <draggable v-model="value.missionParts">
-                <!-- use missionPart.data since passing just mission is not allowed.-->
+        <fieldset>
+            <draggable id="missionParts" v-model="value.missionParts">
                 <mission-part-builder
                         v-for="missionPart in value.missionParts"
                         v-model="missionPart.data"
-                        v-bind:key=missionPart.data.id
+                        v-bind:key=missionPart.id
+                        :id="missionPart.id"
+                        class="builder-mission-part"
+                        @deleteMissionPart="deleteMissionPart($event)"
                 />
             </draggable>
+        </fieldset>
 
-
-
-        </div>
-
-        <div id="imgs"></div>
-
-        <button>Add image</button>
         <button v-on:click="addMissionPart">Add mission part</button>
 
     </fieldset>
@@ -33,34 +35,54 @@
     import draggable from 'vuedraggable'
 
     import MissionPartBuilder from "./MissionPartBuilder";
+    import {Wrapper} from "./models";
+
     export default {
         name: "MissionBuilder",
         components: {MissionPartBuilder, draggable},
         props: {
+            // Used for delete
+            id: String,
             value: Object
         },
         methods: {
             addMissionPart: function () {
-                // Make the id field a unique id, since this is required.
-                this.value.missionParts.push({
-                        data: {}
-                    }
-                )
+                this.value.missionParts.push(new Wrapper({}))
+            },
+            deleteMissionPart: function(id) {
+                this.value.missionParts = this.value.missionParts.filter(wrapper => wrapper.id !== id)
             },
             remove: function () {
-                this.$emit('deleteMission', this.value.id)
+                this.$emit('deleteMission', this.id)
             }
         }
     }
 </script>
 
 <style scoped>
+
+    #missionParts {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
     .container {
         position: relative;
     }
-    .btn-danger{
+
+    .btn-danger {
         position: absolute;
         top: 1em;
         right: 1em;
+    }
+
+    .builder-mission-part{
+        padding: 16px;
+        /*width: 100%;*/
+        border-bottom: #222222 solid 1px;
+    }
+    .builder-mission-part:last-child {
+        border-bottom: 0;
     }
 </style>

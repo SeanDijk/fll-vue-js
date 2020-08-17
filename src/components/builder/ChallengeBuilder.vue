@@ -9,7 +9,8 @@
                 <mission-builder
                         v-for="mission in missions"
                         v-model="mission.data"
-                        v-bind:key=mission.data.id
+                        v-bind:key=mission.id
+                        :id="mission.id"
                         @deleteMission="deleteMission($event)"
                 />
             </draggable>
@@ -26,9 +27,8 @@
 
 <script>
     import draggable from 'vuedraggable'
-
     import MissionBuilder from "./MissionBuilder";
-    import {v4 as uuidv4} from 'uuid';
+    import {Wrapper} from "./models";
 
     export default {
         name: "ChallengeBuilder",
@@ -41,33 +41,16 @@
         },
         methods: {
             addMission: function () {
-                // Make the id field a unique id, since this is required.
-                this.missions.push({
-                        data: {
-                            id: uuidv4(),
-                            missionParts: []
-                        }
-                    }
-                )
+                this.missions.push(new Wrapper({missionParts:[]}))
             },
             deleteMission: function(id) {
-                //todo generify to a deleteIf method.
-                let toDelete = this.missions.filter(mission => mission.data.id === id);
-
-                toDelete.forEach(value => {
-                    this.missions.splice(this.missions.indexOf(value), 1)
-                })
+                this.missions = this.missions.filter(wrapper => wrapper.id !== id)
             },
             toJson: function () {
-                let x = {
+                console.log(JSON.parse(JSON.stringify({
                     name: this.name,
                     missions: this.missions
-                        // Get the actual data from the object
-                        .map((mission) => mission.data)
-                        // Convert from vue observer to the pure data
-                        .map((mission) => JSON.parse(JSON.stringify(mission)))
-                }
-                console.log(x)
+                })));
             }
         }
 
