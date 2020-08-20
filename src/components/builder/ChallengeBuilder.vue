@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Challenge builder</h1>
-        <label>Name: <input id="name" v-model="name"></label>
+        <label>Name: <language-string-field v-model="name"/></label>
 
         <div id="newMissions">
             <draggable v-model="missions">
@@ -20,7 +20,7 @@
         <button v-on:click="addMission">Add mission</button>
 
 
-        <button v-on:click="toJson">Save</button>
+        <button v-on:click="download">Save</button>
 
     </div>
 </template>
@@ -29,14 +29,16 @@
     import draggable from 'vuedraggable'
     import MissionBuilder from "./MissionBuilder";
     import {Wrapper} from "./models";
+    import {downloadBlob} from "../../util";
+    import LanguageStringField from "./LanguageStringField";
 
     export default {
         name: "ChallengeBuilder",
-        components: {MissionBuilder, draggable},
+        components: {LanguageStringField, MissionBuilder, draggable},
         data: function () {
             return {
-                name: '',
-                missions: []
+                name: {},
+                missions: [],
             }
         },
         methods: {
@@ -46,11 +48,18 @@
             deleteMission: function(id) {
                 this.missions = this.missions.filter(wrapper => wrapper.id !== id)
             },
-            toJson: function () {
-                console.log(JSON.parse(JSON.stringify({
+            download: function () {
+                //todo also export images etc.
+
+                const data = JSON.stringify({
                     name: this.name,
                     missions: this.missions
-                })));
+                });
+                console.log(data);
+                downloadBlob(new Blob([data], {type: 'text/plain'}), this.name+".json")
+            },
+            open: function () {
+                //todo open a challenge
             }
         }
 

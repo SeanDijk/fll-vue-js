@@ -30,12 +30,12 @@
     import {preferences} from "../../../preferences";
 
     export default {
-        name: "SilderMissionPart",
+        name: "SliderMissionPart",
         props: {
             description: Object,
             min: Number,
             max: Number,
-            scoreMap: Object,
+            scorePerStep: Number,
         },
         data: function() {
             return {
@@ -51,7 +51,7 @@
                     this.selectedNumber = this.min;
 
                 let previous = this.score;
-                this.score = this.scoreMap[this.selectedNumber]
+                this.score = this.selectedNumber * this.scorePerStep
 
                 if(previous !== this.score) {
                     this.$emit('score-changed', previous, this.score)

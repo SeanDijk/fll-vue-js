@@ -2,8 +2,8 @@
     <fieldset class="container">
         <!--        <legend>Mission</legend>-->
         <button v-on:click="remove" class="btn-danger">X</button>
-
-        <label>Name: <input id="name" v-model="value.name"></label>
+<!--        <label>Id: <input id="id" v-model="id"></label>-->
+        <label>Name: <language-string-field v-model="value.name"/></label>
 
         <div id="imgs">
             <img src="https://via.placeholder.com/150"/>
@@ -36,10 +36,11 @@
 
     import MissionPartBuilder from "./MissionPartBuilder";
     import {Wrapper} from "./models";
+    import LanguageStringField from "./LanguageStringField";
 
     export default {
         name: "MissionBuilder",
-        components: {MissionPartBuilder, draggable},
+        components: {LanguageStringField, MissionPartBuilder, draggable},
         props: {
             // Used for delete
             id: String,
@@ -55,7 +56,13 @@
             remove: function () {
                 this.$emit('deleteMission', this.id)
             }
+        },
+        created() {
+            if(this.value.name === undefined){
+                this.value.name = {}
+            }
         }
+
     }
 </script>
 
