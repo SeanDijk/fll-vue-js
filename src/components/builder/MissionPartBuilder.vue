@@ -12,17 +12,18 @@
         </label>
 
         <template v-if="selectedType === 'CheckBox'">
-            <label>Text: <language-string-field v-model="data.CheckBox.description" :textArea="true"/></label>
-            <label>Score <input type="number" v-model="data.CheckBox.completionScore"/></label>
+            <label>Text: <language-string-field v-model="backingData.CheckBox.description" :textArea="true"/></label>
+            <label>Score <input type="number" v-model.number="backingData.CheckBox.completionScore" /></label>
 
         </template>
         <div v-else-if="selectedType === 'MultipleChoice'">
-            <draggable v-model="data.MultipleChoice.choices">
-                <div v-for="option in data.MultipleChoice.choices" v-bind:key="option.id">
+            <language-string-field v-model="backingData.MultipleChoice.description" :text-area="true"></language-string-field>
+            <draggable v-model="backingData.MultipleChoice.choices">
+                <div v-for="option in backingData.MultipleChoice.choices" v-bind:key="option.id">
                     <label>Text:
                         <language-string-field v-model="option.data.choice"/>
                     </label>
-                    <label>Score: <input type="number" v-model="option.data.score"/></label>
+                    <label>Score: <input type="number" v-model.number="option.data.score"/></label>
                     <button v-on:click="removeChoice(option.id)" class="btn-danger remove-choice">-</button>
                 </div>
             </draggable>
@@ -31,10 +32,10 @@
         </div>
         <div v-else-if="selectedType === 'Slider'" class="flex-column">
         <!--Todo add complex view, where score can be determined per step-->
-            <label>Text: <language-string-field v-model="data.Slider.description"/></label>
-            <label>Min: <input type="number" v-model="data.Slider.min"/></label>
-            <label>Max: <input type="number" v-model="data.Slider.max"/></label>
-            <label>Score per step: <input type="number" v-model="data.Slider.scorePerStep"/></label>
+            <label>Text: <language-string-field v-model="backingData.Slider.description"/></label>
+            <label>Min: <input type="number" v-model.number="backingData.Slider.min"/></label>
+            <label>Max: <input type="number" v-model.number="backingData.Slider.max"/></label>
+            <label>Score per step: <input type="number" v-model.number="backingData.Slider.scorePerStep"/></label>
         </div>
         <div v-else-if="selectedType === 'ExtraPointsForEachMissionWithPoints'">
             TODO
@@ -53,12 +54,13 @@
         data: function () {
             return {
                 selectedType: 'CheckBox',
-                data: {
+                backingData: {
                     CheckBox:{
                         description:{},
                         completionScore: 0
                     },
                     MultipleChoice:{
+                        description:{},
                         choices:[]
                     },
                     Slider:{
@@ -68,40 +70,39 @@
                         scorePerStep: 0
                     },
                     ExtraPointsForEachMissionWithPoints:{},
-
                 }
             }
         },
         props: {
             id: String,
-            value: Object
+            value: Wrapper
         },
         methods: {
             remove: function () {
                 this.$emit('deleteMissionPart', this.id)
             },
             onSelect: function (type) {
-                Object.keys(this.value).forEach((key) =>{ delete this.value[key]; });
-                let values = this.data[type];
-                Object.keys(values).forEach((key) => {
-                    this.value[key] = values[key]
-                });
-                this.value.type = type;
-
-                console.log(type)
-                console.log(this.value)
+                this.value.data = this.backingData[type]
+                this.value.data.type = type;
             },
             newChoice() {
-                this.data.MultipleChoice.choices.push(new Wrapper({
+                this.backingData.MultipleChoice.choices.push(new Wrapper({
                     choice: {},
                     score: 0
                 }))
             },
             removeChoice(id){
-                this.data.MultipleChoice.choices = this.data.MultipleChoice.choices.filter(choice => choice.id !== id)
+                this.backingData.MultipleChoice.choices = this.backingData.MultipleChoice.choices.filter(choice => choice.id !== id)
             }
         },
-        created() {this.onSelect(this.selectedType)}
+        created() {
+            console.log("Created mission part")
+            console.log(this.value.data)
+            if(this.value.data.type !== undefined) {
+                this.selectedType = this.value.data.type
+                this.backingData[this.selectedType] = this.value.data
+            }
+            this.onSelect(this.selectedType)}
     }
 </script>
 

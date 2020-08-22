@@ -7,6 +7,9 @@ export class Wrapper {
     }
 
     toJSON(){
+        if (typeof this.data.toJSON === "function") {
+            return this.data.toJSON()
+        }
         return this.data;
     }
 }

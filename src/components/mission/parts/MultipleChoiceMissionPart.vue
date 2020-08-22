@@ -42,10 +42,10 @@
                     this.$emit('score-changed', previous, this.score)
                 }
             },
+            getChoiceText(choice){ return choice.choice?.[preferences.language] ;}
         },
         computed: {
-            getDescription(){ return this.description[preferences.language]; },
-            getChoiceText(choice){ return choice.choice[preferences.language] ;}
+            getDescription(){ return this.description?.[preferences.language]; },
         }
     }
 </script>

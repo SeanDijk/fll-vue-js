@@ -63,9 +63,13 @@
 
         },
         computed: {
-            getName(){ return this.name[preferences.language]; },
-            getDescription(){ return this.description[preferences.language]; }
-        }
+            getName(){
+                return this.name?.[preferences.language];
+            },
+            getDescription(){
+                return this.description?.[preferences.language];
+            }
+        },
     }
 </script>
 

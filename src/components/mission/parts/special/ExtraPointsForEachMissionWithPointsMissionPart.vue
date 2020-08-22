@@ -51,7 +51,7 @@
             });
         },
         computed: {
-            getDescription(){ return this.description[preferences.language]; }
+            getDescription(){ return this.description?.[preferences.language]; }
         }
     }
 </script>

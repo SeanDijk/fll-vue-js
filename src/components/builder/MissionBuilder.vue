@@ -48,7 +48,7 @@
         },
         methods: {
             addMissionPart: function () {
-                this.value.missionParts.push(new Wrapper({}))
+                this.value.missionParts.push(new Wrapper(new Wrapper({})))
             },
             deleteMissionPart: function(id) {
                 this.value.missionParts = this.value.missionParts.filter(wrapper => wrapper.id !== id)
