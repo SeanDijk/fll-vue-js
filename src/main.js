@@ -238,15 +238,21 @@ const routes = [
               },
               "choices": [
                 {
-                  "choice": "Geen",
+                  "choice": {
+                    "nl": "Geen"
+                  },
                   "score": 0
                 },
                 {
-                  "choice": "Blauwe wagen omlaag",
+                  "choice": {
+                    "nl": "Blauwe wagen omlaag"
+                  },
                   "score": 15
                 },
                 {
-                  "choice": "In evenwicht",
+                  "choice": {
+                    "nl": "In evenwicht"
+                  },
                   "score": 20
                 }
               ]
@@ -321,15 +327,21 @@ const routes = [
               },
               "choices": [
                 {
-                  "choice": "Nee",
+                  "choice": {
+                    "nl": "Nee"
+                  },
                   "score": 0
                 },
                 {
-                  "choice": "Gedeeltelijk",
+                  "choice": {
+                    "nl": "Gedeeltelijk"
+                  },
                   "score": 10
                 },
                 {
-                  "choice": "Volledig",
+                  "choice": {
+                    "nl": "Volledig"
+                  },
                   "score": 15
                 }
               ]

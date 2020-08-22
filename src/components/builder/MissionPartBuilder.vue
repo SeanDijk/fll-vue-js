@@ -1,6 +1,6 @@
 <template>
     <div class="flex-column">
-        <button v-on:click="remove" class="btn-danger">X</button>
+        <button v-on:click="remove" class="btn-danger remove-part">X</button>
 
         <label>
             <select v-model="selectedType" v-on:change="onSelect(selectedType)">
@@ -17,11 +17,17 @@
 
         </template>
         <div v-else-if="selectedType === 'MultipleChoice'">
-<!--            <div>-->
-<!--                <label>Text: <language-string-field v-model="name"/></label>-->
-<!--                <label>Score <input type="number"/></label>-->
-<!--            </div>-->
-<!--            todo add/remove options-->
+            <draggable v-model="data.MultipleChoice.choices">
+                <div v-for="option in data.MultipleChoice.choices" v-bind:key="option.id">
+                    <label>Text:
+                        <language-string-field v-model="option.data.choice"/>
+                    </label>
+                    <label>Score: <input type="number" v-model="option.data.score"/></label>
+                    <button v-on:click="removeChoice(option.id)" class="btn-danger remove-choice">-</button>
+                </div>
+            </draggable>
+
+            <button v-on:click="newChoice()">New option</button>
         </div>
         <div v-else-if="selectedType === 'Slider'" class="flex-column">
         <!--Todo add complex view, where score can be determined per step-->
@@ -38,9 +44,12 @@
 
 <script>
     import LanguageStringField from "./LanguageStringField";
+    import draggable from 'vuedraggable'
+    import {Wrapper} from "./models";
+
     export default {
         name: "MissionPartBuilder",
-        components: {LanguageStringField},
+        components: {LanguageStringField, draggable},
         data: function () {
             return {
                 selectedType: 'CheckBox',
@@ -49,7 +58,9 @@
                         description:{},
                         completionScore: 0
                     },
-                    MultipleChoice:{},
+                    MultipleChoice:{
+                        choices:[]
+                    },
                     Slider:{
                         description: {},
                         min:0,
@@ -79,6 +90,15 @@
 
                 console.log(type)
                 console.log(this.value)
+            },
+            newChoice() {
+                this.data.MultipleChoice.choices.push(new Wrapper({
+                    choice: {},
+                    score: 0
+                }))
+            },
+            removeChoice(id){
+                this.data.MultipleChoice.choices = this.data.MultipleChoice.choices.filter(choice => choice.id !== id)
             }
         },
         created() {this.onSelect(this.selectedType)}
@@ -92,9 +112,18 @@
     }
 
 
-    .btn-danger {
+    .remove-part {
         position: absolute;
         top: 1em;
         right: 1em;
+    }
+
+    .remove-choice {
+        border-radius: 50%;
+        margin: 0 4px;
+        padding: 8px;
+        line-height: 0;
+        font-size: 2em;
+
     }
 </style>

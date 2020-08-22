@@ -11,7 +11,7 @@
                        v-model="selectedIndex"
                        v-on:change="determineScore"
                 >
-                <label :for="uuid + index">{{choice.choice}}</label>
+                <label :for="uuid + index">{{getChoiceText(choice)}}</label>
             </div>
         </div>
     </div>
@@ -44,7 +44,8 @@
             },
         },
         computed: {
-            getDescription(){ return this.description[preferences.language]; }
+            getDescription(){ return this.description[preferences.language]; },
+            getChoiceText(choice){ return choice.choice[preferences.language] ;}
         }
     }
 </script>
