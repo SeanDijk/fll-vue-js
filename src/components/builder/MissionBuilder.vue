@@ -5,10 +5,16 @@
 <!--        <label>Id: <input id="id" v-model="id"></label>-->
         <label>Name: <language-string-field v-model="value.name"/></label>
 
-        <div id="imgs">
-            <img src="https://via.placeholder.com/150"/>
-        </div>
+        <draggable id="imgs">
+            <div    v-for="img in imgs"
+                    v-bind:key="img.id"
+                    class="mission-img-wrapper">
+                <button v-on:click="removeImg(img)" class="btn-danger">X</button>
+                <img :src="img.src" class="mission-img"/>
+            </div>
+        </draggable>
         <button>Add image</button>
+        <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
 
 
         <br>
@@ -46,14 +52,38 @@
             id: String,
             value: Object
         },
+        data: function(){
+            return {
+                imgs: []
+            }
+        },
         methods: {
-            addMissionPart: function () {
+            addMissionPart() {
                 this.value.missionParts.push(new Wrapper(new Wrapper({})))
             },
-            deleteMissionPart: function(id) {
+            deleteMissionPart(id) {
                 this.value.missionParts = this.value.missionParts.filter(wrapper => wrapper.id !== id)
             },
-            remove: function () {
+            handleFileUpload(){
+                let img = this.$refs.file.files[0];
+                console.log(img)
+                let wrapped = new Wrapper(img)
+                wrapped.src = require('../../assets/pendulum.gif');
+
+                // img.src =
+                this.imgs.push(wrapped)
+
+                const reader = new FileReader();
+                reader.readAsDataURL(img);
+                reader.onload = e =>{
+                    wrapped.src = e.target.result;
+                    console.log(e.target.result)
+                };
+            },
+            removeImg(imgWrapper) {
+                this.imgs = this.imgs.filter(value => value.id !== imgWrapper.id)
+            },
+            remove() {
                 this.$emit('deleteMission', this.id)
             }
         },
@@ -91,5 +121,26 @@
     }
     .builder-mission-part:last-child {
         border-bottom: 0;
+    }
+
+    #imgs{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .mission-img-wrapper {
+        position: relative;
+        height: 150px;
+        width: 150px;
+        background: lightgray;
+
+        display: flex;
+        justify-content: center;
+    }
+    .mission-img{
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
     }
 </style>

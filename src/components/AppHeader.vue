@@ -4,7 +4,7 @@
         <span class="flex-filler"/>
         <router-link  class="header-item" to="#">Presets</router-link >
         <router-link  class="header-item" to="/builder">Builder</router-link >
-        <router-link  class="header-item" to="/test">Test</router-link >
+        <router-link  class="header-item" to="/challenges/2019-2020">Test</router-link >
         <language-picker/>
     </header>
 </template>

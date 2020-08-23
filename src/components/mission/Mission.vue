@@ -7,7 +7,7 @@
 
         <div v-if="images !== undefined && images.length > 0" class="card-img">
             <img class="mission-main-image"
-                 :src=images[0].path
+                 :src=getImage(0)
                  :alt=images[0].description
             >
         </div>
@@ -61,6 +61,11 @@
                 }
             });
 
+        },
+        methods:  {
+            getImage(index) {
+                return require(`@/assets/challenges/${this.$route.params.id}/${this.images[index].path}`)
+            }
         },
         computed: {
             getName(){
