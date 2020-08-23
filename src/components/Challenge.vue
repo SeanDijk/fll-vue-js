@@ -9,6 +9,7 @@
                     :description=mission.description
                     :missionParts=mission.missionParts
                     :images=mission.images
+                    :from-assets="fromAssets"
                     v-on:mission-score-changed="onMissionScoreChanged"
                     class="mission"
             />
@@ -30,7 +31,11 @@
         props: {
             name: Object,
             description: Object,
-            missions: Array
+            missions: Array,
+            fromAssets: {
+                type: Boolean,
+                default: false
+            }
         },
         data: function () {
             return {

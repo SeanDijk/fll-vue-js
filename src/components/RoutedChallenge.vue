@@ -2,7 +2,8 @@
     <challenge
     :name="challengeJson.name"
     :missions="challengeJson.missions"
-    :description="challengeJson.description">
+    :description="challengeJson.description"
+    :from-assets="true">
 
     </challenge>
 </template>

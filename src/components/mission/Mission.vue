@@ -31,6 +31,7 @@
 <script>
     import MissionPartViewFactory from "../MissionPartViewFactory";
     import { preferences } from "../../preferences";
+    import {getImageSrc} from "../../imageRetriever";
 
     export default {
         name: "Mission",
@@ -40,6 +41,10 @@
             description: Object,
             missionParts: Array,
             images: Array,
+            fromAssets: {
+                type: Boolean,
+                default: false
+            }
         },
         data: function () {
             return {
@@ -64,7 +69,7 @@
         },
         methods:  {
             getImage(index) {
-                return require(`@/assets/challenges/${this.$route.params.id}/${this.images[index].path}`)
+                return getImageSrc(this.fromAssets, this.$route.params.id, this.images[index].path)
             }
         },
         computed: {

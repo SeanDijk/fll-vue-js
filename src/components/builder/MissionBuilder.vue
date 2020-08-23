@@ -5,8 +5,8 @@
 <!--        <label>Id: <input id="id" v-model="id"></label>-->
         <label>Name: <language-string-field v-model="value.name"/></label>
 
-        <draggable id="imgs">
-            <div    v-for="img in imgs"
+        <draggable id="imgs"  v-model="value.images">
+            <div    v-for="img in value.images"
                     v-bind:key="img.id"
                     class="mission-img-wrapper">
                 <button v-on:click="removeImg(img)" class="btn-danger">X</button>
@@ -50,12 +50,7 @@
         props: {
             // Used for delete
             id: String,
-            value: Object
-        },
-        data: function(){
-            return {
-                imgs: []
-            }
+            value: Object,
         },
         methods: {
             addMissionPart() {
@@ -66,22 +61,20 @@
             },
             handleFileUpload(){
                 let img = this.$refs.file.files[0];
-                console.log(img)
-                let wrapped = new Wrapper(img)
+
+                let wrapped = new Wrapper({path: img.name})
                 wrapped.src = require('../../assets/pendulum.gif');
 
-                // img.src =
-                this.imgs.push(wrapped)
+                this.value.images.push(wrapped)
 
                 const reader = new FileReader();
                 reader.readAsDataURL(img);
                 reader.onload = e =>{
                     wrapped.src = e.target.result;
-                    console.log(e.target.result)
                 };
             },
             removeImg(imgWrapper) {
-                this.imgs = this.imgs.filter(value => value.id !== imgWrapper.id)
+                this.value.images = this.value.images.filter(value => value.id !== imgWrapper.id)
             },
             remove() {
                 this.$emit('deleteMission', this.id)

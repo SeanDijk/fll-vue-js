@@ -5,6 +5,11 @@
 
         <div id="builder">
             <h1>Challenge builder</h1>
+
+            <label>ID:
+                <input type="text" v-model="id"/>
+            </label>
+
             <label>Name:
                 <language-string-field v-model="name"/>
             </label>
@@ -17,6 +22,7 @@
                             v-model="mission.data"
                             v-bind:key=mission.id
                             :id="mission.id"
+                            :images="mission.images"
                             @deleteMission="deleteMission($event)"
                     />
                 </draggable>
@@ -45,9 +51,10 @@
     import draggable from 'vuedraggable'
     import MissionBuilder from "./MissionBuilder";
     import {Wrapper} from "./models";
-    import {downloadBlob} from "../../util";
     import LanguageStringField from "./LanguageStringField";
     import Challenge from "../Challenge";
+    import JSZip from "jszip";
+    import {saveAs} from 'file-saver';
 
     export default {
         name: "ChallengeBuilder",
@@ -57,12 +64,13 @@
                 previewData: undefined,
                 previewDataKey: 0,
                 name: {},
+                id: '',
                 missions: [],
             }
         },
         methods: {
             addMission: function () {
-                this.missions.push(new Wrapper({missionParts: []}))
+                this.missions.push(new Wrapper({missionParts: [], images: []}))
             },
             deleteMission: function (id) {
                 this.missions = this.missions.filter(wrapper => wrapper.id !== id)
@@ -74,8 +82,25 @@
                     name: this.name,
                     missions: this.missions
                 });
-                console.log(data);
-                downloadBlob(new Blob([data], {type: 'text/plain'}), this.name + ".json")
+
+
+                let zip = new JSZip();
+                zip.file("challenge.json", data)
+
+                // get all the images
+
+                console.log(this.missions)
+                this.missions
+                    .flatMap(mission => mission.data.images)
+                    .forEach(imgWrapper => zip.file(
+                        imgWrapper.data.path,
+                        imgWrapper.src.replace('data:image/png;base64,',''),
+                        {base64: true}))
+                    // .forEach(imgWrapper => console.log(imgWrapper.src))
+
+
+                zip.generateAsync({type: "blob"})
+                    .then(value => saveAs(value, this.id + ".zip"))
             },
             open: function () {
                 //todo open a challenge
@@ -89,7 +114,7 @@
                     name: this.name,
                     missions: this.missions
                 }));
-                this.previewDataKey +=1
+                this.previewDataKey += 1
             }
         },
         computed: {}
