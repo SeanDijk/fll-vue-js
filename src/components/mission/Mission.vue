@@ -30,8 +30,8 @@
 
 <script>
     import MissionPartViewFactory from "../MissionPartViewFactory";
-    import { preferences } from "../../preferences";
-    import {getImageSrc} from "../../imageRetriever";
+    import { preferences } from "@/preferences";
+    import {getImageSrc} from "@/imageRetriever";
 
     export default {
         name: "Mission",

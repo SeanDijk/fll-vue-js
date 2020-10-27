@@ -10,11 +10,13 @@ import "@/assets/scss/buttons.scss"
 import HelloWorld from "./components/HelloWorld";
 import Builder from "./components/builder/ChallengeBuilder";
 import RoutedChallenge from "./components/RoutedChallenge";
+import Presets from "@/components/Presets";
 
 const routes = [
   { path: '/', component: HelloWorld },
   { path: '/builder', component: Builder },
   { path: '/challenges/:id', component: RoutedChallenge },
+  { path: '/challenges/', component: Presets },
 
 ]
 
