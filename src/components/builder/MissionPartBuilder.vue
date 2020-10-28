@@ -48,7 +48,7 @@
 
     <template v-else-if="selectedType === 'Slider'" class="flex-column">
       <label>Text</label>
-      <language-string-field v-model="backingData.Slider.description"/>
+      <language-string-field v-model="backingData.Slider.description" :text-area="true"/>
 
       <label>Min: <input type="number" v-model.number="backingData.Slider.min"/></label>
       <label>Max: <input type="number" v-model.number="backingData.Slider.max"/></label>

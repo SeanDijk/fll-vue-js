@@ -3,7 +3,6 @@
         <div class="flex-row">
             <span>{{getDescription}}</span>
             <span class="flex-filler"></span>
-            <!--  todo make sure that higher (or lower) number input on mobile are not used and adjusted in the gui   -->
             <div class="flex-row">
                 <input type="number"
                        :min="min"
@@ -66,7 +65,7 @@
 
 <style scoped>
     .slider-number{
-        width: 3em;
+        min-width: 3em;
         margin-left: 8px;
     }
     .slider{

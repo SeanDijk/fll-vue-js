@@ -2,7 +2,8 @@
 
 export function getImageSrc(fromAssets, challengeId, path){
     if(fromAssets) {
-        return require(`@/assets/challenges/${challengeId}/${path}`)
+        if (path)
+            return require(`@/assets/challenges/${challengeId}/${path}`)
     } else {
         return ''
     }

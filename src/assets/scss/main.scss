@@ -1,4 +1,4 @@
-:root{
+:root {
   --btn-primary: #1e87f0;
   --btn-danger: #d32f2f;
 }
@@ -8,6 +8,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background: whitesmoke;
 }
+
 hr {
   display: block;
   margin: 0.5em auto;
@@ -27,7 +28,6 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
 }
 
 
-
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -36,6 +36,10 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 
@@ -51,7 +55,7 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
   font-weight: bold;
 }
 
-.mission-row, .mission-header{
+.mission-row, .mission-header {
   /*padding: 12px;*/
   padding-top: 8px;
   padding-bottom: 8px;
@@ -59,11 +63,11 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
   justify-content: space-between;
 }
 
-.mission-main-image{
+.mission-main-image {
   max-height: 150px;
 }
 
-.mission-row{
+.mission-row {
   border-width: 0 0 1px 0;
   border-bottom-color: slategray;
   border-style: solid;
@@ -79,12 +83,12 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
 
 .card {
   box-sizing: border-box;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 8px;
   background: white;
 }
 
-.card-img{
+.card-img {
   width: 100%;
   flex-grow: 1;
   display: flex;
@@ -92,7 +96,7 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
   background: lightgrey;
 }
 
-.card-content, .card-header, .card-footer{
+.card-content, .card-header, .card-footer {
   padding: 16px;
 }
 
@@ -103,6 +107,18 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
 .card-size-medium {
   max-width: 500px;
   width: 100%;
+}
+
+.card-hover {
+  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+}
+
+.card-hover:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
+  //box-shadow: 0 10px 20px rgba(0,0,0,.2), 0 4px 8px rgba(0,0,0,.06);
+  cursor: pointer;
 }
 
 

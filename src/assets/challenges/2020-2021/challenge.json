@@ -1,1 +1,583 @@
-{"name":{"nl":"2020-2021: RePLAY"},"missions":[{"missionParts":[{"description":{"nl":"Alle uitrusting van het team past in de kleine inspectieruimte."},"completionScore":25,"type":"CheckBox"}],"images":[],"name":{"nl":"M00 - Inspectiebonus uitrusting"}},{"missionParts":[{"description":{"nl":"Het innovatieproject is groot genoeg (2+ witte LEGO onderdelen en 4+ LEGO noppen lang)."},"completionScore":0,"type":"CheckBox"},{"description":{"nl":"Een deel van het innovatieproject raakt:"},"choices":[{"choice":{"nl":"Geen"},"score":0},{"choice":{"nl":"RePLAY-logo"},"score":0},{"choice":{"nl":"Grijze gebied bank"},"score":0}],"type":"MultipleChoice"}],"images":[],"name":{"nl":"M01 - Innovatieproject"}},{"missionParts":[{"description":{"nl":"De onderkant van de wijzer staat op:"},"choices":[{"choice":{"nl":"Geen"},"score":0},{"choice":{"nl":"Magenta"},"score":10},{"choice":{"nl":"Geel"},"score":15},{"choice":{"nl":"Blauw"},"score":20}],"type":"MultipleChoice"}],"images":[],"name":{"nl":"M02 - Stappenteller"}},{"missionParts":[{"description":{"nl":"Het aantal glijbaanfiguren dat van de glijbaan af is"},"choices":[{"choice":{"nl":"0"},"score":0},{"choice":{"nl":"1"},"score":5},{"choice":{"nl":"2"},"score":20}],"type":"MultipleChoice"},{"description":{"nl":"Er is een glijbaanfiguur volledig in THUIS:"},"completionScore":10,"type":"CheckBox"},{"description":{"nl":"Er wordt een glijbaanfiguur volledig van de mat gehouden door de zware band en raakt niet anders aan:"},"completionScore":20,"type":"CheckBox"}],"images":[],"name":{"nl":"M03 - Glijbaan"}},{"missionParts":[{"description":{"nl":"De bank ligt plat:"},"completionScore":10,"type":"CheckBox"},{"description":{"nl":"Aantal hinkelbaanruimtes met blokjes erin die de mat raken: "},"min":0,"max":4,"scorePerStep":10,"type":"Slider"},{"description":{"nl":"De rugleuning is volledig uit beide gaten:"},"completionScore":15,"type":"CheckBox"}],"images":[],"name":{"nl":"M04 - Bank"}},{"missionParts":[{"description":{"nl":"Er is een blokje in de krat:"},"completionScore":15,"type":"CheckBox"},{"description":{"nl":"Op welke stop steunt de krat? "},"choices":[{"choice":{"nl":"Geen"},"score":0},{"choice":{"nl":"Middelste"},"score":15},{"choice":{"nl":"Bovenste"},"score":25}],"type":"MultipleChoice"}],"images":[],"name":{"nl":"M05 - Basketbal"}},{"missionParts":[{"description":{"nl":"De robot ging op enig moment volledig door het rechtopstaande frame van de optrekstang:"},"completionScore":15,"type":"CheckBox"},{"description":{"nl":"De optrekstang houdt de robot aan het einde van de wedstrijd voor 100% van de mat af:"},"completionScore":30,"type":"CheckBox"}],"images":[],"name":{"nl":"M06 - Optrekstang"}},{"missionParts":[{"description":{"nl":"De controller van de robot danst op het einde van de wedstrijd over de dansvloer: "},"completionScore":20,"type":"CheckBox"}],"images":[],"name":{"nl":"M07 - Robotdans"}},{"missionParts":[{"description":{"nl":"Beide deelmodellen hebben slechts één blokje op het tegenoverliggende veld gestuurd en die blokjes hebben dezelfde kleur"},"completionScore":25,"type":"CheckBox"},{"description":{"nl":"Aantal blokjes in het frame of doel: "},"min":0,"max":10,"scorePerStep":5,"type":"Slider"},{"description":{"nl":"Ten minste één geel blokje is volledig in het doel:"},"completionScore":10,"type":"CheckBox"}],"images":[],"name":{"nl":"M08 - Boccia"}},{"missionParts":[{"description":{"nl":"Banden met de witte kant naar boven en rustend op de mat:"},"choices":[{"choice":{"nl":"Geen"},"score":0},{"choice":{"nl":"Blauw"},"score":10},{"choice":{"nl":"Zwart"},"score":15},{"choice":{"nl":"Beide"},"score":25}],"type":"MultipleChoice"},{"description":{},"choices":[{"choice":{"nl":"Geen"},"score":0},{"choice":{"nl":"Blauw"},"score":5},{"choice":{"nl":"Zwart"},"score":5},{"choice":{"nl":"Beide"},"score":10}],"type":"MultipleChoice"}],"images":[],"name":{"nl":"M09 - Banden omdraaien"}},{"missionParts":[{"description":{"nl":"Het mobieltje ligt met de witte kant naar boven en rust alleen op de mat: "},"completionScore":15,"type":"CheckBox"}],"images":[],"name":{"nl":"M10 - Mobieltje"}},{"missionParts":[{"description":{"nl":"De robot heeft de rollen gedraaid, zodat de wijzer wijst naar: "},"choices":[{"choice":{"nl":"Geen"},"score":0},{"choice":{"nl":"Grijs"},"score":5},{"choice":{"nl":"Rood"},"score":10},{"choice":{"nl":"Oranje"},"score":15},{"choice":{"nl":"Geel"},"score":20},{"choice":{"nl":"Lichtgroen"},"score":25},{"choice":{"nl":"Donkergroen"},"score":30}],"type":"MultipleChoice"}],"images":[],"name":{"nl":"M11 - Loopband"}},{"missionParts":[{"description":{"nl":"Het losse wiel is volledig buiten de grote cirkel"},"completionScore":15,"type":"CheckBox"},{"description":{"nl":"Het losse wiel is volledig in de kleine cirkel"},"completionScore":15,"type":"CheckBox"}],"images":[],"name":{"nl":"M12 - Roeimachine"}},{"missionParts":[{"description":{"nl":"De stop zit onder de hendel en de hendelinstelling is: "},"choices":[{"choice":{"nl":"Geen"},"score":0},{"choice":{"nl":"Blauw"},"score":10},{"choice":{"nl":"Magenta"},"score":15},{"choice":{"nl":"Geel"},"score":10}],"type":"MultipleChoice"}],"images":[],"name":{"nl":"M13 - Gewichtsapparaat"}},{"missionParts":[{"description":{"nl":"Het aantal gezondheidsunits dat het RePLAY-logo of het grijze gebied rond de bank aanraakt:"},"min":0,"max":4,"scorePerStep":5,"type":"Slider"},{"description":{"nl":"Het aantal gezondheidsunits dat over een paal van de optrekstang is gelust en geen uitrusting aanraakt"},"min":0,"max":4,"scorePerStep":10,"type":"Slider"}],"images":[],"name":{"nl":"M14 - Gezondheidsunits"}},{"missionParts":[{"description":{"nl":"Het aantal overhegouden precisietekens op de mat:"},"choices":[{"choice":{"nl":"6"},"score":60},{"choice":{"nl":"5"},"score":45},{"choice":{"nl":"4"},"score":30},{"choice":{"nl":"3"},"score":20},{"choice":{"nl":"2"},"score":10},{"choice":{"nl":"1"},"score":5},{"choice":{"nl":"0"},"score":0}],"type":"MultipleChoice"}],"images":[],"name":{"nl":"M15 - Precisie"}}]}
+{
+  "name": {
+    "nl": "2020-2021: RePLAY"
+  },
+  "logo" : {
+    "path": "2019-city-shaper-logo.jpg"
+  },
+  "missions": [
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Alle uitrusting van het team past in de kleine inspectieruimte."
+          },
+          "completionScore": 25,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M00 - Inspectiebonus uitrusting"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Het innovatieproject is groot genoeg (2+ witte LEGO onderdelen en 4+ LEGO noppen lang)."
+          },
+          "completionScore": 0,
+          "type": "CheckBox"
+        },
+        {
+          "description": {
+            "nl": "Een deel van het innovatieproject raakt:"
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "Geen"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "RePLAY-logo"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "Grijze gebied bank"
+              },
+              "score": 0
+            }
+          ],
+          "type": "MultipleChoice"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M01 - Innovatieproject"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "De onderkant van de wijzer staat op:"
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "Geen"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "Magenta"
+              },
+              "score": 10
+            },
+            {
+              "choice": {
+                "nl": "Geel"
+              },
+              "score": 15
+            },
+            {
+              "choice": {
+                "nl": "Blauw"
+              },
+              "score": 20
+            }
+          ],
+          "type": "MultipleChoice"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M02 - Stappenteller"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Het aantal glijbaanfiguren dat van de glijbaan af is"
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "0"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "1"
+              },
+              "score": 5
+            },
+            {
+              "choice": {
+                "nl": "2"
+              },
+              "score": 20
+            }
+          ],
+          "type": "MultipleChoice"
+        },
+        {
+          "description": {
+            "nl": "Er is een glijbaanfiguur volledig in THUIS:"
+          },
+          "completionScore": 10,
+          "type": "CheckBox"
+        },
+        {
+          "description": {
+            "nl": "Er wordt een glijbaanfiguur volledig van de mat gehouden door de zware band en raakt niet anders aan:"
+          },
+          "completionScore": 20,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M03 - Glijbaan"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "De bank ligt plat:"
+          },
+          "completionScore": 10,
+          "type": "CheckBox"
+        },
+        {
+          "description": {
+            "nl": "Aantal hinkelbaanruimtes met blokjes erin die de mat raken: "
+          },
+          "min": 0,
+          "max": 4,
+          "scorePerStep": 10,
+          "type": "Slider"
+        },
+        {
+          "description": {
+            "nl": "De rugleuning is volledig uit beide gaten:"
+          },
+          "completionScore": 15,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M04 - Bank"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Er is een blokje in de krat:"
+          },
+          "completionScore": 15,
+          "type": "CheckBox"
+        },
+        {
+          "description": {
+            "nl": "Op welke stop steunt de krat? "
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "Geen"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "Middelste"
+              },
+              "score": 15
+            },
+            {
+              "choice": {
+                "nl": "Bovenste"
+              },
+              "score": 25
+            }
+          ],
+          "type": "MultipleChoice"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M05 - Basketbal"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "De robot ging op enig moment volledig door het rechtopstaande frame van de optrekstang:"
+          },
+          "completionScore": 15,
+          "type": "CheckBox"
+        },
+        {
+          "description": {
+            "nl": "De optrekstang houdt de robot aan het einde van de wedstrijd voor 100% van de mat af:"
+          },
+          "completionScore": 30,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M06 - Optrekstang"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "De controller van de robot danst op het einde van de wedstrijd over de dansvloer: "
+          },
+          "completionScore": 20,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M07 - Robotdans"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Beide deelmodellen hebben slechts één blokje op het tegenoverliggende veld gestuurd en die blokjes hebben dezelfde kleur"
+          },
+          "completionScore": 25,
+          "type": "CheckBox"
+        },
+        {
+          "description": {
+            "nl": "Aantal blokjes in het frame of doel: "
+          },
+          "min": 0,
+          "max": 10,
+          "scorePerStep": 5,
+          "type": "Slider"
+        },
+        {
+          "description": {
+            "nl": "Ten minste één geel blokje is volledig in het doel:"
+          },
+          "completionScore": 10,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M08 - Boccia"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Banden met de witte kant naar boven en rustend op de mat:"
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "Geen"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "Blauw"
+              },
+              "score": 10
+            },
+            {
+              "choice": {
+                "nl": "Zwart"
+              },
+              "score": 15
+            },
+            {
+              "choice": {
+                "nl": "Beide"
+              },
+              "score": 25
+            }
+          ],
+          "type": "MultipleChoice"
+        },
+        {
+          "description": {},
+          "choices": [
+            {
+              "choice": {
+                "nl": "Geen"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "Blauw"
+              },
+              "score": 5
+            },
+            {
+              "choice": {
+                "nl": "Zwart"
+              },
+              "score": 5
+            },
+            {
+              "choice": {
+                "nl": "Beide"
+              },
+              "score": 10
+            }
+          ],
+          "type": "MultipleChoice"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M09 - Banden omdraaien"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Het mobieltje ligt met de witte kant naar boven en rust alleen op de mat: "
+          },
+          "completionScore": 15,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M10 - Mobieltje"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "De robot heeft de rollen gedraaid, zodat de wijzer wijst naar: "
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "Geen"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "Grijs"
+              },
+              "score": 5
+            },
+            {
+              "choice": {
+                "nl": "Rood"
+              },
+              "score": 10
+            },
+            {
+              "choice": {
+                "nl": "Oranje"
+              },
+              "score": 15
+            },
+            {
+              "choice": {
+                "nl": "Geel"
+              },
+              "score": 20
+            },
+            {
+              "choice": {
+                "nl": "Lichtgroen"
+              },
+              "score": 25
+            },
+            {
+              "choice": {
+                "nl": "Donkergroen"
+              },
+              "score": 30
+            }
+          ],
+          "type": "MultipleChoice"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M11 - Loopband"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Het losse wiel is volledig buiten de grote cirkel"
+          },
+          "completionScore": 15,
+          "type": "CheckBox"
+        },
+        {
+          "description": {
+            "nl": "Het losse wiel is volledig in de kleine cirkel"
+          },
+          "completionScore": 15,
+          "type": "CheckBox"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M12 - Roeimachine"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "De stop zit onder de hendel en de hendelinstelling is: "
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "Geen"
+              },
+              "score": 0
+            },
+            {
+              "choice": {
+                "nl": "Blauw"
+              },
+              "score": 10
+            },
+            {
+              "choice": {
+                "nl": "Magenta"
+              },
+              "score": 15
+            },
+            {
+              "choice": {
+                "nl": "Geel"
+              },
+              "score": 10
+            }
+          ],
+          "type": "MultipleChoice"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M13 - Gewichtsapparaat"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Het aantal gezondheidsunits dat het RePLAY-logo of het grijze gebied rond de bank aanraakt:"
+          },
+          "min": 0,
+          "max": 4,
+          "scorePerStep": 5,
+          "type": "Slider"
+        },
+        {
+          "description": {
+            "nl": "Het aantal gezondheidsunits dat over een paal van de optrekstang is gelust en geen uitrusting aanraakt"
+          },
+          "min": 0,
+          "max": 4,
+          "scorePerStep": 10,
+          "type": "Slider"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M14 - Gezondheidsunits"
+      }
+    },
+    {
+      "missionParts": [
+        {
+          "description": {
+            "nl": "Het aantal overhegouden precisietekens op de mat:"
+          },
+          "choices": [
+            {
+              "choice": {
+                "nl": "6"
+              },
+              "score": 60
+            },
+            {
+              "choice": {
+                "nl": "5"
+              },
+              "score": 45
+            },
+            {
+              "choice": {
+                "nl": "4"
+              },
+              "score": 30
+            },
+            {
+              "choice": {
+                "nl": "3"
+              },
+              "score": 20
+            },
+            {
+              "choice": {
+                "nl": "2"
+              },
+              "score": 10
+            },
+            {
+              "choice": {
+                "nl": "1"
+              },
+              "score": 5
+            },
+            {
+              "choice": {
+                "nl": "0"
+              },
+              "score": 0
+            }
+          ],
+          "type": "MultipleChoice"
+        }
+      ],
+      "images": [],
+      "name": {
+        "nl": "M15 - Precisie"
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 <template>
     <div>
-        | Language:
+        Language:
         <select v-model="selectedLanguage" v-on:change="setLanguage(selectedLanguage)">
             <option v-for="language in supportedLanguages"
                     :value="language"

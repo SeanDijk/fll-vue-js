@@ -2,6 +2,10 @@
   "name": {
     "nl": "2019-2020: Into orbit"
   },
+  "logo": {
+    "path": "logo.jpg",
+    "description": "Into orbit logo"
+  },
   "missions": [
     {
       "id": "M00",
