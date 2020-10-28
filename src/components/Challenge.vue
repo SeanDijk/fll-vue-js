@@ -15,7 +15,6 @@
             />
         </div>
 
-
         <div class="sticky-bottom">
             Total score: {{totalScore}}
         </div>
