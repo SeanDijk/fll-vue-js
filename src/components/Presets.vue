@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-row flex-wrap">
+  <div class="wrapper">
     <div
         v-for="challenge in challenges"
         v-bind:key="challenge.id"
@@ -7,7 +7,7 @@
     >
       <router-link  class="header-item" :to="`/challenges/${challenge.id}`">
         <div class="card-header">
-          <h1>{{ getName(challenge) }}</h1>
+          {{ getName(challenge) }}
         </div>
         <div class="card-img" v-if="getImage(challenge)">
           <img :src="getImage(challenge)" :alt="challenge.logo.description">
@@ -50,6 +50,11 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .card-img {
   background: unset;
@@ -59,13 +64,26 @@ export default {
   height: 100%;
   width: auto;
 }
+.card-header {
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+}
 
 .challenge {
-  max-width: 400px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .header-item {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
 }
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+  }
+}
+
 </style>

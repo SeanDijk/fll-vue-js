@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueLogger from 'vuejs-logger';
-
+//todo split this file in multiple files, file per plugin
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
@@ -23,13 +23,12 @@ Vue.use(VueLogger, options);
 
 import "@/assets/scss/main.scss"
 import "@/assets/scss/buttons.scss"
-import HelloWorld from "./components/HelloWorld";
 import Builder from "./components/builder/ChallengeBuilder";
 import RoutedChallenge from "./components/RoutedChallenge";
 import Presets from "@/components/Presets";
 
 const routes = [
-  { path: '/', component: HelloWorld },
+  { path: '/', redirect: 'challenges' },
   { path: '/builder', component: Builder },
   { path: '/challenges/:id', component: RoutedChallenge },
   { path: '/challenges/', component: Presets },

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import "card";
+
 :root {
   --btn-primary: #1e87f0;
   --btn-danger: #d32f2f;
@@ -80,47 +83,6 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
 .text-no-wrap {
   white-space: nowrap;
 }
-
-.card {
-  box-sizing: border-box;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-  background: white;
-}
-
-.card-img {
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  background: lightgrey;
-}
-
-.card-content, .card-header, .card-footer {
-  padding: 16px;
-}
-
-.card-title {
-  font-size: 1.2em;
-}
-
-.card-size-medium {
-  max-width: 500px;
-  width: 100%;
-}
-
-.card-hover {
-  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-}
-
-.card-hover:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-
-  //box-shadow: 0 10px 20px rgba(0,0,0,.2), 0 4px 8px rgba(0,0,0,.06);
-  cursor: pointer;
-}
-
 
 .form {
   display: flex;

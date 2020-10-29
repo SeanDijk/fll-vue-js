@@ -3,10 +3,10 @@
     <label class="hamburger-label" for="hamburger"><img alt="menu-icon" src="@/assets/icons/menu-24px.svg"></label>
     <input id="hamburger" type="checkbox"/>
 
-<!--  todo close when clicked outside-->
+    <!--  todo close when clicked outside-->
     <div class="contents flex-text-center">
       <router-link class="header-item title-in-menu" to="/">FLL Score app</router-link>
-      <router-link class="header-item" to="/challenges">Presets</router-link>
+      <router-link class="header-item" to="/challenges">Challenges</router-link>
       <router-link class="header-item" to="/builder">Builder</router-link>
       <language-picker/>
     </div>
@@ -33,11 +33,11 @@ export default {
   height: 36px;
   width: 36px;
 }
+
 .hamburger-label > img {
   width: 100%;
   height: 100%;
 }
-
 
 #hamburger {
   display: none;
@@ -60,13 +60,13 @@ export default {
   left: 0;
   transform-origin: 0 0;
   transform: translate(-100%, 0);
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 
 }
 
-#hamburger:checked ~ .contents{
+#hamburger:checked ~ .contents {
   transform: none;
- }
+}
 
 
 header {
@@ -99,13 +99,14 @@ header {
     max-width: unset;
     padding: 8px;
     background: unset;
-
+    transition: unset;
   }
 
   .hamburger-label {
     display: none;
   }
-  .title-in-menu{
+
+  .title-in-menu {
     display: initial;
     flex-grow: 1;
   }
