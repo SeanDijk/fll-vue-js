@@ -27,9 +27,9 @@ jobs:
       run: |
         npm install
         npm run build
+    - env: 
+        NODE_ENV: ${{ secrets.REACT_APP_APIKey }} 
 
-
-  
     - name: Deploy to GitHub Pages
       if: success()
       uses: crazy-max/ghaction-github-pages@v2
