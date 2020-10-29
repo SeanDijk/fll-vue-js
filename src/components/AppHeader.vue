@@ -1,6 +1,6 @@
 <template>
   <header>
-    <label class="hamburger-label" for="hamburger"><img alt="menu-icon" src="/icons/menu-24px.svg"></label>
+    <label class="hamburger-label" for="hamburger"><img alt="menu-icon" src="@/assets/icons/menu-24px.svg"></label>
     <input id="hamburger" type="checkbox"/>
 
 <!--  todo close when clicked outside-->
