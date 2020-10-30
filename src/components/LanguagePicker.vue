@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import {preferences, mutations} from "../preferences";
+    import {preferences, mutations} from "@/preferences";
 
     export default {
         name: "LanguagePicker",

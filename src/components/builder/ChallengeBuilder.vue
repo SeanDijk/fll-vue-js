@@ -1,9 +1,6 @@
 <template>
   <div class="screen">
-    <!--        <button v-on:click="log">log</button>-->
-    <!--        <label>Preview<input type="checkbox" v-model="preview"></label>-->
-
-    <div id="builder" class="form">
+    <div id="builder" class="form" v-if="challenge">
       <h1>Challenge builder</h1>
 
       <label for="challengeId">ID:</label>
@@ -58,6 +55,9 @@ import {saveAs} from 'file-saver';
 export default {
   name: "ChallengeBuilder",
   components: {Challenge, LanguageStringField, MissionBuilder, draggable},
+  props: {
+    challenge: Object
+  },
   data: function () {
     return {
       previewData: undefined,

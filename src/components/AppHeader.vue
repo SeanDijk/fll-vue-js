@@ -5,6 +5,7 @@
 
     <!--  todo close when clicked outside-->
     <div class="contents flex-text-center">
+      <p>{{ $t('message.hello') }}</p>
       <router-link class="header-item title-in-menu" to="/">FLL Score app</router-link>
       <router-link class="header-item" to="/challenges">Challenges</router-link>
       <router-link class="header-item" to="/builder">Builder</router-link>
