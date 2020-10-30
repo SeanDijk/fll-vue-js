@@ -1,6 +1,6 @@
 <template>
     <div>
-        Language:
+      {{ $t('header.menu.language') }}:
         <select v-model="selectedLanguage" v-on:change="setLanguage(selectedLanguage)">
             <option v-for="language in supportedLanguages"
                     :value="language"
@@ -11,21 +11,16 @@
 </template>
 
 <script>
-    import {preferences, mutations} from "@/preferences";
+    import i18n from "@/plugins/i18n";
 
     export default {
         name: "LanguagePicker",
-        computed: {
-            getLanguage() {
-                return preferences.language;
-            }
-        },
         methods: {
-            setLanguage: mutations.setLanguage
+            setLanguage: (ln) => i18n.locale = ln
         },
         data: function() {
             return {
-                selectedLanguage: preferences.language,
+                selectedLanguage: i18n.locale,
                 supportedLanguages: [
                     "nl", "en"
                 ]

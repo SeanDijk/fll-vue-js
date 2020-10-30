@@ -8,14 +8,20 @@ const messages = {
         header: {
             menu :{
                 appName: "FLL Score app",
-                challenges: "Uitdagingen",
-                challengeEditor: ""
+                challenges: "Challenges",
+                builder: "Builder",
+                language: "Language"
             }
         }
     },
     nl: {
-        message: {
-            hello: 'Hallo wereld!'
+        header: {
+            menu :{
+                appName: "FLL Score app",
+                challenges: "Uitdagingen",
+                builder: "Bouwer",
+                language: "Taal"
+            }
         }
     }
 }

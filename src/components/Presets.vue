@@ -7,7 +7,7 @@
     >
       <router-link  class="header-item" :to="`/challenges/${challenge.id}`">
         <div class="card-header">
-          {{ getName(challenge) }}
+          {{ i18nService.getForCurrentLanguage(challenge.name) }}
         </div>
         <div class="card-img" v-if="getImage(challenge)">
           <img :src="getImage(challenge)" :alt="challenge.logo.description">
@@ -21,23 +21,20 @@
 </template>
 
 <script>
-import {preferences} from "@/preferences";
 import {getImageSrc} from "@/imageRetriever";
 import challengeService from "@/services/challengeService"
+import i18nService from "@/services/i18nService";
 
 export default {
   name: "Presets",
   data: () => {
     return {
+      i18nService: i18nService,
       challenges: challengeService.getAll()
     }
   },
   methods: {
-    getName(challenge) {
-      return challenge?.name?.[preferences.language]
-    },
     getImage(challenge) {
-      console.log("?",challenge)
       return getImageSrc(true, challenge.id, challenge?.logo?.path)
     }
   }

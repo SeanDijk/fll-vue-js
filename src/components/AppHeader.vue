@@ -5,9 +5,9 @@
 
     <!--  todo close when clicked outside-->
     <div class="contents flex-text-center">
-      <router-link class="header-item title-in-menu" to="/">FLL Score app</router-link>
-      <router-link class="header-item" to="/challenges">Challenges</router-link>
-      <router-link class="header-item" to="/builder">Builder</router-link>
+      <router-link class="header-item title-in-menu" to="/">{{ $t('header.menu.appName') }}</router-link>
+      <router-link class="header-item" to="/challenges">{{ $t('header.menu.challenges') }}</router-link>
+      <router-link class="header-item" to="/builder">{{ $t('header.menu.builder') }}</router-link>
       <language-picker/>
     </div>
   </header>
