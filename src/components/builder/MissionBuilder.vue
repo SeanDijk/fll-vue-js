@@ -81,7 +81,7 @@ export default {
     handleFileUpload() {
       this.$refs.file.files.forEach(img => {
         let wrapped = new Wrapper({path: img.name})
-        wrapped.src = require('../../assets/pendulum.gif');
+        wrapped.src = require('@/assets/pendulum.gif');
 
         this.value.images.push(wrapped)
 

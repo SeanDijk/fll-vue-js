@@ -7,7 +7,7 @@ export default {
         }
     },
     getAll() {
-        let ctx = require.context('../assets/challenges/', true, /\.json$/);
+        let ctx = require.context('@/assets/challenges/', true, /\.json$/);
         return ctx.keys()
             .map(key => {
                 let data = ctx(key)

@@ -84,7 +84,7 @@ export default {
         name: this.name,
         missions: this.missions
       });
-
+      console.log(data)
 
       let zip = new JSZip();
       zip.file("challenge.json", data)
@@ -96,9 +96,8 @@ export default {
           .flatMap(mission => mission.data.images)
           .forEach(imgWrapper => zip.file(
               imgWrapper.data.path,
-              imgWrapper.src.replace('data:image/png;base64,', ''),
+              imgWrapper.src.replace(/(data.*base64)/, ''),
               {base64: true}))
-      // .forEach(imgWrapper => console.log(imgWrapper.src))
 
 
       zip.generateAsync({type: "blob"})
