@@ -3,22 +3,21 @@
     <div id="builder" class="form" v-if="challenge">
       <h1>Challenge builder</h1>
 
-      <label for="challengeId">ID:</label>
-      <input type="text" v-model="id" id="challengeId"/>
+      <input type="text" v-model="challenge.id" id="challengeId"/>
 
 
       <label for="challengeName">Name:</label>
-      <language-string-field v-model="name" id="challengeName"/>
+      <language-string-field v-model="challenge.name" id="challengeName"/>
 
       <div id="newMissions">
-        <draggable v-model="missions">
+        <draggable v-model="challenge.missions">
           <!-- use mission.data since passing just mission is not allowed.-->
           <mission-builder
-              v-for="mission in missions"
+              v-for="mission in challenge.missions.map( a => wrap(a))"
               v-model="mission.data"
               v-bind:key=mission.id
               :id="mission.id"
-              :images="mission.images"
+              :images="mission.data.images"
               @deleteMission="deleteMission($event)"
           />
         </draggable>
@@ -62,25 +61,23 @@ export default {
     return {
       previewData: undefined,
       previewDataKey: 0,
-      name: {},
-      id: '',
-      missions: [],
     }
   },
   methods: {
-    addMission: function () {
-      this.missions.push(new Wrapper({missionParts: [], images: []}))
+    wrap: function(obj) {
+      return new Wrapper(obj)
     },
-    deleteMission: function (id) {
-      this.missions = this.missions.filter(wrapper => wrapper.id !== id)
+    addMission: function () {
+      this.challenge.missions.push({missionParts: [], images: []})
+    },
+    deleteMission: function (toDelete) {
+      console.log(toDelete)
+      this.challenge.missions = this.challenge.missions.filter(mission => mission !== toDelete)
     },
     download: function () {
       //todo also export images etc.
 
-      const data = JSON.stringify({
-        name: this.name,
-        missions: this.missions
-      });
+      const data = JSON.stringify(this.challenge);
 
 
       let zip = new JSZip();
@@ -88,18 +85,22 @@ export default {
 
       // get all the images
 
-      console.log(this.missions)
-      this.missions
-          .flatMap(mission => mission.data.images)
-          .forEach(imgWrapper => zip.file(
+      console.log("missions: " , this.challenge.missions)
+      this.challenge.missions
+          .flatMap(mission => mission.images)
+          .forEach(imgWrapper => {
+            console.log(imgWrapper)
+
+             zip.file(
               imgWrapper.data.path,
               imgWrapper.src.replace('data:image/png;base64,', ''),
-              {base64: true}))
+              {base64: true}
+              )})
       // .forEach(imgWrapper => console.log(imgWrapper.src))
 
 
       zip.generateAsync({type: "blob"})
-          .then(value => saveAs(value, this.id + ".zip"))
+          .then(value => saveAs(value, this.challenge.id + ".zip"))
     },
     open: function () {
       //todo open a challenge

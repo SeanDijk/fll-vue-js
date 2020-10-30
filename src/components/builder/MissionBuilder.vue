@@ -26,13 +26,10 @@
            multiple
            v-on:change="handleFileUpload()"/>
 
-
-    <br>
-    <b>Parts</b>
     <fieldset>
-      <draggable id="missionParts" v-model="value.missionParts">
+      <draggable id="missionParts" v-model="wrappedParts">
         <mission-part-builder
-            v-for="missionPart in value.missionParts"
+            v-for="missionPart in wrappedParts"
             v-model="missionPart.data"
             v-bind:key=missionPart.id
             :id="missionPart.id"
@@ -62,7 +59,15 @@ export default {
     id: String,
     value: Object,
   },
+  data: function () {
+    return {
+      wrappedParts: this.value.missionParts.map(a => new Wrapper(new Wrapper(a)))
+    }
+  },
   methods: {
+    wrap: function(obj) {
+      return new Wrapper(obj)
+    },
     addMissionPart() {
       this.value.missionParts.push(new Wrapper(new Wrapper({})))
     },
@@ -87,7 +92,7 @@ export default {
       this.value.images = this.value.images.filter(value => value.id !== imgWrapper.id)
     },
     remove() {
-      this.$emit('deleteMission', this.id)
+      this.$emit('deleteMission', this.value)
     }
   },
   created() {

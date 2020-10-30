@@ -32,8 +32,8 @@
       <language-string-field v-model="backingData.MultipleChoice.description" :text-area="true"/>
 
       <label>Options</label>
-      <draggable v-model="backingData.MultipleChoice.choices">
-        <div v-for="option in backingData.MultipleChoice.choices" v-bind:key="option.id">
+      <draggable v-model="wrappedChoices">
+        <div v-for="option in wrappedChoices" v-bind:key="option.id">
           <label>Text:
             <language-string-field v-model="option.data.choice"/>
           </label>
@@ -48,7 +48,7 @@
 
     <template v-else-if="selectedType === 'Slider'" class="flex-column">
       <label>Text</label>
-      <language-string-field v-model="backingData.Slider.description" :text-area="true"/>
+      <language-string-field v-model="backingData.Slider.description"/>
 
       <label>Min: <input type="number" v-model.number="backingData.Slider.min"/></label>
       <label>Max: <input type="number" v-model.number="backingData.Slider.max"/></label>
@@ -71,25 +71,27 @@ export default {
   name: "MissionPartBuilder",
   components: {LanguageStringField, draggable},
   data: function () {
+    let bck = {
+      CheckBox: {
+        description: {},
+        completionScore: 0
+      },
+      MultipleChoice: {
+        description: {},
+        choices: []
+      },
+      Slider: {
+        description: {},
+        min: 0,
+            max: 0,
+            scorePerStep: 0
+      },
+      ExtraPointsForEachMissionWithPoints: {},
+    }
     return {
       selectedType: 'CheckBox',
-      backingData: {
-        CheckBox: {
-          description: {},
-          completionScore: 0
-        },
-        MultipleChoice: {
-          description: {},
-          choices: []
-        },
-        Slider: {
-          description: {},
-          min: 0,
-          max: 0,
-          scorePerStep: 0
-        },
-        ExtraPointsForEachMissionWithPoints: {},
-      }
+      backingData: bck,
+      wrappedChoices: bck.MultipleChoice.choices.map(a => new Wrapper(a))
     }
   },
   props: {
@@ -112,7 +114,7 @@ export default {
     },
     removeChoice(id) {
       this.backingData.MultipleChoice.choices = this.backingData.MultipleChoice.choices.filter(choice => choice.id !== id)
-    }
+    },
   },
   created() {
     console.log("Created mission part")
