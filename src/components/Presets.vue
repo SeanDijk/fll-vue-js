@@ -23,18 +23,13 @@
 <script>
 import {preferences} from "@/preferences";
 import {getImageSrc} from "@/imageRetriever";
+import challengeService from "@/services/challengeService"
 
 export default {
   name: "Presets",
   data: () => {
-    let ctx = require.context('../assets/challenges/', true, /\.json$/);
     return {
-      challenges: ctx.keys()
-          .map(key => {
-            let data = ctx(key)
-            data.id = key.split('/')[1]
-            return data
-          })
+      challenges: challengeService.getAll()
     }
   },
   methods: {

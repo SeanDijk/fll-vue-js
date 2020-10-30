@@ -62,6 +62,15 @@ export default {
     id: String,
     value: Object,
   },
+  created() {
+    if (this.value.name === undefined) {
+      this.value.name = {}
+    }
+    if(this.value.missionParts) {
+      this.value.missionParts = this.value.missionParts.map(x => new Wrapper(new Wrapper(x)))
+    }
+  },
+
   methods: {
     addMissionPart() {
       this.value.missionParts.push(new Wrapper(new Wrapper({})))
@@ -90,11 +99,7 @@ export default {
       this.$emit('deleteMission', this.id)
     }
   },
-  created() {
-    if (this.value.name === undefined) {
-      this.value.name = {}
-    }
-  }
+
 
 }
 </script>

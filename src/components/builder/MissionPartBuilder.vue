@@ -70,6 +70,10 @@ import {Wrapper} from "./models";
 export default {
   name: "MissionPartBuilder",
   components: {LanguageStringField, draggable},
+  props: {
+    id: String,
+    value: Wrapper
+  },
   data: function () {
     return {
       selectedType: 'CheckBox',
@@ -92,9 +96,19 @@ export default {
       }
     }
   },
-  props: {
-    id: String,
-    value: Wrapper
+  created() {
+    console.log("Created mission part")
+    console.log(this.value.data)
+    if (this.value.data.type !== undefined) {
+      if(this.value.data.type === "MultipleChoice") {
+        this.value.data.choices = this.value.data.choices.map(x => new Wrapper(x))
+      }
+
+
+      this.selectedType = this.value.data.type
+      this.backingData[this.selectedType] = this.value.data
+    }
+    this.onSelect(this.selectedType)
   },
   methods: {
     remove: function () {
@@ -113,15 +127,6 @@ export default {
     removeChoice(id) {
       this.backingData.MultipleChoice.choices = this.backingData.MultipleChoice.choices.filter(choice => choice.id !== id)
     }
-  },
-  created() {
-    console.log("Created mission part")
-    console.log(this.value.data)
-    if (this.value.data.type !== undefined) {
-      this.selectedType = this.value.data.type
-      this.backingData[this.selectedType] = this.value.data
-    }
-    this.onSelect(this.selectedType)
   }
 }
 </script>

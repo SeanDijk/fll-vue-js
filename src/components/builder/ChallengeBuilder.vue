@@ -1,6 +1,9 @@
 <template>
   <div class="screen">
-    <div id="builder" class="form" v-if="challenge">
+    <!--        <button v-on:click="log">log</button>-->
+    <!--        <label>Preview<input type="checkbox" v-model="preview"></label>-->
+
+    <div id="builder" class="form">
       <h1>Challenge builder</h1>
 
       <label for="challengeId">ID:</label>
@@ -62,9 +65,9 @@ export default {
     return {
       previewData: undefined,
       previewDataKey: 0,
-      name: {},
-      id: '',
-      missions: [],
+      name: this.challenge.name,
+      id: this.challenge.id,
+      missions: this.challenge.missions.map(x => new Wrapper(x)),
     }
   },
   methods: {
