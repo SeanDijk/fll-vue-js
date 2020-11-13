@@ -1,28 +1,23 @@
 <template>
-    <challenge
-    :name="challengeJson.name"
-    :missions="challengeJson.missions"
-    :description="challengeJson.description"
-    :from-assets="true">
+  <challenge
+      :challengeJson="challengeJson"
+      :from-assets="true">
 
-    </challenge>
+  </challenge>
 </template>
 
 <script>
-    import Challenge from "./Challenge";
-    export default {
-        name: "RoutedChallenge",
-        components: {Challenge},
-        data() {
-            return {
-                challengeJson: require(`../assets/challenges/${this.$route.params.id}/challenge.json`)
-            }
-        },
-        created(){
+import Challenge from "./Challenge";
 
-            console.log()
-        }
+export default {
+  name: "RoutedChallenge",
+  components: {Challenge},
+  data() {
+    return {
+      challengeJson: require(`../assets/challenges/${this.$route.params.id}/challenge.json`)
     }
+  }
+}
 </script>
 
 <style scoped>

@@ -2,9 +2,7 @@ import Vue from 'vue'
 import App from '@/App.vue'
 
 import "@/assets/scss/main.scss"
-// todo add buttons to import of main.
-import "@/assets/scss/buttons.scss"
-
+import "flickity"
 
 // Plugins
 import router from '@/plugins/router';

@@ -1,14 +1,14 @@
 <template>
   <div class="flex-row mission-row">
-    <span>{{ i18nService.getForCurrentLanguage(description) }}</span>
+    <span>{{ i18nService.getForCurrentLanguage(missionPartJson.description) }}</span>
     <div class="flex-column text-no-wrap">
-      <div v-for="(choice, index) in choices" v-bind:key="index">
+      <div v-for="(choice, index) in missionPartJson.choices" v-bind:key="index">
         <input type="radio"
                :id="uuid + index"
                :name="uuid"
                :value="index"
                :checked="index === 0"
-               v-model="selectedIndex"
+               v-model="missionPartJson.selectedIndex"
                v-on:change="determineScore"
         >
         <label :for="uuid + index">{{ i18nService.getForCurrentLanguage(choice.choice) }}</label>
@@ -24,8 +24,7 @@ import i18nService from "@/services/i18nService";
 export default {
   name: "MultipleChoiceMissionPart",
   props: {
-    description: Object,
-    choices: Array,
+    missionPartJson: Object,
   },
   data: function () {
     return {
@@ -35,10 +34,18 @@ export default {
       uuid: uuidv4()
     }
   },
+  beforeMount() {
+    if (!this.missionPartJson.selectedIndex) {
+      this.missionPartJson.selectedIndex = 0;
+    }
+  },
+  mounted() {
+    this.determineScore()
+  },
   methods: {
     determineScore: function () {
       let previous = this.score;
-      this.score = this.choices[this.selectedIndex].score;
+      this.score = this.missionPartJson.choices[this.missionPartJson.selectedIndex].score;
       if (previous !== this.score) {
         this.$emit('score-changed', previous, this.score)
       }

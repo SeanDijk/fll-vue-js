@@ -2,16 +2,17 @@
   <div class="flex-column card card-size-medium">
 
     <header class="card-header">
-      <span class="card-title">{{ i18nService.getForCurrentLanguage(this.name) }}</span>
+      <span class="card-title">{{ i18nService.getForCurrentLanguage(this.missionJson.name) }}</span>
     </header>
-
-    <div v-if="images !== undefined && images.length > 0" class="card-img">
-      <img class="mission-main-image"
-           :src=getImage(0)
-           :alt=images[0].description
-      >
-    </div>
-
+    <flickity
+        v-if="missionJson.images && missionJson.images.length > 0" class="main-carousel" ref="flickity" :options="{
+          wrapAround: false,
+          prevNextButtons: false
+    }">
+      <div class="carousel-cell" v-for="image in missionJson.images" :key="image.path">
+        <img class="carousel-cell-images" :src=getImage(image) :alt="image.description"/>
+      </div>
+    </flickity>
 
     <div class="card-content">
       <div ref="parts" class="flex-column flex-filler"/>
@@ -29,18 +30,18 @@
 </template>
 
 <script>
-import MissionPartViewFactory from "../MissionPartViewFactory";
+import MissionPartViewFactory from "@/components/MissionPartViewFactory";
 import {getImageSrc} from "@/imageRetriever";
 import i18nService from "@/services/i18nService";
+import Flickity from 'vue-flickity'
 
 export default {
   name: "Mission",
+  components: {
+    Flickity
+  },
   props: {
-    id: String,
-    name: Object,
-    description: Object,
-    missionParts: Array,
-    images: Array,
+    missionJson: Object,
     fromAssets: {
       type: Boolean,
       default: false
@@ -54,7 +55,7 @@ export default {
   },
   mounted: function () {
     let factory = new MissionPartViewFactory();
-    this.missionParts.forEach((missionPartData) => {
+    this.missionJson.missionParts.forEach((missionPartData) => {
       let instance = factory.createMissionPartView(
           missionPartData,
           (previousScore, newScore) => {
@@ -67,15 +68,35 @@ export default {
       }
     });
 
+    this.$refs?.flickity?.rerender()
   },
   methods: {
-    getImage(index) {
-      return getImageSrc(this.fromAssets, this.$route.params.id, this.images[index].path)
+    getImage(image) {
+      return getImageSrc(this.fromAssets, this.$route.params.id, image.path)
     }
   },
 }
 </script>
 
 <style scoped>
+.main-carousel {
+  height: 200px;
+  margin-bottom: 8px;
+}
+
+.carousel-cell {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-cell-images {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  width: auto;
+}
+
 
 </style>

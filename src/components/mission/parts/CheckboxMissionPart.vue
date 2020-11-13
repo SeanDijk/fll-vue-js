@@ -1,7 +1,7 @@
 <template>
   <div class="flex-row mission-row checkbox-mission-row">
-    <label for="checkbox-part">{{ i18nService.getForCurrentLanguage(this.description) }}</label>
-    <input v-model="checked" v-on:change="determineScore" id="checkbox-part" type="checkbox">
+    <label for="checkbox-part">{{ i18nService.getForCurrentLanguage(this.missionPartJson.description) }}</label>
+    <input v-model="missionPartJson.checked" v-on:change="determineScore" id="checkbox-part" type="checkbox">
   </div>
 </template>
 
@@ -11,20 +11,26 @@ import i18nService from "@/services/i18nService";
 export default {
   name: "CheckboxMissionPart",
   props: {
-    description: Object,
-    completionScore: Number,
+    missionPartJson: Object
   },
   data: function () {
     return {
       i18nService: i18nService,
       score: 0,
-      checked: false
     }
+  },
+  beforeMount() {
+    if (!this.missionPartJson.checked) {
+      this.missionPartJson.checked = false;
+    }
+  },
+  mounted() {
+    this.determineScore()
   },
   methods: {
     determineScore: function () {
       let previous = this.score;
-      this.score = this.checked * this.completionScore;
+      this.score = this.missionPartJson.checked * this.missionPartJson.completionScore;
 
       if (previous !== this.score) {
         this.$emit('score-changed', previous, this.score)

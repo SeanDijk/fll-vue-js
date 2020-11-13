@@ -25,7 +25,7 @@ class MissionPartViewFactory {
         }
 
         let instance = new ComponentClass({
-            propsData: missionPartData
+            propsData: {missionPartJson: missionPartData}
         });
         instance.$on('score-changed', (previousScore, newScore) => {
             onScoreChanged(previousScore, newScore);

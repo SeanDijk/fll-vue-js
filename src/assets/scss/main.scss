@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 @import "card";
+@import "buttons";
 
 :root {
   --btn-primary: #1e87f0;
@@ -66,9 +67,6 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
   justify-content: space-between;
 }
 
-.mission-main-image {
-  max-height: 150px;
-}
 
 .mission-row {
   border-width: 0 0 1px 0;
