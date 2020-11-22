@@ -34,7 +34,8 @@ export default {
      * @returns {Promise containing the scoresheets.}
      */
     async getAllScoresheets() {
-        log.debug('Retrieving all saved scoresheets')
+        if(log) // todo temp fix
+            log.debug('Retrieving all saved scoresheets')
 
         return db.scores(db.READ_ONLY, async (store) => {
             let cursor = await store.openCursor();
