@@ -1,6 +1,6 @@
 <template>
   <div class="flex-row mission-row">
-    <span>{{ i18nService.getForCurrentLanguage(missionPartJson.description) }}</span>
+    <span>{{ missionPartJson.description | localeString }}</span>
     <div class="flex-column text-no-wrap">
       <div v-for="(choice, index) in missionPartJson.choices" v-bind:key="index">
         <input type="radio"
@@ -11,7 +11,7 @@
                v-model="missionPartJson.selectedIndex"
                v-on:change="determineScore"
         >
-        <label :for="uuid + index">{{ i18nService.getForCurrentLanguage(choice.choice) }}</label>
+        <label :for="uuid + index">{{ choice.choice | localeString }}</label>
       </div>
     </div>
   </div>
@@ -19,7 +19,6 @@
 
 <script>
 import {v4 as uuidv4} from 'uuid';
-import i18nService from "@/services/i18nService";
 
 export default {
   name: "MultipleChoiceMissionPart",
@@ -28,7 +27,6 @@ export default {
   },
   data: function () {
     return {
-      i18nService: i18nService,
       score: 0,
       selectedIndex: 0,
       uuid: uuidv4()

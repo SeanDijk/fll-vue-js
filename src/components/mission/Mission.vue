@@ -2,7 +2,7 @@
   <div class="flex-column card card-size-medium">
 
     <header class="card-header">
-      <span class="card-title">{{ i18nService.getForCurrentLanguage(this.missionJson.name) }}</span>
+      <span class="card-title">{{ this.missionJson.name | localeString }}</span>
     </header>
     <flickity
         v-if="missionJson.images && missionJson.images.length > 0" class="main-carousel" ref="flickity" :options="{
@@ -32,7 +32,6 @@
 <script>
 import MissionPartViewFactory from "@/components/MissionPartViewFactory";
 import {getImageSrc} from "@/services/imageRetriever";
-import i18nService from "@/services/i18nService";
 import Flickity from 'vue-flickity'
 
 export default {
@@ -49,7 +48,6 @@ export default {
   },
   data: function () {
     return {
-      i18nService: i18nService,
       totalScore: 0
     }
   },

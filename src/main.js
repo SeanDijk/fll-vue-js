@@ -8,6 +8,7 @@ import router from '@/plugins/router';
 import i18n from '@/plugins/i18n';
 import '@/plugins/log'
 import '@/plugins/i18n'
+import '@/filters'
 
 Vue.config.productionTip = false
 
@@ -17,5 +18,4 @@ new Vue({
   render: h => h(App),
 }).$mount('#app')
 
-console.log(Vue.$log)
 export const log=Vue.$log;

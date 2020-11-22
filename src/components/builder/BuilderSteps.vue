@@ -4,7 +4,7 @@
 
     <select v-model="selectedChallenge" >
       <option v-for="opt in allChallenges" v-bind:key="opt.id" :value="opt">
-        {{i18nService.getForCurrentLanguage(opt.name)}}
+        {{opt.name | localeString}}
       </option>
     </select>
     <button v-on:click="setExisting(selectedChallenge)">Pick existing</button>
@@ -29,6 +29,7 @@
 <script>
 import ChallengeBuilder from "@/components/builder/ChallengeBuilder";
 import challengeService from "@/services/challengeService";
+// eslint-disable-next-line no-unused-vars
 import i18nService from "@/services/i18nService";
 
 export default {
@@ -48,7 +49,6 @@ export default {
   },
   data: function () {
     return {
-      i18nService: i18nService,
       challenge: undefined,
       allChallenges: challengeService.getAll(),
       selectedChallenge: undefined

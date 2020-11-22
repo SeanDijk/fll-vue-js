@@ -1,12 +1,11 @@
 <template>
   <div class="flex-row mission-row checkbox-mission-row">
-    <label for="checkbox-part">{{ i18nService.getForCurrentLanguage(this.missionPartJson.description) }}</label>
+    <label for="checkbox-part">{{ this.missionPartJson.description | localeString }}</label>
     <input v-model="missionPartJson.checked" v-on:change="determineScore" id="checkbox-part" type="checkbox">
   </div>
 </template>
 
 <script>
-import i18nService from "@/services/i18nService";
 
 export default {
   name: "CheckboxMissionPart",
@@ -15,7 +14,6 @@ export default {
   },
   data: function () {
     return {
-      i18nService: i18nService,
       score: 0,
     }
   },

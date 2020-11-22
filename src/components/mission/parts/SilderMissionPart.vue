@@ -1,7 +1,7 @@
 <template>
   <div class="flex-column flex-filler mission-row">
     <div class="flex-row">
-      <span>{{ i18nService.getForCurrentLanguage(missionPartJson.description) }}</span>
+      <span>{{ missionPartJson.description | localeString }}</span>
       <span class="flex-filler"></span>
       <div class="flex-row">
         <input type="number"
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import i18nService from "@/services/i18nService";
 
 export default {
   name: "SliderMissionPart",
@@ -35,7 +34,6 @@ export default {
   },
   data: function () {
     return {
-      i18nService: i18nService,
       score: 0,
       // To improve the observability, use a number in data.
       selectedNumber: this.missionPartJson.selectedNumber
