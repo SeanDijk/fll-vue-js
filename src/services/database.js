@@ -1,7 +1,6 @@
 import {openDB} from 'idb';
 import {log} from "@/main";
 
-console.log("HELLO IDB")
 const instance = openDB('FLL_SCORE_APP', 1, {
     upgrade(localDb, oldVersion, newVersion) {
         log.debug(`IDB oldVersion: ${oldVersion}, newVersion: ${newVersion}`)
@@ -28,11 +27,9 @@ export const db = {
             let store = tx.objectStore("scores")
             let result = lamda(store)
 
-
             if (type === READ_WRITE) {
                 return tx.complete;
             } else {
-                result.then( a => log.debug('deze: ', a) )
                 return result;
             }
         })

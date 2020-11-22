@@ -56,8 +56,6 @@ export default {
 }
 .card-header {
   text-align: center;
-  font-size: 1.4em;
-  font-weight: bold;
 }
 
 .challenge {
