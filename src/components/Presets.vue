@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import {getImageSrc} from "@/imageRetriever";
+import {getImageSrc} from "@/services/imageRetriever";
 import challengeService from "@/services/challengeService"
 import i18nService from "@/services/i18nService";
 

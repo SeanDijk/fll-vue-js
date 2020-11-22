@@ -10,7 +10,8 @@ const messages = {
                 appName: "FLL Score app",
                 challenges: "Challenges",
                 builder: "Builder",
-                language: "Language"
+                language: "Language",
+                savedScoresheets: "Saved scoresheets"
             }
         }
     },
@@ -20,7 +21,8 @@ const messages = {
                 appName: "FLL Score app",
                 challenges: "Uitdagingen",
                 builder: "Bouwer",
-                language: "Taal"
+                language: "Taal",
+                savedScoresheets: "Opgeslagen scoreformulieren"
             }
         }
     }

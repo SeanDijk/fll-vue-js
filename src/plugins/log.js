@@ -14,3 +14,4 @@ const options = {
 };
 
 Vue.use(VueLogger, options);
+console.log(VueLogger)

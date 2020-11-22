@@ -16,16 +16,6 @@ export default {
             })
     },
     save() {
-        var db;
-        var request = indexedDB.open("MyTestDatabase");
-        request.onerror = function(event) {
-            console.log("Why didn't you allow my web app to use IndexedDB?!", event);
-        };
-        request.onsuccess = function(event) {
-            db = event.target.result;
-            console.log(db)
-        };
-
 
     },
     submit() {

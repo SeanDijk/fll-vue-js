@@ -31,7 +31,7 @@
 
 <script>
 import MissionPartViewFactory from "@/components/MissionPartViewFactory";
-import {getImageSrc} from "@/imageRetriever";
+import {getImageSrc} from "@/services/imageRetriever";
 import i18nService from "@/services/i18nService";
 import Flickity from 'vue-flickity'
 

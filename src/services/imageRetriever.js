@@ -1,4 +1,5 @@
-import Vue from 'vue'
+import {log} from "@/main";
+
 
 export function getImageSrc(fromAssets, challengeId, path) {
     if (fromAssets) {
@@ -8,7 +9,7 @@ export function getImageSrc(fromAssets, challengeId, path) {
             try {
                 return require(`@/assets/challenges/${challengeId}/${path}`)
             } catch (e) {
-                Vue.$log.debug("Can't find image. See stacktrace: ", e)
+                log.debug("Can't find image. See stacktrace: ", e)
             }
         }
     } else {

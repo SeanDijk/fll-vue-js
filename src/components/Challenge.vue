@@ -22,6 +22,7 @@
 <script>
 import Mission from "./mission/Mission";
 import {EventBus} from "@/event-bus"
+import scoresheetService from "@/services/scoresheetService";
 
 export default {
   name: "Challenge",
@@ -51,7 +52,7 @@ export default {
       EventBus.$emit("mission-score", mission.missionJson.id, oldMissionScore, mission.totalScore)
     },
     saveScore: function () {
-      console.log(this.challengeJson)
+      scoresheetService.saveScoresheet("temp-name", this.totalScore, this.challengeJson)
     }
   }
 }

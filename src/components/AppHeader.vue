@@ -8,6 +8,7 @@
       <router-link class="header-item title-in-menu" to="/">{{ $t('header.menu.appName') }}</router-link>
       <router-link class="header-item" to="/challenges">{{ $t('header.menu.challenges') }}</router-link>
       <router-link class="header-item" to="/builder">{{ $t('header.menu.builder') }}</router-link>
+      <router-link class="header-item" to="/saved-scoresheets">{{ $t('header.menu.savedScoresheets') }}</router-link>
       <language-picker/>
     </div>
   </header>
