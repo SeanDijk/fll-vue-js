@@ -2,7 +2,6 @@
   <challenge
       :challengeJson="challengeJson"
       :from-assets="true">
-
   </challenge>
 </template>
 

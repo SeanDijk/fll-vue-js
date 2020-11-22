@@ -1,6 +1,21 @@
 import {log} from "@/main";
 import {db} from "@/services/database";
 
+let getWhere = async function(cursor, predicate) {
+
+    let results = [];
+    while (cursor) {
+        let value = cursor.value;
+        value.id = cursor.key;
+        if (predicate(cursor.key, value)) {
+            results.push(value);
+        }
+        cursor = await cursor.continue();
+    }
+    return results;
+}
+
+
 export default {
     async saveScoresheet(name, totalScore, challengeJson) {
         log.debug(`Saving score. Name: ${name}, Total score: ${totalScore}, json: `, challengeJson);
@@ -14,31 +29,36 @@ export default {
         });
     },
 
+    /**
+     * Get all score sheets and add the id as field
+     * @returns {Promise containing the scoresheets.}
+     */
     async getAllScoresheets() {
         log.debug('Retrieving all saved scoresheets')
 
         return db.scores(db.READ_ONLY, async (store) => {
             let cursor = await store.openCursor();
-            let results = [];
-            while (cursor) {
-                let value = cursor.value;
-                value.id = cursor.key;
-                results.push(value);
-                cursor = await cursor.continue();
-            }
-            return results;
+            return getWhere(cursor, () => true)
         })
     },
 
-    async deleteScoresheet(scoresheets) {
-        return Promise.all(scoresheets.map(scoresheet => {
-            if (!scoresheet.id) {
-                log.error("Can't remove: No id found for scoresheet", scoresheet)
-            } else {
-                db.scores(db.READ_WRITE, (store) => {
-                    return store.delete(scoresheet.id)
-                });
-            }
+    async getScoresheetById(id) {
+        log.debug('Retrieving scoresheets for id', id)
+
+        return db.scores(db.READ_ONLY, async (store) => {
+            let cursor = await store.openCursor();
+            return getWhere(cursor, (key) => {
+                return key === Number(id)
+            })
+        }).then(value => value[0])
+    },
+
+    async deleteScoresheetForIds(ids) {
+        return Promise.all(ids.map(id => {
+            db.scores(db.READ_WRITE, (store) => {
+                return store.delete(Number(id))
+            });
         }))
-    }
+    },
+
 }

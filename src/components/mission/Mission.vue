@@ -40,6 +40,7 @@ export default {
     Flickity
   },
   props: {
+    challengeId: String,
     missionJson: Object,
     fromAssets: {
       type: Boolean,
@@ -70,7 +71,7 @@ export default {
   },
   methods: {
     getImage(image) {
-      return getImageSrc(this.fromAssets, this.$route.params.id, image.path)
+      return getImageSrc(this.fromAssets, this.challengeId, image.path)
     }
   },
 }

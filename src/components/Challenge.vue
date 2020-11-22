@@ -5,6 +5,7 @@
           v-for="mission in challengeJson.missions"
           v-bind:key=mission.id
           :mission-json="mission"
+          :challenge-id="challengeJson.id"
           :from-assets="fromAssets"
           v-on:mission-score-changed="onMissionScoreChanged"
           class="mission"
