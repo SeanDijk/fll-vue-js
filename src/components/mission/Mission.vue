@@ -5,18 +5,20 @@
       <span class="card-title">{{ this.missionJson.name | localeString }}</span>
     </header>
     <flickity
+        data-flickity='{ "adaptiveHeight": true }'
         v-if="missionJson.images && missionJson.images.length > 0" class="main-carousel" ref="flickity" :options="{
           wrapAround: false,
           prevNextButtons: false
     }">
       <div class="carousel-cell" v-for="image in missionJson.images" :key="image.path">
-        <img class="carousel-cell-images" :src=getImage(image) :alt="image.description"/>
+          <img class="carousel-cell-image" :src=getImage(image) alt=""/>
+        <span v-if="image.description && image.description.trim() !== ''" class="carousel-cell-image-description">{{image.description}}</span>
       </div>
     </flickity>
 
     <div class="card-content">
       <div ref="parts" class="flex-column flex-filler"/>
-
+      <button :onclick="test()">Hier!</button>
     </div>
 
     <div class="flex-row flex-filler"></div>
@@ -72,30 +74,49 @@ export default {
   methods: {
     getImage(image) {
       return getImageSrc(this.fromAssets, this.challengeId, image.path)
+    },
+    test(){
+      // if(this.$refs?.flickity){
+      //   console.log(this.$refs.flickity.$flickity)
+      //   console.log("test")
+      //   // this.$refs.flickity.$flickity.adaptiveHeight = true
+      // }
+      // this.$refs?.flickity?.resize();
+
     }
   },
 }
 </script>
 
 <style scoped>
+
 .main-carousel {
-  height: 200px;
   margin-bottom: 8px;
 }
 
 .carousel-cell {
-  height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.carousel-cell-images {
+.carousel-cell-image {
+  box-sizing: border-box;
   position: relative;
   max-width: 100%;
-  height: 100%;
+  height: 200px;
   width: auto;
+  padding-bottom: 8px;
 }
+.carousel-cell-image-description {
+  box-sizing: border-box;
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+}
+
 
 
 </style>
