@@ -4,7 +4,12 @@
 
     <div v-if="filteredMap.length !== 0">
       <details v-for="(scoresheets, key) in filteredMap" :key="key">
-        <summary>{{ scoresheets[0].challenge.name | localeString }}</summary>
+        <summary class="scoresheets-summary">
+          <img class="challenge-logo" :src="getImage(scoresheets[0].challenge)" :alt="scoresheets[0].challenge.logo.description">
+          <h1>{{ scoresheets[0].challenge.name | localeString }}</h1>
+          <span class="flex-filler"></span>
+          <img class="btn-icon" src="@/assets/icons/expand_more-24px.svg"/>
+        </summary>
         <data-table :ref="key">
           <template v-slot:thead>
             <tr class="mdc-data-table__header-row">
@@ -50,7 +55,7 @@
               <td class="mdc-data-table__cell">{{ scoresheet.savedAt }}</td>
               <td class="mdc-data-table__cell">
                 <router-link :to="`/saved-scoresheets/${scoresheet.id}`">
-                  <img src="@/assets/icons/open_in_new-24px.svg"/>
+                  <img class="btn-icon" src="@/assets/icons/open_in_new-24px.svg"/>
                 </router-link>
               </td>
             </tr>
@@ -73,6 +78,7 @@ import scoresheetService from "@/services/scoresheetService";
 import {groupBy} from "@/util/collections";
 import {log} from "@/main";
 import DataTable from "@/components/util/DataTable";
+import {getImageSrc} from "@/services/imageRetriever";
 
 export default {
   name: "SavedChallenges",
@@ -91,6 +97,9 @@ export default {
         })
   },
   methods: {
+    getImage(challenge) {
+      return getImageSrc(true, challenge.id, challenge?.logo?.path)
+    },
     openSheet(sheet) {
       log.debug("Opening sheet with id: ", sheet.id)
     },
@@ -126,4 +135,27 @@ export default {
 </script>
 
 <style scoped>
+
+.scoresheets-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+
+.challenge-logo {
+  box-sizing: border-box;
+  padding: 8px;
+  height: 100px;
+  width: 100px;
+}
+
+.mdc-data-table__header-cell {
+  font-weight: bold;
+}
 </style>
