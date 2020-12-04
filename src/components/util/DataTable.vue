@@ -1,6 +1,6 @@
 <template>
   <div class="flex-column">
-    <div class="mdc-data-table">
+    <div class="mdc-data-table" ref="datatable">
       <div class="mdc-data-table__table-container">
         <table class="mdc-data-table__table">
           <thead>
@@ -27,8 +27,15 @@ export default {
       table: {}
     }
   },
+  methods: {
+    reload: function (){
+      log.debug("reload table")
+      this.table.layout()
+    }
+  },
   mounted() {
-    let el = document.querySelector('.mdc-data-table')
+    let el = this.$refs["datatable"]
+    console.log(el)
     this.table = new MDCDataTable(el)
 
     el.addEventListener("MDCDataTable:rowSelectionChanged", (evt => {

@@ -117,10 +117,7 @@ export default {
       }));
       this.previewDataKey += 1
     }
-  },
-  computed: {}
-
-
+  }
 }
 
 

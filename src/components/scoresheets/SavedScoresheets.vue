@@ -2,8 +2,8 @@
   <div>
     <h1>Saved Challenges</h1>
 
-    <div v-if="scoresheetMap.length !== 0">
-      <details v-for="(scoresheets, key) in scoresheetMap" :key="key">
+    <div v-if="filteredMap.length !== 0">
+      <details v-for="(scoresheets, key) in filteredMap" :key="key">
         <summary>{{ scoresheets[0].challenge.name | localeString }}</summary>
         <data-table :ref="key">
           <template v-slot:thead>
@@ -96,16 +96,34 @@ export default {
     },
     deleteSelectedFrom(key) {
       let ids = this.$refs[key][0].table.getSelectedRowIds()
+
       log.debug("Deleting sheets with ids: ", ids)
-      scoresheetService.deleteScoresheetForIds(ids).then(value => log.debug("Deleted scoresheets for ids: ", ids, value))
+      // Remove the values from the database
+      scoresheetService.deleteScoresheetForIds(ids)
+          .then(value => {
+                log.debug("Deleted scoresheets for ids: ", ids, value);
+                // Remove the values from the gui
+                this.scoresheetMap[key] = this.scoresheetMap[key]
+                    .filter(scoresheet => !ids.includes(scoresheet.id + ""));
+                // Reload the datatable in the next tick, so that the gui is updated first.
+                this.$nextTick((function () {
+                  this.$refs[key][0]?.reload()
+                }));
+              }
+          );
     },
+  }
+  ,
+  computed: {
+    // Get a filtered variant of the map, where all the values with a length of 0 are removed
+    filteredMap: function () {
+      return Object.fromEntries(
+          Object.entries(this.scoresheetMap)
+              .filter(([, value]) => value.length !== 0))
+    }
   }
 }
 </script>
 
 <style scoped>
-.mdc-data-table {
-  width: 100%;
-  max-width: 100%;
-}
 </style>

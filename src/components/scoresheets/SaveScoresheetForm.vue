@@ -41,6 +41,16 @@ export default {
 
     saveScore: function () {
       scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
     }
   }
 }
