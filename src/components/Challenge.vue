@@ -23,11 +23,15 @@
           ref="scoresheetForm"
           :total-score="totalScore"
           :challenge-json="challengeJson"
-          @on-save="$refs['saveModal'].close()"
+          @on-save="$refs['saveModal'].close(); $refs['snackbar'].open();"
           @on-cancel="$refs['saveModal'].close()"
       >
       </save-scoresheet-form>
     </modal>
+
+    <snackbar ref="snackbar">
+      Succesvol opgeslagen!
+    </snackbar>
   </div>
 </template>
 
@@ -36,10 +40,11 @@ import Mission from "./mission/Mission";
 import {EventBus} from "@/event-bus"
 import Modal from "@/components/util/Modal";
 import SaveScoresheetForm from "@/components/scoresheets/SaveScoresheetForm";
+import Snackbar from "@/components/util/Snackbar";
 
 export default {
   name: "Challenge",
-  components: {SaveScoresheetForm, Modal, Mission},
+  components: {Snackbar, SaveScoresheetForm, Modal, Mission},
   props: {
     challengeJson: Object,
     fromAssets: {

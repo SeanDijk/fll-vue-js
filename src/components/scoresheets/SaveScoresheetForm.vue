@@ -40,7 +40,6 @@ export default {
     onSave: function () {
       this.saveScore()
       this.$emit('on-save', this.value);
-      //  todo open toast message on succes
     },
 
     saveScore: function () {
@@ -48,7 +47,6 @@ export default {
     },
 
     focus(){
-      // console.log(this.$refs["nameInput"])
       this.$nextTick(() =>this.$refs["nameInput"].focus());
     }
   }
