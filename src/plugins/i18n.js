@@ -1,38 +1,29 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import Vue from "vue";
+import VueI18n from "vue-i18n";
 
-Vue.use(VueI18n)
+Vue.use(VueI18n);
 
-const messages = {
-    en: {
-        header: {
-            menu :{
-                appName: "FLL Score app",
-                challenges: "Challenges",
-                builder: "Builder",
-                language: "Language",
-                savedScoresheets: "Saved scoresheets"
-            }
+function loadLocaleMessages() {
+    const locales = require.context(
+        "@/locales",
+        true,
+        /[A-Za-z0-9-_,\s]+\.json$/i
+    );
+    const messages = {};
+    locales.keys().forEach(key => {
+        const matched = key.match(/([A-Za-z0-9-_]+)\./i);
+        if (matched && matched.length > 1) {
+            const locale = matched[1];
+            messages[locale] = locales(key);
         }
-    },
-    nl: {
-        header: {
-            menu :{
-                appName: "FLL Score app",
-                challenges: "Uitdagingen",
-                builder: "Bouwer",
-                language: "Taal",
-                savedScoresheets: "Opgeslagen scoreformulieren"
-            }
-        }
-    }
+    });
+    return messages;
 }
 
+export default new VueI18n({
+    // locale: "en",
+    locale: "nl",
+    // fallbackLocale: "en",
+    messages: loadLocaleMessages()
+});
 
-// Create VueI18n instance with options
-const i18n = new VueI18n({
-    locale: 'nl', // set locale
-    messages, // set locale messages
-})
-
-export default i18n

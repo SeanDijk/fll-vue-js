@@ -1,0 +1,29 @@
+{
+  "global": {
+    "btn_save": "Opslaan",
+    "btn_cancel": "Annuleer"
+  },
+  "header": {
+    "menu": {
+      "appName": "FLL Score app",
+      "challenges": "Uitdagingen",
+      "builder": "Bouwer",
+      "language": "Taal",
+      "savedScoresheets": "Opgeslagen scoreformulieren"
+    }
+  },
+  "challenge": {
+    "menu": {
+      "save": "@:global.btn_save",
+      "reset": "Herstarten",
+      "totalScore": "Totale score"
+    },
+    "saveScoreSheetForm": {
+      "title": "Scoreformulier opslaan?",
+      "name": "Naam",
+      "totalScore": "Totale score",
+      "save": "@:global.btn_save",
+      "cancel": "@:global.btn_cancel"
+    }
+  }
+}

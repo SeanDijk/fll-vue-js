@@ -32,6 +32,10 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
   color: #222;
 }
 
+input:disabled {
+  background-color: #dddddd;
+}
+
 
 .flex-row {
   display: flex;
@@ -97,4 +101,5 @@ select, button, input:not([type]), input[type="text"], input[type="number"] {
   label:first-of-type {
     margin-top: 0;
   }
+
 }
