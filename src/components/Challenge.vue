@@ -20,10 +20,11 @@
 
     <modal ref="saveModal">
       <save-scoresheet-form
-      :total-score="totalScore"
-      :challenge-json="challengeJson"
-      @on-save="$refs['saveModal'].close()"
-      @on-cancel="$refs['saveModal'].close()"
+          ref="scoresheetForm"
+          :total-score="totalScore"
+          :challenge-json="challengeJson"
+          @on-save="$refs['saveModal'].close()"
+          @on-cancel="$refs['saveModal'].close()"
       >
       </save-scoresheet-form>
     </modal>
@@ -63,8 +64,12 @@ export default {
       this.totalScore = this.totalScore - oldMissionScore + mission.totalScore;
       EventBus.$emit("mission-score", mission.missionJson.id, oldMissionScore, mission.totalScore)
     },
-    openSaveModal: function (){
+    openSaveModal: function () {
       this.$refs["saveModal"].show()
+
+      this.$nextTick(() => {
+        this.$refs["scoresheetForm"].focus()
+      })
     }
   },
 }

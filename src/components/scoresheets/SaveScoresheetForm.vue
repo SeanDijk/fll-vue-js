@@ -5,7 +5,7 @@
 
     <div class="card-content scoresheet-form-content">
       <label class="form-row">{{ $t('challenge.saveScoreSheetForm.name') }}
-        <input class="form-row-input" type="text" v-model="name"/>
+        <input class="form-row-input" type="text" v-model="name" ref="nameInput"/>
       </label>
       <label class="form-row">{{ $t('challenge.saveScoreSheetForm.totalScore') }}
         <input class="form-row-input" type="number" disabled :value="totalScore"/>
@@ -45,16 +45,11 @@ export default {
 
     saveScore: function () {
       scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
-      scoresheetService.saveScoresheet(this.name, this.totalScore, this.challengeJson)
+    },
+
+    focus(){
+      // console.log(this.$refs["nameInput"])
+      this.$nextTick(() =>this.$refs["nameInput"].focus());
     }
   }
 }

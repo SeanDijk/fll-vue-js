@@ -1,8 +1,11 @@
 <template>
 <div class="background-cover" v-if="!hidden" v-on:click="close()">
-
-  <div class="modal" v-on:click.stop>
-    <slot></slot>
+<!--todo use dialog html element, in the future when compatible use: https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement-->
+  <div class="modal-scroll-container" role="dialog">
+    <div class="modal" v-on:click.stop>
+      <slot></slot>
+    </div>
+    <div class="flex-pusher"></div>
   </div>
 </div>
 </template>
@@ -17,9 +20,11 @@ export default {
   },
   methods: {
     close: function (){
+      document.body.classList.remove('modal-open')
       this.hidden = true;
     },
     show: function () {
+      document.body.classList.add('modal-open')
       this.hidden = false;
     }
   }
@@ -41,11 +46,27 @@ export default {
   justify-content: center;
 }
 
+.modal-scroll-container {
+  /*box-sizing: border-box;*/
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 16px;
+  flex-direction: column;
+
+}
 
 .modal{
+  max-height: 100%;
   z-index: 1001;
   cursor: default;
   box-sizing: border-box;
+}
+/*Used to push the modal a bit above the center*/
+.flex-pusher {
+  height: 10%;
 }
 
 </style>
