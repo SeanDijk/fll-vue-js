@@ -13,21 +13,32 @@
     </div>
 
     <div class="sticky-bottom">
-      <button v-on:click="saveScore()">Save</button>
+      <button v-on:click="openSaveModal()">Save</button>
       <button >Reset</button>
       <strong>Total score: {{ totalScore }}</strong>
     </div>
+
+    <modal ref="saveModal">
+      <save-scoresheet-form
+      :total-score="totalScore"
+      :challenge-json="challengeJson"
+      @on-save="$refs['saveModal'].close()"
+      @on-cancel="$refs['saveModal'].close()"
+      >
+      </save-scoresheet-form>
+    </modal>
   </div>
 </template>
 
 <script>
 import Mission from "./mission/Mission";
 import {EventBus} from "@/event-bus"
-import scoresheetService from "@/services/scoresheetService";
+import Modal from "@/components/util/Modal";
+import SaveScoresheetForm from "@/components/scoresheets/SaveScoresheetForm";
 
 export default {
   name: "Challenge",
-  components: {Mission},
+  components: {SaveScoresheetForm, Modal, Mission},
   props: {
     challengeJson: Object,
     fromAssets: {
@@ -52,10 +63,10 @@ export default {
       this.totalScore = this.totalScore - oldMissionScore + mission.totalScore;
       EventBus.$emit("mission-score", mission.missionJson.id, oldMissionScore, mission.totalScore)
     },
-    saveScore: function () {
-      scoresheetService.saveScoresheet("temp-name", this.totalScore, this.challengeJson)
+    openSaveModal: function (){
+      this.$refs["saveModal"].show()
     }
-  }
+  },
 }
 </script>
 

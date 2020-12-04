@@ -1,11 +1,23 @@
 $btn-primary: #1e87f0;
 $btn-danger: #d32f2f;
 
+@function hexRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
 @mixin btn-color($color) {
+  --color: #{$color};
+  --color-rgb: #{red($color), green($color), blue($color)};
   background-color: $color;
-  &:hover{ background-color: darken($color, 5%); }
-  &::selection{ background-color: darken($color, 8%); }
-  &:active{ background-color: darken($color, 10%); }
+  &:hover {
+    background-color: darken($color, 5%);
+  }
+  &::selection {
+    background-color: darken($color, 8%);
+  }
+  &:active {
+    background-color: darken($color, 10%);
+  }
 }
 
 
@@ -24,9 +36,43 @@ button {
   transition: .1s ease-in-out;
   /*text-transform: uppercase;*/
 }
+
 button:active {
   transform: scale(0.99);
 }
-.btn-danger{
+
+.btn-danger {
+  $color: $btn-danger;
   @include btn-color($btn-danger);
+}
+
+
+.btn-text {
+  color: var(--color);
+  background-color: rgba(var(--color-rgb), 0);
+  border: 0;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: rgba(var(--color-rgb), .1);
+  }
+  &:focus {
+    outline: none;
+    background-color: rgba(var(--color-rgb), .1);
+  }
+  &::selection {
+    background-color: rgba(var(--color-rgb), .2);
+    border: 0;
+
+  }
+
+  &:active {
+    border: 0;
+
+    background-color: rgba(var(--color-rgb), .3);
+  }
+
+
+}
+.btn-outlined {
 }

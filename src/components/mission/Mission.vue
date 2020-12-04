@@ -18,7 +18,6 @@
 
     <div class="card-content">
       <div ref="parts" class="flex-column flex-filler"/>
-      <button :onclick="test()">Hier!</button>
     </div>
 
     <div class="flex-row flex-filler"></div>
@@ -75,15 +74,6 @@ export default {
     getImage(image) {
       return getImageSrc(this.fromAssets, this.challengeId, image.path)
     },
-    test(){
-      // if(this.$refs?.flickity){
-      //   console.log(this.$refs.flickity.$flickity)
-      //   console.log("test")
-      //   // this.$refs.flickity.$flickity.adaptiveHeight = true
-      // }
-      // this.$refs?.flickity?.resize();
-
-    }
   },
 }
 </script>
