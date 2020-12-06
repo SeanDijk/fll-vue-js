@@ -3,9 +3,11 @@
     <app-header/>
 
     <transition
-        name="fade"
+        :name="useTransition ? 'fade' : ''"
         mode="out-in">
-      <router-view></router-view>
+      <router-view
+      @action-without-transition="withoutTransition"
+      ></router-view>
     </transition>
 
     <app-footer/>
@@ -17,21 +19,24 @@
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/Footer";
 
-// class Mission {
-//     constructor(id, name, description, missionParts) {
-//         this.id = id;
-//         this.name = name;
-//         this.description = description;
-//         this.missionParts = missionParts;
-//     }
-// }
-
-
 export default {
   name: 'app',
   components: {
     AppHeader,
     AppFooter
+  },
+  data: function (){
+    return {
+        useTransition: true
+    }
+  },
+  methods: {
+    // Method that can be used to do a (re)load a component without triggering the fade transition.
+    withoutTransition(action){
+      this.useTransition = false
+      action()
+      this.$nextTick(() => this.useTransition = true)
+    }
   }
 }
 </script>

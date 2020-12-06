@@ -42,17 +42,11 @@ export default {
       if (deltaScore === undefined) {
         deltaScore = this.missionPartJson.scorePerCompletion;
       }
-
-      console.log(oldScore, newScore, deltaScore)
-
       if (oldScore === 0 && newScore > 0) {
         this.trackedScore = this.trackedScore + deltaScore
       } else if (newScore === 0) {
         this.trackedScore = this.trackedScore - deltaScore
       }
-
-      console.log(this.trackedScore)
-
       this.determineScore();
     });
   }

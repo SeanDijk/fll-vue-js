@@ -14,7 +14,7 @@
 
     <div class="sticky-bottom">
       <button v-on:click="openSaveModal()">{{ $t('challenge.menu.save') }}</button>
-      <button>{{ $t('challenge.menu.reset') }}</button>
+      <button v-on:click="$emit('reload-challenge')">{{ $t('challenge.menu.reset') }}</button>
       <strong>{{ $t('challenge.menu.totalScore') }}: {{ totalScore }}</strong>
     </div>
 
