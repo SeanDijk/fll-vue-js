@@ -1,9 +1,9 @@
 import {openDB} from 'idb';
-import {log} from "@/main";
+import Vue from "vue";
 
 const instance = openDB('FLL_SCORE_APP', 1, {
     upgrade(localDb, oldVersion, newVersion) {
-        log.debug(`IDB oldVersion: ${oldVersion}, newVersion: ${newVersion}`)
+        Vue.$log.debug(`IDB oldVersion: ${oldVersion}, newVersion: ${newVersion}`)
         // Scores
         localDb.createObjectStore('scores', {autoIncrement: true})
             .createIndex('challengeId', 'challenge.id', {unique: false})

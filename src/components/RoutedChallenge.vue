@@ -10,7 +10,6 @@
 
 <script>
 import Challenge from "./Challenge";
-import {log} from "@/main";
 
 export default {
   name: "RoutedChallenge",
@@ -28,7 +27,7 @@ export default {
     },
     refresh(){
       this.$emit('action-without-transition', () => {
-        log.debug("Reloading challenge ", this.$route.params.id)
+        this.$log.debug("Reloading challenge ", this.$route.params.id)
         this.challengeJson = this.retrieveJson()
         this.componentKey += 1;
       })

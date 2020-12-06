@@ -18,7 +18,6 @@
 
 <script>
 import {MDCDataTable} from "@material/data-table";
-import {log} from "@/main";
 
 export default {
   name: "DataTable",
@@ -29,18 +28,17 @@ export default {
   },
   methods: {
     reload: function (){
-      log.debug("reload table")
+      this.$log.debug("reload table")
       this.table.layout()
     }
   },
   mounted() {
     let el = this.$refs["datatable"]
-    console.log(el)
     this.table = new MDCDataTable(el)
 
     el.addEventListener("MDCDataTable:rowSelectionChanged", (evt => {
-      log.debug(evt)
-      log.debug("rowids", this.table.getSelectedRowIds())
+      this.$log.debug(evt)
+      this.$log.debug("rowids", this.table.getSelectedRowIds())
     }))
   }
 }

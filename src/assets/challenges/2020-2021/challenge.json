@@ -24,7 +24,8 @@
       ],
       "name": {
         "nl": "M00 - Inspectiebonus uitrusting"
-      }
+      },
+      "id": "M0"
     },
     {
       "missionParts": [
@@ -37,7 +38,7 @@
         },
         {
           "description": {
-            "nl": "Een deel van het innovatieproject raakt:"
+            "nl": "Een deel van het innovatieproject raakt: "
           },
           "choices": [
             {
@@ -78,13 +79,14 @@
       ],
       "name": {
         "nl": "M01 - Innovatieproject"
-      }
+      },
+      "id": "M1"
     },
     {
       "missionParts": [
         {
           "description": {
-            "nl": "De onderkant van de wijzer staat op:"
+            "nl": "De onderkant van de wijzer staat op: "
           },
           "choices": [
             {
@@ -131,7 +133,8 @@
       ],
       "name": {
         "nl": "M02 - Stappenteller"
-      }
+      },
+      "id": "M2"
     },
     {
       "missionParts": [
@@ -163,14 +166,14 @@
         },
         {
           "description": {
-            "nl": "Er is een glijbaanfiguur volledig in THUIS:"
+            "nl": "Er is een glijbaanfiguur volledig in THUIS: "
           },
           "completionScore": 10,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "Er wordt een glijbaanfiguur volledig van de mat gehouden door de zware band en raakt niet anders aan:"
+            "nl": "Er wordt een glijbaanfiguur volledig van de mat gehouden door de zware band en raakt niet anders aan: "
           },
           "completionScore": 20,
           "type": "CheckBox"
@@ -195,13 +198,14 @@
       ],
       "name": {
         "nl": "M03 - Glijbaan"
-      }
+      },
+      "id": "M3"
     },
     {
       "missionParts": [
         {
           "description": {
-            "nl": "De bank ligt plat:"
+            "nl": "De bank ligt plat: "
           },
           "completionScore": 10,
           "type": "CheckBox"
@@ -217,7 +221,7 @@
         },
         {
           "description": {
-            "nl": "De rugleuning is volledig uit beide gaten:"
+            "nl": "De rugleuning is volledig uit beide gaten: "
           },
           "completionScore": 15,
           "type": "CheckBox"
@@ -239,13 +243,14 @@
       ],
       "name": {
         "nl": "M04 - Bank"
-      }
+      },
+      "id": "M4"
     },
     {
       "missionParts": [
         {
           "description": {
-            "nl": "Er is een blokje in de krat:"
+            "nl": "Er is een blokje in de krat: "
           },
           "completionScore": 15,
           "type": "CheckBox"
@@ -293,20 +298,21 @@
       ],
       "name": {
         "nl": "M05 - Basketbal"
-      }
+      },
+      "id": "M5"
     },
     {
       "missionParts": [
         {
           "description": {
-            "nl": "De robot ging op enig moment volledig door het rechtopstaande frame van de optrekstang:"
+            "nl": "De robot ging op enig moment volledig door het rechtopstaande frame van de optrekstang: "
           },
           "completionScore": 15,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "De optrekstang houdt de robot aan het einde van de wedstrijd voor 100% van de mat af:"
+            "nl": "De optrekstang houdt de robot aan het einde van de wedstrijd voor 100% van de mat af: "
           },
           "completionScore": 30,
           "type": "CheckBox"
@@ -319,7 +325,8 @@
       ],
       "name": {
         "nl": "M06 - Optrekstang"
-      }
+      },
+      "id": "M6"
     },
     {
       "missionParts": [
@@ -338,7 +345,8 @@
       ],
       "name": {
         "nl": "M07 - Robotdans"
-      }
+      },
+      "id": "M7"
     },
     {
       "missionParts": [
@@ -360,7 +368,7 @@
         },
         {
           "description": {
-            "nl": "Ten minste één geel blokje is volledig in het doel:"
+            "nl": "Ten minste één geel blokje is volledig in het doel: "
           },
           "completionScore": 10,
           "type": "CheckBox"
@@ -376,13 +384,14 @@
       ],
       "name": {
         "nl": "M08 - Boccia"
-      }
+      },
+      "id": "M8"
     },
     {
       "missionParts": [
         {
           "description": {
-            "nl": "Banden met de witte kant naar boven en rustend op de mat:"
+            "nl": "Banden met de witte kant naar boven en rustend op de mat: "
           },
           "choices": [
             {
@@ -462,7 +471,8 @@
       ],
       "name": {
         "nl": "M09 - Banden omdraaien"
-      }
+      },
+      "id": "M9"
     },
     {
       "missionParts": [
@@ -484,7 +494,8 @@
       ],
       "name": {
         "nl": "M10 - Mobieltje"
-      }
+      },
+      "id": "M10"
     },
     {
       "missionParts": [
@@ -555,7 +566,8 @@
       ],
       "name": {
         "nl": "M11 - Loopband"
-      }
+      },
+      "id": "M11"
     },
     {
       "missionParts": [
@@ -587,7 +599,8 @@
       ],
       "name": {
         "nl": "M12 - Roeimachine"
-      }
+      },
+      "id": "M12"
     },
     {
       "missionParts": [
@@ -640,13 +653,14 @@
       ],
       "name": {
         "nl": "M13 - Gewichtsapparaat"
-      }
+      },
+      "id": "M13"
     },
     {
       "missionParts": [
         {
           "description": {
-            "nl": "Het aantal gezondheidsunits dat het RePLAY-logo of het grijze gebied rond de bank aanraakt:"
+            "nl": "Het aantal gezondheidsunits dat het RePLAY-logo of het grijze gebied rond de bank aanraakt: "
           },
           "min": 0,
           "max": 4,
@@ -679,13 +693,14 @@
       ],
       "name": {
         "nl": "M14 - Gezondheidsunits"
-      }
+      },
+      "id": "M14"
     },
     {
       "missionParts": [
         {
           "description": {
-            "nl": "Het aantal overhegouden precisietekens op de mat:"
+            "nl": "Het aantal overhegouden precisietekens op de mat: "
           },
           "choices": [
             {
@@ -744,7 +759,8 @@
       ],
       "name": {
         "nl": "M15 - Precisie"
-      }
+      },
+      "id": "M15"
     }
   ]
 }

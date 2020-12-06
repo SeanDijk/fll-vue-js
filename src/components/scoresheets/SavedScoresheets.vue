@@ -76,9 +76,9 @@
 <script>
 import scoresheetService from "@/services/scoresheetService";
 import {groupBy} from "@/util/collections";
-import {log} from "@/main";
 import DataTable from "@/components/util/DataTable";
 import {getImageSrc} from "@/services/imageRetriever";
+import Vue from "vue";
 
 export default {
   name: "SavedChallenges",
@@ -101,16 +101,16 @@ export default {
       return getImageSrc(true, challenge.id, challenge?.logo?.path)
     },
     openSheet(sheet) {
-      log.debug("Opening sheet with id: ", sheet.id)
+      Vue.$log.debug("Opening sheet with id: ", sheet.id)
     },
     deleteSelectedFrom(key) {
       let ids = this.$refs[key][0].table.getSelectedRowIds()
 
-      log.debug("Deleting sheets with ids: ", ids)
+      Vue.$log.debug("Deleting sheets with ids: ", ids)
       // Remove the values from the database
       scoresheetService.deleteScoresheetForIds(ids)
           .then(value => {
-                log.debug("Deleted scoresheets for ids: ", ids, value);
+            Vue.$log.debug("Deleted scoresheets for ids: ", ids, value);
                 // Remove the values from the gui
                 this.scoresheetMap[key] = this.scoresheetMap[key]
                     .filter(scoresheet => !ids.includes(scoresheet.id + ""));

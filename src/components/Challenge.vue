@@ -2,6 +2,7 @@
   <div>
     <div class="flex-row missions">
       <mission
+          ref="missions"
           v-for="mission in challengeJson.missions"
           v-bind:key=mission.id
           :mission-json="mission"
@@ -60,14 +61,15 @@ export default {
   },
   methods: {
     onMissionScoreChanged: function (mission) {
-      let oldMissionScore = this.missionsStatus[mission.missionJson.id];
+      let oldMissionScore = this.missionsStatus[mission.getId()];
       if (oldMissionScore === undefined) {
         oldMissionScore = 0;
       }
 
-      this.missionsStatus[mission.missionJson.id] = mission.totalScore;
+      this.missionsStatus[mission.getId()] = mission.totalScore;
       this.totalScore = this.totalScore - oldMissionScore + mission.totalScore;
-      EventBus.$emit("mission-score", mission.missionJson.id, oldMissionScore, mission.totalScore)
+
+      EventBus.$emit("mission-score", mission.getId(), oldMissionScore, mission.totalScore)
     },
     openSaveModal: function () {
       this.$refs["saveModal"].show()

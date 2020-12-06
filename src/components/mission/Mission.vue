@@ -11,8 +11,9 @@
           prevNextButtons: false
     }">
       <div class="carousel-cell" v-for="image in missionJson.images" :key="image.path">
-          <img class="carousel-cell-image" :src=getImage(image) alt=""/>
-        <span v-if="image.description && image.description.trim() !== ''" class="carousel-cell-image-description">{{image.description}}</span>
+        <img class="carousel-cell-image" :src=getImage(image) alt=""/>
+        <span v-if="image.description && image.description.trim() !== ''"
+              class="carousel-cell-image-description">{{ image.description }}</span>
       </div>
     </flickity>
 
@@ -74,6 +75,12 @@ export default {
     getImage(image) {
       return getImageSrc(this.fromAssets, this.challengeId, image.path)
     },
+    getId() {
+      if (!this.missionJson.id) {
+        this.$log.error("Mission does not have an id: ", this.missionJson)
+      }
+      return this.missionJson.id
+    }
   },
 }
 </script>
@@ -99,6 +106,7 @@ export default {
   width: auto;
   padding-bottom: 8px;
 }
+
 .carousel-cell-image-description {
   box-sizing: border-box;
   padding: 8px;
@@ -106,7 +114,6 @@ export default {
   text-align: center;
   font-style: italic;
 }
-
 
 
 </style>

@@ -1,5 +1,5 @@
-import {log} from "@/main";
 import {db} from "@/services/database";
+import Vue from "vue";
 
 let getWhere = async function(cursor, predicate) {
 
@@ -18,7 +18,7 @@ let getWhere = async function(cursor, predicate) {
 
 export default {
     async saveScoresheet(name, totalScore, challengeJson) {
-        log.debug(`Saving score. Name: ${name}, Total score: ${totalScore}, json: `, challengeJson);
+        Vue.$log.debug(`Saving score. Name: ${name}, Total score: ${totalScore}, json: `, challengeJson);
         return db.scores(db.READ_WRITE, (store) => {
             return store.put({
                 name: name,
@@ -34,8 +34,7 @@ export default {
      * @returns {Promise containing the scoresheets.}
      */
     async getAllScoresheets() {
-        if(log) // todo temp fix
-            log.debug('Retrieving all saved scoresheets')
+        Vue.$log.debug('Retrieving all saved scoresheets')
 
         return db.scores(db.READ_ONLY, async (store) => {
             let cursor = await store.openCursor();
@@ -44,7 +43,7 @@ export default {
     },
 
     async getScoresheetById(id) {
-        log.debug('Retrieving scoresheets for id', id)
+        Vue.$log.debug('Retrieving scoresheets for id', id)
 
         return db.scores(db.READ_ONLY, async (store) => {
             let cursor = await store.openCursor();
