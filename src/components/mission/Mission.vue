@@ -11,6 +11,11 @@
           prevNextButtons: false
     }">
       <div class="carousel-cell" v-for="image in missionJson.images" :key="image.path">
+        <button class="btn-icon open-full-screen"
+                v-on:click="$refs.fsi.show(getImage(image), image.description)">
+          <img src="@/assets/icons/zoom_in-24px.svg">
+        </button>
+
         <img class="carousel-cell-image" :src=getImage(image) alt=""/>
         <span v-if="image.description && image.description.trim() !== ''"
               class="carousel-cell-image-description">{{ image.description }}</span>
@@ -28,6 +33,8 @@
       <span class="flex-filler"></span>
       {{ totalScore }}
     </div>
+
+    <full-screen-image ref="fsi"></full-screen-image>
   </div>
 </template>
 
@@ -35,10 +42,12 @@
 import MissionPartViewFactory from "@/components/MissionPartViewFactory";
 import {getImageSrc} from "@/services/imageRetriever";
 import Flickity from 'vue-flickity'
+import FullScreenImage from "@/components/util/FullScreenImage";
 
 export default {
   name: "Mission",
   components: {
+    FullScreenImage,
     Flickity
   },
   props: {
@@ -113,6 +122,12 @@ export default {
   width: 100%;
   text-align: center;
   font-style: italic;
+}
+
+.open-full-screen {
+  position: absolute;
+  top: 0px;
+  right: 8px;
 }
 
 

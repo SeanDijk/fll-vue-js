@@ -35,7 +35,6 @@
           </template>
           <template v-slot:tbody>
             <tr v-for="scoresheet in scoresheets" v-bind:key="scoresheet.id"
-                v-on:click="openSheet(scoresheet)"
                 :data-row-id="scoresheet.id"
                 class="mdc-data-table__row">
               <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
@@ -99,9 +98,6 @@ export default {
   methods: {
     getImage(challenge) {
       return getImageSrc(true, challenge.id, challenge?.logo?.path)
-    },
-    openSheet(sheet) {
-      Vue.$log.debug("Opening sheet with id: ", sheet.id)
     },
     deleteSelectedFrom(key) {
       let ids = this.$refs[key][0].table.getSelectedRowIds()
