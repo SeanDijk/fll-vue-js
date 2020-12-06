@@ -20,10 +20,12 @@ export default {
   },
   methods: {
     close: function (){
+      this.$router.openModals = this.$router.openModals.filter(element => element !== this)
       document.body.classList.remove('modal-open')
       this.hidden = true;
     },
     show: function () {
+      this.$router.openModals.push(this)
       document.body.classList.add('modal-open')
       this.hidden = false;
     }

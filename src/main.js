@@ -9,6 +9,7 @@ import i18n from '@/plugins/i18n';
 import '@/plugins/log'
 import '@/plugins/i18n'
 import '@/filters'
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 

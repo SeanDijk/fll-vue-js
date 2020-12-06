@@ -21,4 +21,17 @@ const router = new VueRouter({
     routes
 })
 
+router.openModals = []
+
+// eslint-disable-next-line no-unused-vars
+router.beforeEach((to, from, next) => {
+    if(router.openModals.length > 0) {
+        let modal = router.openModals.pop()
+        modal.close()
+        next(false)
+    } else {
+        next()
+    }
+})
+
 export default router
