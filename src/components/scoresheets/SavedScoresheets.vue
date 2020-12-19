@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Saved Challenges</h1>
+    <h1 class="header-padding">{{ $t('header.menu.savedScoresheets') }}</h1>
 
     <div v-if="filteredMap.length !== 0">
       <details v-for="(scoresheets, key) in filteredMap" :key="key">
         <summary class="scoresheets-summary">
           <img class="challenge-logo" :src="getImage(scoresheets[0].challenge)" :alt="scoresheets[0].challenge.logo.description">
-          <h1>{{ scoresheets[0].challenge.name | localeString }}</h1>
+          <h2>{{ scoresheets[0].challenge.name | localeString }}</h2>
           <span class="flex-filler"></span>
           <img class="btn-icon" src="@/assets/icons/expand_more-24px.svg"/>
         </summary>
@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     getImage(challenge) {
-      return getImageSrc(true, challenge.id, challenge?.logo?.path)
+      return getImageSrc(true, challenge.id, challenge?.logo)
     },
     deleteSelectedFrom(key) {
       let ids = this.$refs[key][0].table.getSelectedRowIds()
@@ -153,5 +153,9 @@ details > summary::-webkit-details-marker {
 
 .mdc-data-table__header-cell {
   font-weight: bold;
+}
+
+.header-padding {
+  padding-left: 8px;
 }
 </style>

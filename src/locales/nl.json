@@ -25,5 +25,8 @@
       "save": "@:global.btn_save",
       "cancel": "@:global.btn_cancel"
     }
+  },
+  "mission": {
+    "missionScore": "Missie score:"
   }
 }

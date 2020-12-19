@@ -78,21 +78,4 @@ export default {
   justify-content: flex-end;
 }
 
-.form-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 8px;
-}
-
-.form-row:last-child {
-  padding-bottom: 0;
-}
-
-.form-row-input {
-  flex-grow: 1;
-  max-width: 70%;
-}
-
 </style>

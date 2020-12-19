@@ -72,7 +72,7 @@ export default {
   components: {LanguageStringField, draggable},
   props: {
     id: String,
-    value: Wrapper
+    missionPartJson: Object
   },
   data: function () {
     return {
@@ -97,26 +97,32 @@ export default {
     }
   },
   created() {
-    console.log("Created mission part")
-    console.log(this.value.data)
-    if (this.value.data.type !== undefined) {
-      if(this.value.data.type === "MultipleChoice") {
-        this.value.data.choices = this.value.data.choices.map(x => new Wrapper(x))
-      }
-
-
-      this.selectedType = this.value.data.type
-      this.backingData[this.selectedType] = this.value.data
+    if (this.missionPartJson.type !== undefined) {
+      this.selectedType = this.missionPartJson.type
+      this.backingData[this.selectedType] = this.missionPartJson
     }
     this.onSelect(this.selectedType)
   },
   methods: {
     remove: function () {
-      this.$emit('deleteMissionPart', this.id)
+      this.$emit('deleteMissionPart', this.missionPartJson)
     },
     onSelect: function (type) {
-      this.value.data = this.backingData[type]
-      this.value.data.type = type;
+      // remove old fields except the id
+      Object.keys(this.missionPartJson)
+          .filter(value => value !== 'id')
+          .forEach((key) => {
+            delete this.missionPartJson[key];
+          });
+
+      // add new fields
+      let backingData = this.backingData[type]
+      Object.keys(backingData)
+        .forEach(key => this.$set(this.missionPartJson, key, backingData[key]))
+
+      // set the type
+      this.$set(this.missionPartJson, 'type', type)
+
     },
     newChoice() {
       this.backingData.MultipleChoice.choices.push(new Wrapper({
@@ -126,6 +132,15 @@ export default {
     },
     removeChoice(id) {
       this.backingData.MultipleChoice.choices = this.backingData.MultipleChoice.choices.filter(choice => choice.id !== id)
+    }
+  },
+  watch: {
+    'backingData': {
+      handler: function() {
+        console.log('yep')
+        this.onSelect(this.selectedType)
+      },
+      deep:true
     }
   }
 }

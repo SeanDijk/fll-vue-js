@@ -1,5 +1,6 @@
 $btn-primary: #1e87f0;
 $btn-danger: #d32f2f;
+$btn-succes: #388e3c;
 
 @function hexRGB($hex) {
   @return red($hex), green($hex), blue($hex);
@@ -41,11 +42,24 @@ button:active {
   transform: scale(0.99);
 }
 
+.btn-primary {
+  $color: $btn-primary;
+  @include btn-color($btn-primary);
+  color: white;
+
+}
+
+
 .btn-danger {
   $color: $btn-danger;
   @include btn-color($btn-danger);
+  color: white;
 }
-
+.btn-succes {
+  $color: $btn-succes;
+  @include btn-color($btn-succes);
+  color: white;
+}
 
 .btn-text {
   color: var(--color);

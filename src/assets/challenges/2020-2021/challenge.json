@@ -51,13 +51,13 @@
               "choice": {
                 "nl": "RePLAY-logo"
               },
-              "score": 0
+              "score": 20
             },
             {
               "choice": {
                 "nl": "Grijze gebied bank"
               },
-              "score": 0
+              "score": 20
             }
           ],
           "type": "MultipleChoice"
@@ -362,7 +362,7 @@
             "nl": "Aantal blokjes in het frame of doel: "
           },
           "min": 0,
-          "max": 10,
+          "max": 17,
           "scorePerStep": 5,
           "type": "Slider"
         },
@@ -422,7 +422,9 @@
           "type": "MultipleChoice"
         },
         {
-          "description": {},
+          "description": {
+            "nl": "Banden met de witte kant naar boven en rustend op de mat die aanwezig zijn in de grote cirkel: "
+          },
           "choices": [
             {
               "choice": {
@@ -663,7 +665,7 @@
             "nl": "Het aantal gezondheidsunits dat het RePLAY-logo of het grijze gebied rond de bank aanraakt: "
           },
           "min": 0,
-          "max": 4,
+          "max": 8,
           "scorePerStep": 5,
           "type": "Slider"
         },

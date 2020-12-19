@@ -1,48 +1,34 @@
 <template>
   <fieldset class="container form">
-    <!--                <legend>Mission</legend>-->
+    <legend><h2>Missie</h2></legend>
+
     <button v-on:click="remove" class="btn-danger">X</button>
 
-    <h2>Mission</h2>
 
-    <!--        <label>Id: <input id="id" v-model="id"></label>-->
-    <label for="missionName">Name: </label>
-    <language-string-field v-model="value.name" id="missionName"/>
+    <label class="form-row">Name:
+      <language-string-field class="form-row-input" v-model="missionJson.name" id="missionName"/>
+    </label>
 
-
-    <label for="missionImgs">Images</label>
-    <draggable id="imgs" v-model="value.images">
-      <div v-for="img in value.images"
-           v-bind:key="img.id"
-           class="mission-img-wrapper">
-        <button v-on:click="removeImg(img)" class="btn-danger">X</button>
-        <img :src="img.src" class="mission-img"/>
-      </div>
-    </draggable>
-    <input type="file"
-           id="missionImgs"
-           ref="file"
-           accept="image/*"
-           multiple
-           v-on:change="handleFileUpload()"/>
-
+    <!-- Using a label as wrapper messes with the click detection for the delete button-->
+    <span class="form-row"><label>Afbeeldingen:</label>
+      <image-input class="form-row-input" mode="multiple" v-model="missionJson.images"></image-input>
+    </span>
 
     <br>
-    <b>Parts</b>
     <fieldset>
-      <draggable id="missionParts" v-model="value.missionParts">
+      <legend><h3>Missie onderdelen</h3></legend>
+      <draggable id="missionParts" v-model="missionJson.missionParts">
         <mission-part-builder
-            v-for="missionPart in value.missionParts"
-            v-model="missionPart.data"
-            v-bind:key=missionPart.id
-            :id="missionPart.id"
+            v-for="missionPart in missionJson.missionParts"
+            :missionPartJson="missionPart"
+            v-bind:key="missionPart.id"
             class="builder-mission-part"
             @deleteMissionPart="deleteMissionPart($event)"
         />
       </draggable>
     </fieldset>
 
-    <button v-on:click="addMissionPart">Add mission part</button>
+    <button class="btn-primary" v-on:click="addMissionPart">Missie onderdeel toevoegen</button>
 
   </fieldset>
 </template>
@@ -51,53 +37,33 @@
 import draggable from 'vuedraggable'
 
 import MissionPartBuilder from "./MissionPartBuilder";
-import {Wrapper} from "./models";
 import LanguageStringField from "./LanguageStringField";
+import ImageInput from "@/components/util/ImageInput";
+import hashService from "@/services/hashService";
 
 export default {
   name: "MissionBuilder",
-  components: {LanguageStringField, MissionPartBuilder, draggable},
+  components: {ImageInput, LanguageStringField, MissionPartBuilder, draggable},
   props: {
     // Used for delete
     id: String,
-    value: Object,
+    missionJson: Object,
   },
-  created() {
-    if (this.value.name === undefined) {
-      this.value.name = {}
-    }
-    if(this.value.missionParts) {
-      this.value.missionParts = this.value.missionParts.map(x => new Wrapper(new Wrapper(x)))
-    }
-  },
-
   methods: {
     addMissionPart() {
-      this.value.missionParts.push(new Wrapper(new Wrapper({})))
-    },
-    deleteMissionPart(id) {
-      this.value.missionParts = this.value.missionParts.filter(wrapper => wrapper.id !== id)
-    },
-    handleFileUpload() {
-      this.$refs.file.files.forEach(img => {
-        let wrapped = new Wrapper({path: img.name})
-        wrapped.src = require('@/assets/pendulum.gif');
-
-        this.value.images.push(wrapped)
-
-        const reader = new FileReader();
-        reader.readAsDataURL(img);
-        reader.onload = e => {
-          wrapped.src = e.target.result;
-        };
+      this.missionJson.missionParts.push({
+        id: hashService.simpleTimebasedHash()
       })
+
+      console.log(this.missionJson.missionParts)
     },
-    removeImg(imgWrapper) {
-      this.value.images = this.value.images.filter(value => value.id !== imgWrapper.id)
+    deleteMissionPart(partToDelete) {
+      this.missionJson.missionParts = this.missionJson.missionParts.filter(part => part.id !== partToDelete.id)
     },
     remove() {
-      this.$emit('deleteMission', this.id)
-    }
+      this.$emit('deleteMission', this.missionJson.id)
+    },
+
   },
 
 
@@ -116,12 +82,6 @@ export default {
   position: relative;
 }
 
-.btn-danger {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-}
-
 .builder-mission-part {
   padding: 16px;
   /*width: 100%;*/
@@ -132,25 +92,12 @@ export default {
   border-bottom: 0;
 }
 
-#imgs {
-  display: flex;
-  flex-direction: row;
+.btn-danger {
+  /*todo global class for right corner*/
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }
 
-.mission-img-wrapper {
-  position: relative;
-  height: 150px;
-  width: 150px;
-  background: lightgray;
 
-  display: flex;
-  justify-content: center;
-}
-
-.mission-img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
-}
 </style>

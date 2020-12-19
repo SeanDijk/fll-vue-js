@@ -36,11 +36,19 @@ export default {
 
 <style scoped>
 .lang-str-field {
-  display: inline;
+  display: inline-flex;
+}
+
+.text-area-container {
+  flex-grow: 1;
 }
 
 textarea {
   display: inline-block;
   width: 100%;
+}
+
+input {
+  flex-grow: 1;
 }
 </style>

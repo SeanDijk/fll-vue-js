@@ -10,7 +10,7 @@
           wrapAround: false,
           prevNextButtons: false
     }">
-      <div class="carousel-cell" v-for="image in missionJson.images" :key="image.path">
+      <div class="carousel-cell" v-for="(image, index) in missionJson.images" :key="index">
         <button class="btn-icon open-full-screen"
                 v-on:click="$refs.fsi.show(getImage(image), image.description)">
           <img src="@/assets/icons/zoom_in-24px.svg">
@@ -23,13 +23,22 @@
     </flickity>
 
     <div class="card-content">
-      <div ref="parts" class="flex-column flex-filler"/>
+      <div ref="parts" class="flex-column flex-filler">
+        <mission-part-wrapper
+            v-for="part in missionJson.missionParts"
+            v-bind:key="part.id"
+            :mission-part-json="part"
+            @score-changed="handleScoreChange"
+        >
+
+        </mission-part-wrapper>
+      </div>
     </div>
 
     <div class="flex-row flex-filler"></div>
 
     <div class="card-footer flex-row">
-      Mission score:
+      {{ $t('mission.missionScore') }}
       <span class="flex-filler"></span>
       {{ totalScore }}
     </div>
@@ -39,14 +48,15 @@
 </template>
 
 <script>
-import MissionPartViewFactory from "@/components/MissionPartViewFactory";
 import {getImageSrc} from "@/services/imageRetriever";
 import Flickity from 'vue-flickity'
 import FullScreenImage from "@/components/util/FullScreenImage";
+import MissionPartWrapper from "@/components/mission/parts/MissionPartWrapper";
 
 export default {
   name: "Mission",
   components: {
+    MissionPartWrapper,
     FullScreenImage,
     Flickity
   },
@@ -63,34 +73,29 @@ export default {
       totalScore: 0
     }
   },
-  mounted: function () {
-    let factory = new MissionPartViewFactory();
-    this.missionJson.missionParts.forEach((missionPartData) => {
-      let instance = factory.createMissionPartView(
-          missionPartData,
-          (previousScore, newScore) => {
-            this.totalScore = this.totalScore - previousScore + newScore;
-            this.$emit('mission-score-changed', this)
-          }
-      );
-      if (instance !== null) {
-        this.$refs.parts.appendChild(instance.$el);
-      }
-    });
-
-    this.$refs?.flickity?.rerender()
-  },
   methods: {
     getImage(image) {
-      return getImageSrc(this.fromAssets, this.challengeId, image.path)
+      return getImageSrc(this.fromAssets, this.challengeId, image)
     },
     getId() {
       if (!this.missionJson.id) {
         this.$log.error("Mission does not have an id: ", this.missionJson)
       }
       return this.missionJson.id
+    },
+    handleScoreChange(previousScore, newScore) {
+      this.totalScore = this.totalScore - previousScore + newScore;
+      this.$emit('mission-score-changed', this)
     }
   },
+  watch: {
+    'missionJson.images': function () {
+      this.$nextTick(() => {
+        console.log("lollollol")
+        this.$refs?.flickity?.rerender()
+      })
+    }
+  }
 }
 </script>
 

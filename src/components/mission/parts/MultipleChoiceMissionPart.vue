@@ -42,10 +42,12 @@ export default {
   },
   methods: {
     determineScore: function () {
-      let previous = this.score;
-      this.score = this.missionPartJson.choices[this.missionPartJson.selectedIndex].score;
-      if (previous !== this.score) {
-        this.$emit('score-changed', previous, this.score)
+      if (this.selectedIndex && this.missionPartJson.choices.length > this.missionPartJson.selectedIndex) {
+        let previous = this.score;
+        this.score = this.missionPartJson.choices[this.missionPartJson.selectedIndex].score;
+        if (previous !== this.score) {
+          this.$emit('score-changed', previous, this.score)
+        }
       }
     },
   },

@@ -1,44 +1,51 @@
 <template>
   <div class="screen">
-    <!--        <button v-on:click="log">log</button>-->
     <!--        <label>Preview<input type="checkbox" v-model="preview"></label>-->
 
     <div id="builder" class="form">
+
+
       <h1>Challenge builder</h1>
 
-      <label for="challengeId">ID:</label>
-      <input type="text" v-model="id" id="challengeId"/>
+      <fieldset>
+        <legend><h2>Algemene informatie</h2></legend>
+        <label class="form-row">Id:
+          <input class="form-row-input" type="text" v-model="backingJson.id" id="challengeId"/>
+        </label>
+        <label class="form-row">Naam:
+          <language-string-field class="form-row-input" v-model="backingJson.name" id="challengeName"/>
+        </label>
+
+        <!-- Using a label as wrapper messes with the click detection for the delete button-->
+        <span class="form-row"><label for="challengeImage">Afbeelding:</label>
+                  <image-input class="form-row-input" v-model="backingJson.logo" id="challengeImage" :mode="'single'"/>
+        </span>
+
+      </fieldset>
 
 
-      <label for="challengeName">Name:</label>
-      <language-string-field v-model="name" id="challengeName"/>
+      <draggable v-model="backingJson.missions">
+        <!-- use mission.data since passing just mission is not allowed.-->
+        <mission-builder
+            class="builder-mission"
+            v-for="mission in backingJson.missions"
+            :mission-json="mission"
+            v-bind:key=mission.id
+            @deleteMission="deleteMission($event)"
+        />
+      </draggable>
 
-      <div id="newMissions">
-        <draggable v-model="missions">
-          <!-- use mission.data since passing just mission is not allowed.-->
-          <mission-builder
-              v-for="mission in missions"
-              v-model="mission.data"
-              v-bind:key=mission.id
-              :id="mission.id"
-              :images="mission.images"
-              @deleteMission="deleteMission($event)"
-          />
-        </draggable>
-      </div>
+      <button class="btn-primary" v-on:click="addMission">Missie toevoegen</button>
 
 
-      <button v-on:click="addMission">Add mission</button>
-      <button v-on:click="download">Save</button>
+      <button class="btn-succes" v-on:click="download">Opslaan</button>
     </div>
 
     <div id="preview">
       <h1>Preview</h1>
       <button v-on:click="reloadPreview">Reload</button>
-      <challenge v-if="previewData"
-                 :name="previewData.name"
-                 :missions="previewData.missions"
-                 :key="previewDataKey"
+      <challenge v-if="backingJson"
+                 :challengeJson="backingJson"
       >
       </challenge>
     </div>
@@ -47,67 +54,67 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable'
 import MissionBuilder from "./MissionBuilder";
-import {Wrapper} from "./models";
 import LanguageStringField from "./LanguageStringField";
 import Challenge from "../Challenge";
 import JSZip from "jszip";
 import {saveAs} from 'file-saver';
+import ImageInput from "@/components/util/ImageInput";
+import draggable from 'vuedraggable'
+import hashService from "@/services/hashService";
+import {ChallengeModel} from "@/models/ChallengeModel";
+import {MissionModel} from "@/models/MissionModel";
 
 export default {
   name: "ChallengeBuilder",
-  components: {Challenge, LanguageStringField, MissionBuilder, draggable},
+  components: {ImageInput, Challenge, LanguageStringField, MissionBuilder, draggable},
   props: {
     challenge: Object
   },
   data: function () {
     return {
+      backingJson: new ChallengeModel(),
       previewData: undefined,
-      previewDataKey: 0,
-      name: this.challenge.name,
-      id: this.challenge.id,
-      missions: this.challenge.missions.map(x => new Wrapper(x)),
+      previewDataKey: 0
     }
   },
   methods: {
     addMission: function () {
-      this.missions.push(new Wrapper({missionParts: [], images: []}))
+      let mission = new MissionModel();
+      mission.id = hashService.simpleTimebasedHash()
+      this.backingJson.missions.push(mission)
+
+
+      console.log(this.backingJson.missions)
     },
     deleteMission: function (id) {
-      this.missions = this.missions.filter(wrapper => wrapper.id !== id)
+      this.backingJson.missions = this.backingJson.missions.filter(mission => mission.id !== id)
     },
     download: function () {
-      //todo also export images etc.
-
-      const data = JSON.stringify({
-        name: this.name,
-        missions: this.missions
-      });
-      console.log(data)
-
       let zip = new JSZip();
-      zip.file("challenge.json", data)
 
-      // get all the images
+      // challenge.json
+      zip.file("challenge.json", JSON.stringify(this.backingJson))
 
-      console.log(this.missions)
-      this.missions
-          .flatMap(mission => mission.data.images)
-          .forEach(imgWrapper => zip.file(
-              imgWrapper.data.path,
-              imgWrapper.src.replace(/(data.*base64)/, ''),
-              {base64: true}))
+      //todo challenge logo
 
 
+      // mission images
+      this.backingJson.missions
+          .flatMap(mission => mission.images)
+          .forEach(img => {
+            zip.file(img.path,
+                img.src.replace(/(data.*base64)/, ''),
+                {base64: true})
+          })
+
+
+      //download the zip
       zip.generateAsync({type: "blob"})
-          .then(value => saveAs(value, this.id + ".zip"))
+          .then(value => saveAs(value, this.backingJson.id + ".zip"))
     },
     open: function () {
       //todo open a challenge
-    },
-    log() {
-      console.log(this.missions)
     },
     reloadPreview() {
       console.log("old {}", this.previewData)
@@ -143,13 +150,12 @@ export default {
   max-width: 500px;
 }
 
-#newMissions {
-  padding: 8px;
+
+.builder-mission {
+  border-bottom: #222222 solid 1px;
+  padding-bottom: 16px;
+  padding-top: 16px;
 }
 
-.builder-part-row {
-  border-width: 1px 0 0 0;
-  border-bottom-color: slategray;
-  border-style: solid;
-}
+
 </style>
