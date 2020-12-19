@@ -7,6 +7,11 @@
            class="mission-img-wrapper">
         <button v-on:click="removeImg(img)" class="btn-danger">X</button>
         <img :src="img.src" class="mission-img"/>
+        <textarea class="description-input"
+                  maxlength="1000"
+                  placeholder="Description..."
+                  v-model="img.description"
+        />
       </div>
     </draggable>
 
@@ -14,8 +19,13 @@
       <div class="mission-img-wrapper">
         <img :src="value.src" class="mission-img"/>
         <button v-on:click.stop="removeImg(value)" class="btn-danger">X</button>
+        <textarea
+            class="description-input"
+            maxlength="1000"
+            placeholder="Description..."
+            v-model="value.description"
+        />
       </div>
-
     </div>
 
     <input type="file"
@@ -58,12 +68,12 @@ export default {
       this.$refs.file.files.forEach(img => {
         const reader = new FileReader();
 
-        if(this.isSingle()){
+        if (this.isSingle()) {
           this.value.path = img.name
           this.value.src = require('@/assets/pendulum.gif')
           reader.readAsDataURL(img);
           reader.onload = e => {
-            this.$set(this.value, 'src', e.target.result) ;
+            this.$set(this.value, 'src', e.target.result);
           };
 
         } else {
@@ -78,10 +88,10 @@ export default {
       })
     },
     removeImg(imgWrapper) {
-      if(this.isSingle()) {
-        this.$set(this.value, 'src', null) ;
+      if (this.isSingle()) {
+        this.$set(this.value, 'src', null);
       } else {
-        this.value.splice(this.value.findIndex(value => value === imgWrapper),1);
+        this.value.splice(this.value.findIndex(value => value === imgWrapper), 1);
       }
     }
   }
@@ -90,26 +100,19 @@ export default {
 
 <style scoped>
 
-.test{
-  width: 100px;
-  height: 100px;
-  background-color: #4caf50;
-}
-
 .mission-img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 150px;
+  width: 150px;
 }
 
 .mission-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+
   position: relative;
-  height: 150px;
-  width: 150px;
   background: lightgray;
 
-  display: flex;
   justify-content: center;
 }
 
@@ -117,8 +120,14 @@ export default {
 #imgs {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
+.description-input {
+  max-width: 100%;
+  height: auto;
+  min-height: 1em;
+}
 
 .btn-danger {
   /*todo global class for right corner*/
