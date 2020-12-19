@@ -19,16 +19,10 @@
     </div>
 
 
-    <challenge-builder v-if="challenge" :key="challenge.id"
-      :challenge="this.challenge"
+    <challenge-builder v-if="challenge"
+      :backingJson="challenge"
     >
-
     </challenge-builder>
-    <!--  Hier komt dan de builder  -->
-
-
-<!--    <button v-on:click="save">Save to device</button>-->
-<!--    <button>Save to device and submit</button>-->
 
   </div>
 
@@ -37,9 +31,6 @@
 <script>
 import ChallengeBuilder from "@/components/builder/ChallengeBuilder";
 import challengeService from "@/services/challengeService";
-// eslint-disable-next-line no-unused-vars
-import i18nService from "@/services/i18nService";
-
 export default {
   name: "BuilderSteps",
   components: {ChallengeBuilder},
@@ -48,11 +39,7 @@ export default {
       this.challenge = challengeService.createBlank()
     },
     setExisting(obj){
-      console.log(obj)
-      this.challenge = obj
-    },
-    save(){
-      challengeService.save()
+      this.challenge = challengeService.createFrom(obj)
     }
   },
   data: function () {

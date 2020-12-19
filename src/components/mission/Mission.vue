@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     getImage(image) {
-      return getImageSrc(this.fromAssets, this.challengeId, image)
+      return getImageSrc(this.challengeId, image)
     },
     getId() {
       if (!this.missionJson.id) {

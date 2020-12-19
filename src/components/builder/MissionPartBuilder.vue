@@ -35,10 +35,10 @@
       <draggable v-model="backingData.MultipleChoice.choices">
         <div v-for="option in backingData.MultipleChoice.choices" v-bind:key="option.id">
           <label>Text:
-            <language-string-field v-model="option.data.choice"/>
+            <language-string-field v-model="option.choice"/>
           </label>
-          <label>Score: <input type="number" v-model.number="option.data.score"/></label>
-          <button v-on:click="removeChoice(option.id)" class="btn-danger remove-choice">-</button>
+          <label>Score: <input type="number" v-model.number="option.score"/></label>
+          <button v-on:click="removeChoice(option)" class="btn-danger remove-choice">-</button>
         </div>
       </draggable>
 
@@ -65,7 +65,6 @@
 <script>
 import LanguageStringField from "./LanguageStringField";
 import draggable from 'vuedraggable'
-import {Wrapper} from "./models";
 
 export default {
   name: "MissionPartBuilder",
@@ -97,9 +96,11 @@ export default {
     }
   },
   created() {
-    if (this.missionPartJson.type !== undefined) {
-      this.selectedType = this.missionPartJson.type
-      this.backingData[this.selectedType] = this.missionPartJson
+    let clone = JSON.parse(JSON.stringify(this.missionPartJson));
+    console.log('clone', clone)
+    if (clone.type) {
+      this.selectedType = clone.type
+      this.backingData[this.selectedType] = clone
     }
     this.onSelect(this.selectedType)
   },
@@ -125,19 +126,19 @@ export default {
 
     },
     newChoice() {
-      this.backingData.MultipleChoice.choices.push(new Wrapper({
+      this.backingData.MultipleChoice.choices.push({
         choice: {},
         score: 0
-      }))
+      })
     },
-    removeChoice(id) {
-      this.backingData.MultipleChoice.choices = this.backingData.MultipleChoice.choices.filter(choice => choice.id !== id)
+    removeChoice(toRemove) {
+      this.backingData.MultipleChoice.choices = this.backingData.MultipleChoice.choices
+          .filter(choice => choice !== toRemove)
     }
   },
   watch: {
     'backingData': {
       handler: function() {
-        console.log('yep')
         this.onSelect(this.selectedType)
       },
       deep:true

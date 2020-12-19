@@ -16,7 +16,10 @@
 export default {
   name: "LanguageStringField",
   props: {
-    value: Object,
+    value: {
+      type: Object,
+      default: function() {return {}},
+    },
     textArea: Boolean
   },
   data: function () {

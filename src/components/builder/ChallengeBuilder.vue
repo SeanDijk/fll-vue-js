@@ -1,10 +1,6 @@
 <template>
   <div class="screen">
-    <!--        <label>Preview<input type="checkbox" v-model="preview"></label>-->
-
     <div id="builder" class="form">
-
-
       <h1>Challenge builder</h1>
 
       <fieldset>
@@ -18,7 +14,11 @@
 
         <!-- Using a label as wrapper messes with the click detection for the delete button-->
         <span class="form-row"><label for="challengeImage">Afbeelding:</label>
-          <image-input class="form-row-input" v-model="backingJson.logo" id="challengeImage" :mode="'single'"/>
+          <image-input class="form-row-input"
+                       v-model="backingJson.logo"
+                       id="challengeImage"
+                       mode="single"
+                       :fallback-path="backingJson.id"/>
         </span>
 
       </fieldset>
@@ -30,6 +30,7 @@
             class="builder-mission"
             v-for="mission in backingJson.missions"
             :mission-json="mission"
+            :challenge-id="backingJson.id"
             v-bind:key=mission.id
             @deleteMission="deleteMission($event)"
         />
@@ -43,7 +44,6 @@
 
     <div id="preview">
       <h1>Preview</h1>
-      <button v-on:click="reloadPreview">Reload</button>
       <challenge v-if="backingJson"
                  :challengeJson="backingJson"
       >
@@ -62,30 +62,19 @@ import {saveAs} from 'file-saver';
 import ImageInput from "@/components/util/ImageInput";
 import draggable from 'vuedraggable'
 import hashService from "@/services/hashService";
-import {ChallengeModel} from "@/models/ChallengeModel";
 import {MissionModel} from "@/models/MissionModel";
 
 export default {
   name: "ChallengeBuilder",
   components: {ImageInput, Challenge, LanguageStringField, MissionBuilder, draggable},
   props: {
-    challenge: Object
-  },
-  data: function () {
-    return {
-      backingJson: new ChallengeModel(),
-      previewData: undefined,
-      previewDataKey: 0
-    }
+    backingJson: Object
   },
   methods: {
     addMission: function () {
       let mission = new MissionModel();
       mission.id = hashService.simpleTimebasedHash()
       this.backingJson.missions.push(mission)
-
-
-      console.log(this.backingJson.missions)
     },
     deleteMission: function (id) {
       this.backingJson.missions = this.backingJson.missions.filter(mission => mission.id !== id)
@@ -96,7 +85,7 @@ export default {
       // Create the challenge.json
       zip.file("challenge.json", JSON.stringify(this.backingJson))
 
-      //Get the challenge logo and add it as file
+      // Get the challenge logo and add it as file
       if(this.backingJson.logo?.path) {
         zip.file(this.backingJson.logo.path,
             this.backingJson.logo.src.replace(/(data.*base64)/, ''),
@@ -117,17 +106,6 @@ export default {
       //download the zip
       zip.generateAsync({type: "blob"})
           .then(value => saveAs(value, this.backingJson.id + ".zip"))
-    },
-    open: function () {
-      //todo open a challenge
-    },
-    reloadPreview() {
-      console.log("old {}", this.previewData)
-      this.previewData = JSON.parse(JSON.stringify({
-        name: this.name,
-        missions: this.missions
-      }));
-      this.previewDataKey += 1
     }
   }
 }

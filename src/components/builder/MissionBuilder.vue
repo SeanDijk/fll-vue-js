@@ -11,7 +11,7 @@
 
     <!-- Using a label as wrapper messes with the click detection for the delete button-->
     <span class="form-row"><label>Afbeeldingen:</label>
-      <image-input class="form-row-input" mode="multiple" v-model="missionJson.images"></image-input>
+      <image-input class="form-row-input" mode="multiple" v-model="missionJson.images" :fallback-path="challengeId"></image-input>
     </span>
 
     <br>
@@ -48,6 +48,7 @@ export default {
     // Used for delete
     id: String,
     missionJson: Object,
+    challengeId: String
   },
   methods: {
     addMissionPart() {

@@ -6,7 +6,7 @@
            v-bind:key="img.path"
            class="mission-img-wrapper">
         <button v-on:click="removeImg(img)" class="btn-danger">X</button>
-        <img :src="img.src" class="mission-img"/>
+        <img :src="getSrc(img)" class="mission-img"/>
         <textarea class="description-input"
                   maxlength="1000"
                   placeholder="Description..."
@@ -15,9 +15,9 @@
       </div>
     </draggable>
 
-    <div v-else-if="value.src">
+    <div v-else-if="getSrc(value)">
       <div class="mission-img-wrapper">
-        <img :src="value.src" class="mission-img"/>
+        <img :src="getSrc(value)" class="mission-img"/>
         <button v-on:click.stop="removeImg(value)" class="btn-danger">X</button>
         <textarea
             class="description-input"
@@ -42,6 +42,7 @@
 <script>
 import draggable from 'vuedraggable'
 import {ImageWrapper} from "@/models/ImageWrapper";
+import {getImageSrc} from "@/services/imageRetriever";
 
 export default {
   name: "ImageInput",
@@ -53,12 +54,8 @@ export default {
     mode: {
       type: String,
       validator: (val) => ["single", "multiple"].includes(val)
-    }
-  },
-  data: function () {
-    return {
-      content: this.value
-    }
+    },
+    fallbackPath: String
   },
   methods: {
     isSingle() {
@@ -93,6 +90,9 @@ export default {
       } else {
         this.value.splice(this.value.findIndex(value => value === imgWrapper), 1);
       }
+    },
+    getSrc(imgWrapper){
+      return getImageSrc(this.fallbackPath, imgWrapper)
     }
   }
 }

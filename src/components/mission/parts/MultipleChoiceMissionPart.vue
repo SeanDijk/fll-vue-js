@@ -28,7 +28,6 @@ export default {
   data: function () {
     return {
       score: 0,
-      selectedIndex: 0,
       uuid: uuidv4()
     }
   },
@@ -42,7 +41,9 @@ export default {
   },
   methods: {
     determineScore: function () {
-      if (this.selectedIndex && this.missionPartJson.choices.length > this.missionPartJson.selectedIndex) {
+      if (this.missionPartJson.selectedIndex || this.missionPartJson.selectedIndex === 0 &&
+          this.missionPartJson.choices.length > this.missionPartJson.selectedIndex) {
+
         let previous = this.score;
         this.score = this.missionPartJson.choices[this.missionPartJson.selectedIndex].score;
         if (previous !== this.score) {

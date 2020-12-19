@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getImage(challenge) {
-      return getImageSrc(true, challenge.id, challenge?.logo)
+      return getImageSrc(challenge.id, challenge?.logo)
     }
   }
 }
