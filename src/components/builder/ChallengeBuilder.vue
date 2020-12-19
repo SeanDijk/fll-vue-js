@@ -18,7 +18,7 @@
 
         <!-- Using a label as wrapper messes with the click detection for the delete button-->
         <span class="form-row"><label for="challengeImage">Afbeelding:</label>
-                  <image-input class="form-row-input" v-model="backingJson.logo" id="challengeImage" :mode="'single'"/>
+          <image-input class="form-row-input" v-model="backingJson.logo" id="challengeImage" :mode="'single'"/>
         </span>
 
       </fieldset>
@@ -93,13 +93,18 @@ export default {
     download: function () {
       let zip = new JSZip();
 
-      // challenge.json
+      // Create the challenge.json
       zip.file("challenge.json", JSON.stringify(this.backingJson))
 
-      //todo challenge logo
+      //Get the challenge logo and add it as file
+      if(this.backingJson.logo?.path) {
+        zip.file(this.backingJson.logo.path,
+            this.backingJson.logo.src.replace(/(data.*base64)/, ''),
+            {base64: true}
+        )
+      }
 
-
-      // mission images
+      // Get the images from the missions and add them as files.
       this.backingJson.missions
           .flatMap(mission => mission.images)
           .forEach(img => {

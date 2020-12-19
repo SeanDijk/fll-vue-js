@@ -59,7 +59,8 @@ export default {
         const reader = new FileReader();
 
         if(this.isSingle()){
-
+          this.value.path = img.name
+          this.value.src = require('@/assets/pendulum.gif')
           reader.readAsDataURL(img);
           reader.onload = e => {
             this.$set(this.value, 'src', e.target.result) ;
@@ -77,8 +78,6 @@ export default {
       })
     },
     removeImg(imgWrapper) {
-      console.log('remove image', imgWrapper)
-
       if(this.isSingle()) {
         this.$set(this.value, 'src', null) ;
       } else {

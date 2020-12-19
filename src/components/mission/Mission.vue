@@ -91,7 +91,6 @@ export default {
   watch: {
     'missionJson.images': function () {
       this.$nextTick(() => {
-        console.log("lollollol")
         this.$refs?.flickity?.rerender()
       })
     }
