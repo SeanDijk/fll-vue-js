@@ -97,7 +97,6 @@ export default {
   },
   created() {
     let clone = JSON.parse(JSON.stringify(this.missionPartJson));
-    console.log('clone', clone)
     if (clone.type) {
       this.selectedType = clone.type
       this.backingData[this.selectedType] = clone

@@ -63,6 +63,9 @@ import ImageInput from "@/components/util/ImageInput";
 import draggable from 'vuedraggable'
 import hashService from "@/services/hashService";
 import {MissionModel} from "@/models/MissionModel";
+import {getImageSrc} from "@/services/imageRetriever";
+import axios from "axios"
+
 
 export default {
   name: "ChallengeBuilder",
@@ -86,26 +89,38 @@ export default {
       zip.file("challenge.json", JSON.stringify(this.backingJson))
 
       // Get the challenge logo and add it as file
-      if(this.backingJson.logo?.path) {
-        zip.file(this.backingJson.logo.path,
-            this.backingJson.logo.src.replace(/(data.*base64)/, ''),
-            {base64: true}
-        )
+      if (this.backingJson.logo?.path) {
+        this.addImageToZip(this.backingJson.logo, zip)
       }
 
       // Get the images from the missions and add them as files.
       this.backingJson.missions
           .flatMap(mission => mission.images)
           .forEach(img => {
-            zip.file(img.path,
-                img.src.replace(/(data.*base64)/, ''),
-                {base64: true})
+            this.addImageToZip(img, zip)
           })
 
 
       //download the zip
       zip.generateAsync({type: "blob"})
           .then(value => saveAs(value, this.backingJson.id + ".zip"))
+    },
+    addImageToZip: function (img, zip) {
+      // If the images is uploaded by the user src should be set.
+      if (img.src) {
+        zip.file(
+            img.path,
+            img.src.replace(/(data.*base64)/, ''),
+            {base64: true})
+      }
+      // Otherwise it should be an already present image.
+      else {
+        let prom = axios.get(getImageSrc(this.backingJson.id, img), {responseType: 'arraybuffer'})
+            .then(value => {
+              return value.data
+            })
+        zip.file(img.path, prom)
+      }
     }
   }
 }
