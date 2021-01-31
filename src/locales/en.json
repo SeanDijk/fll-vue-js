@@ -1,7 +1,9 @@
 {
   "global": {
     "btn_save": "Save",
-    "btn_cancel": "Cancel"
+    "btn_cancel": "Cancel",
+    "name": "Name",
+    "totalScore": "Total score"
   },
   "header": {
     "menu": {
@@ -16,17 +18,38 @@
     "menu": {
       "save": "@:global.btn_save",
       "reset": "Reset",
-      "totalScore": "Total score"
+      "totalScore": "@:global.totalScore"
     },
     "saveScoreSheetForm": {
       "title": "Save scoresheet?",
-      "name": "Name",
-      "totalScore": "Total score",
+      "name": "@:global.name",
+      "totalScore": "@:global.totalScore",
       "save": "@:global.btn_save",
       "cancel": "@:global.btn_cancel"
     }
   },
   "mission": {
     "missionScore": "Mission score:"
+  },
+  "builder": {
+    "generalInformation": "General information",
+    "id": "Id",
+    "name" : "@:global.name",
+    "image" : "Image",
+    "images" : "Images",
+    "mission": "Mission",
+    "missionParts": {
+      "type": "Type",
+      "description": "Description",
+      "score": "Score",
+      "addNewPart": "Add mission part",
+      "text": "Text",
+      "addNewOption": "Add new option",
+      "missionParts": "Mission parts"
+    },
+    "addMission": "Add mission",
+    "save": "@:global.btn_save",
+    "preview": "Preview",
+    "challengeBuilder": "Challenge builder"
   }
 }

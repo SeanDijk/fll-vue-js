@@ -1,7 +1,8 @@
 {
   "id": "2020-2021",
   "name": {
-    "nl": "2020-2021: RePLAY"
+    "nl": "2020-2021: RePLAY",
+    "en": "2020-2021: RePLAY"
   },
   "logo": {
     "path": "replay-id.svg"
@@ -11,7 +12,8 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Alle uitrusting van het team past in de kleine inspectieruimte."
+            "nl": "Alle uitrusting van het team past in de kleine inspectieruimte.",
+            "en": "All team equipment fits in the small inspection space"
           },
           "completionScore": 25,
           "type": "CheckBox"
@@ -23,7 +25,8 @@
         }
       ],
       "name": {
-        "nl": "M00 - Inspectiebonus uitrusting"
+        "nl": "M00 - Inspectiebonus uitrusting",
+        "en": "M00 - Equipment Inspection Bonus"
       },
       "id": "M0"
     },
@@ -31,31 +34,36 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Het innovatieproject is groot genoeg (2+ witte LEGO onderdelen en 4+ LEGO noppen lang)."
+            "nl": "Het innovatieproject is groot genoeg (2+ witte LEGO onderdelen en 4+ LEGO noppen lang).",
+            "en": "The innovation project is large enough (2+ white LEGO pieces and 4+ LEGO studs long)"
           },
           "completionScore": 0,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "Een deel van het innovatieproject raakt: "
+            "nl": "Een deel van het innovatieproject raakt: ",
+            "en": "Part of the innovation Project is touching: "
           },
           "choices": [
             {
               "choice": {
-                "nl": "Geen"
+                "nl": "Geen",
+                "en": "None"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "RePLAY-logo"
+                "nl": "RePLAY-logo",
+                "en": "RePLAY Logo"
               },
               "score": 20
             },
             {
               "choice": {
-                "nl": "Grijze gebied bank"
+                "nl": "Grijze gebied bank",
+                "en": "Bench Gray Area"
               },
               "score": 20
             }
@@ -78,7 +86,8 @@
         }
       ],
       "name": {
-        "nl": "M01 - Innovatieproject"
+        "nl": "M01 - Innovatieproject",
+        "en": "M01 - Innovation Project"
       },
       "id": "M1"
     },
@@ -86,30 +95,35 @@
       "missionParts": [
         {
           "description": {
-            "nl": "De onderkant van de wijzer staat op: "
+            "nl": "De onderkant van de wijzer staat op: ",
+            "en": "The bottom of the pointer is on: "
           },
           "choices": [
             {
               "choice": {
-                "nl": "Geen"
+                "nl": "Geen",
+                "en": "None"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "Magenta"
+                "nl": "Magenta",
+                "en": "Magenta"
               },
               "score": 10
             },
             {
               "choice": {
-                "nl": "Geel"
+                "nl": "Geel",
+                "en": "Yellow"
               },
               "score": 15
             },
             {
               "choice": {
-                "nl": "Blauw"
+                "nl": "Blauw",
+                "en": "Blue"
               },
               "score": 20
             }
@@ -132,7 +146,8 @@
         }
       ],
       "name": {
-        "nl": "M02 - Stappenteller"
+        "nl": "M02 - Stappenteller",
+        "en": "M02 - Step Counter"
       },
       "id": "M2"
     },
@@ -140,24 +155,28 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Het aantal glijbaanfiguren dat van de glijbaan af is"
+            "nl": "Het aantal glijbaanfiguren dat van de glijbaan af is",
+            "en": "Number of slide figures off the slide"
           },
           "choices": [
             {
               "choice": {
-                "nl": "0"
+                "nl": "0",
+                "en": "0"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "1"
+                "nl": "1",
+                "en": "1"
               },
               "score": 5
             },
             {
               "choice": {
-                "nl": "2"
+                "nl": "2",
+                "en": "2"
               },
               "score": 20
             }
@@ -166,14 +185,16 @@
         },
         {
           "description": {
-            "nl": "Er is een glijbaanfiguur volledig in THUIS: "
+            "nl": "Er is een glijbaanfiguur volledig in THUIS: ",
+            "en": "A slide figure is completely in home"
           },
           "completionScore": 10,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "Er wordt een glijbaanfiguur volledig van de mat gehouden door de zware band en raakt niet anders aan: "
+            "nl": "Er wordt een glijbaanfiguur volledig van de mat gehouden door de zware band en raakt niet anders aan: ",
+            "en": "A slide figure is held completely off the mat by the heavy tire and touching nothing else"
           },
           "completionScore": 20,
           "type": "CheckBox"
@@ -197,7 +218,8 @@
         }
       ],
       "name": {
-        "nl": "M03 - Glijbaan"
+        "nl": "M03 - Glijbaan",
+        "en": "M03 - Slide"
       },
       "id": "M3"
     },
@@ -205,14 +227,16 @@
       "missionParts": [
         {
           "description": {
-            "nl": "De bank ligt plat: "
+            "nl": "De bank ligt plat: ",
+            "en": "The bench is down flat"
           },
           "completionScore": 10,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "Aantal hinkelbaanruimtes met blokjes erin die de mat raken: "
+            "nl": "Aantal hinkelbaanruimtes met blokjes erin die de mat raken: ",
+            "en": "Number of hopscotch spaces with cubes touching the mat inside them"
           },
           "min": 0,
           "max": 4,
@@ -221,7 +245,8 @@
         },
         {
           "description": {
-            "nl": "De rugleuning is volledig uit beide gaten: "
+            "nl": "De rugleuning is volledig uit beide gaten: ",
+            "en": "The backrest in completely out of both of its holes"
           },
           "completionScore": 15,
           "type": "CheckBox"
@@ -242,7 +267,8 @@
         }
       ],
       "name": {
-        "nl": "M04 - Bank"
+        "nl": "M04 - Bank",
+        "en": "M04 - Bench"
       },
       "id": "M4"
     },
@@ -250,31 +276,36 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Er is een blokje in de krat: "
+            "nl": "Er is een blokje in de krat",
+            "en": "A cube is in the crate"
           },
           "completionScore": 15,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "Op welke stop steunt de krat? "
+            "nl": "Op welke stop steunt de krat? ",
+            "en": "On which white stopper does the crate rest"
           },
           "choices": [
             {
               "choice": {
-                "nl": "Geen"
+                "nl": "Geen",
+                "en": "None"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "Middelste"
+                "nl": "Middelste",
+                "en": "Middle"
               },
               "score": 15
             },
             {
               "choice": {
-                "nl": "Bovenste"
+                "nl": "Bovenste",
+                "en": "Top"
               },
               "score": 25
             }
@@ -297,7 +328,8 @@
         }
       ],
       "name": {
-        "nl": "M05 - Basketbal"
+        "nl": "M05 - Basketbal",
+        "en": "M05 - Basketball"
       },
       "id": "M5"
     },
@@ -305,14 +337,16 @@
       "missionParts": [
         {
           "description": {
-            "nl": "De robot ging op enig moment volledig door het rechtopstaande frame van de optrekstang: "
+            "nl": "De robot ging op enig moment volledig door het rechtopstaande frame van de optrekstang: ",
+            "en": "The robot passed completely through the pull-up bar’s upright frame at any time"
           },
           "completionScore": 15,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "De optrekstang houdt de robot aan het einde van de wedstrijd voor 100% van de mat af: "
+            "nl": "De optrekstang houdt de robot aan het einde van de wedstrijd voor 100% van de mat af: ",
+            "en": "The pull-up bar holds 100% of the robot up off the mat at the end of the match"
           },
           "completionScore": 30,
           "type": "CheckBox"
@@ -324,7 +358,8 @@
         }
       ],
       "name": {
-        "nl": "M06 - Optrekstang"
+        "nl": "M06 - Optrekstang",
+        "en": "M06 - Pull-Up Bar"
       },
       "id": "M6"
     },
@@ -332,7 +367,8 @@
       "missionParts": [
         {
           "description": {
-            "nl": "De controller van de robot danst op het einde van de wedstrijd over de dansvloer: "
+            "nl": "De controller van de robot danst op het einde van de wedstrijd over de dansvloer: ",
+            "en": "The robot’s controller is dancing over the dance floor at the end of the match:\t"
           },
           "completionScore": 20,
           "type": "CheckBox"
@@ -344,7 +380,8 @@
         }
       ],
       "name": {
-        "nl": "M07 - Robotdans"
+        "nl": "M07 - Robotdans",
+        "en": "M07 - Robot Dance"
       },
       "id": "M7"
     },
@@ -352,14 +389,16 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Beide deelmodellen hebben slechts één blokje op het tegenoverliggende veld gestuurd en die blokjes hebben dezelfde kleur"
+            "nl": "Beide deelmodellen hebben slechts één blokje op het tegenoverliggende veld gestuurd en die blokjes hebben dezelfde kleur",
+            "en": "Both share models have sent only one cube anywhere onto the opposing field and those cubes color-match each other"
           },
           "completionScore": 25,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "Aantal blokjes in het frame of doel: "
+            "nl": "Aantal blokjes in het frame of doel: ",
+            "en": "Number of cubes in the frame or target"
           },
           "min": 0,
           "max": 17,
@@ -368,7 +407,8 @@
         },
         {
           "description": {
-            "nl": "Ten minste één geel blokje is volledig in het doel: "
+            "nl": "Ten minste één geel blokje is volledig in het doel: ",
+            "en": "At least one yellow cube is completely in the target"
           },
           "completionScore": 10,
           "type": "CheckBox"
@@ -383,7 +423,8 @@
         }
       ],
       "name": {
-        "nl": "M08 - Boccia"
+        "nl": "M08 - Boccia",
+        "en": "M08 - Boccia"
       },
       "id": "M8"
     },
@@ -391,30 +432,35 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Banden met de witte kant naar boven en rustend op de mat: "
+            "nl": "Banden met de witte kant naar boven en rustend op de mat: ",
+            "en": "Tires white side up and resting on the mat"
           },
           "choices": [
             {
               "choice": {
-                "nl": "Geen"
+                "nl": "Geen",
+                "en": "None"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "Blauw"
+                "nl": "Blauw",
+                "en": "Blue"
               },
               "score": 10
             },
             {
               "choice": {
-                "nl": "Zwart"
+                "nl": "Zwart",
+                "en": "Black"
               },
               "score": 15
             },
             {
               "choice": {
-                "nl": "Beide"
+                "nl": "Beide",
+                "en": "Both"
               },
               "score": 25
             }
@@ -423,30 +469,35 @@
         },
         {
           "description": {
-            "nl": "Banden met de witte kant naar boven en rustend op de mat die aanwezig zijn in de grote cirkel: "
+            "nl": "Banden met de witte kant naar boven en rustend op de mat die aanwezig zijn in de grote cirkel: ",
+            "en": "Tires completely in the large target circle"
           },
           "choices": [
             {
               "choice": {
-                "nl": "Geen"
+                "nl": "Geen",
+                "en": "None"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "Blauw"
+                "nl": "Blauw",
+                "en": "Blue"
               },
               "score": 5
             },
             {
               "choice": {
-                "nl": "Zwart"
+                "nl": "Zwart",
+                "en": "Black"
               },
               "score": 5
             },
             {
               "choice": {
-                "nl": "Beide"
+                "nl": "Beide",
+                "en": "Both"
               },
               "score": 10
             }
@@ -472,7 +523,8 @@
         }
       ],
       "name": {
-        "nl": "M09 - Banden omdraaien"
+        "nl": "M09 - Banden omdraaien",
+        "en": "M09 - Tire Flip"
       },
       "id": "M9"
     },
@@ -480,7 +532,8 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Het mobieltje ligt met de witte kant naar boven en rust alleen op de mat: "
+            "nl": "Het mobieltje ligt met de witte kant naar boven en rust alleen op de mat: ",
+            "en": "The cell phone is white side up and resting only on the mat"
           },
           "completionScore": 15,
           "type": "CheckBox"
@@ -495,7 +548,8 @@
         }
       ],
       "name": {
-        "nl": "M10 - Mobieltje"
+        "nl": "M10 - Mobieltje",
+        "en": "M10 - Cell Phone"
       },
       "id": "M10"
     },
@@ -503,48 +557,56 @@
       "missionParts": [
         {
           "description": {
-            "nl": "De robot heeft de rollen gedraaid, zodat de wijzer wijst naar: "
+            "nl": "De robot heeft de rollen gedraaid, zodat de wijzer wijst naar: ",
+            "en": "The robot spun the rollers so the pointer points to"
           },
           "choices": [
             {
               "choice": {
-                "nl": "Geen"
+                "nl": "Geen",
+                "en": "None"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "Grijs"
+                "nl": "Grijs",
+                "en": "Gray"
               },
               "score": 5
             },
             {
               "choice": {
-                "nl": "Rood"
+                "nl": "Rood",
+                "en": "Red"
               },
               "score": 10
             },
             {
               "choice": {
-                "nl": "Oranje"
+                "nl": "Oranje",
+                "en": "Orange"
               },
               "score": 15
             },
             {
               "choice": {
-                "nl": "Geel"
+                "nl": "Geel",
+                "en": "Yellow"
               },
               "score": 20
             },
             {
               "choice": {
-                "nl": "Lichtgroen"
+                "nl": "Lichtgroen",
+                "en": "Light green"
               },
               "score": 25
             },
             {
               "choice": {
-                "nl": "Donkergroen"
+                "nl": "Donkergroen",
+                "en": "Dark green"
               },
               "score": 30
             }
@@ -567,7 +629,8 @@
         }
       ],
       "name": {
-        "nl": "M11 - Loopband"
+        "nl": "M11 - Loopband",
+        "en": "M11 - Treadmill"
       },
       "id": "M11"
     },
@@ -575,14 +638,16 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Het losse wiel is volledig buiten de grote cirkel"
+            "nl": "Het losse wiel is volledig buiten de grote cirkel",
+            "en": "The free wheel is completely outside the large circle"
           },
           "completionScore": 15,
           "type": "CheckBox"
         },
         {
           "description": {
-            "nl": "Het losse wiel is volledig in de kleine cirkel"
+            "nl": "Het losse wiel is volledig in de kleine cirkel",
+            "en": "The free wheel is completely in the small circle"
           },
           "completionScore": 15,
           "type": "CheckBox"
@@ -600,7 +665,8 @@
         }
       ],
       "name": {
-        "nl": "M12 - Roeimachine"
+        "nl": "M12 - Roeimachine",
+        "en": "M12 - Row Machine"
       },
       "id": "M12"
     },
@@ -608,32 +674,37 @@
       "missionParts": [
         {
           "description": {
-            "nl": "De stop zit onder de hendel en de hendelinstelling is: "
+            "nl": "De stop zit onder de hendel en de hendelinstelling is: ",
+            "en": "The stopper is under the lever and the lever setting is"
           },
           "choices": [
             {
               "choice": {
-                "nl": "Geen"
+                "nl": "Geen",
+                "en": "None"
               },
               "score": 0
             },
             {
               "choice": {
-                "nl": "Blauw"
+                "nl": "Blauw",
+                "en": "Blue"
               },
               "score": 10
             },
             {
               "choice": {
-                "nl": "Magenta"
+                "nl": "Magenta",
+                "en": "Magenta"
               },
               "score": 15
             },
             {
               "choice": {
-                "nl": "Geel"
+                "nl": "Geel",
+                "en": "Yellow"
               },
-              "score": 10
+              "score": 20
             }
           ],
           "type": "MultipleChoice"
@@ -654,7 +725,8 @@
         }
       ],
       "name": {
-        "nl": "M13 - Gewichtsapparaat"
+        "nl": "M13 - Gewichtsapparaat",
+        "en": "M13 - Weight Machine"
       },
       "id": "M13"
     },
@@ -662,7 +734,8 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Het aantal gezondheidsunits dat het RePLAY-logo of het grijze gebied rond de bank aanraakt: "
+            "nl": "Het aantal gezondheidsunits dat het RePLAY-logo of het grijze gebied rond de bank aanraakt: ",
+            "en": "Number of health units touching either the RePLAY logo or the gray area around the bench"
           },
           "min": 0,
           "max": 8,
@@ -671,7 +744,8 @@
         },
         {
           "description": {
-            "nl": "Het aantal gezondheidsunits dat over een paal van de optrekstang is gelust en geen uitrusting aanraakt"
+            "nl": "Het aantal gezondheidsunits dat over een paal van de optrekstang is gelust en geen uitrusting aanraakt",
+            "en": "Number of health units looped over a pull-up bar post and touching no equipment (max of 4)"
           },
           "min": 0,
           "max": 4,
@@ -694,7 +768,8 @@
         }
       ],
       "name": {
-        "nl": "M14 - Gezondheidsunits"
+        "nl": "M14 - Gezondheidsunits",
+        "en": "M14 - Health Units"
       },
       "id": "M14"
     },
@@ -702,48 +777,56 @@
       "missionParts": [
         {
           "description": {
-            "nl": "Het aantal overhegouden precisietekens op de mat: "
+            "nl": "Het aantal overhegouden precisietekens op de mat: ",
+            "en": "Number of precision tokens left on the field"
           },
           "choices": [
             {
               "choice": {
-                "nl": "6"
+                "nl": "6",
+                "en": "6"
               },
               "score": 60
             },
             {
               "choice": {
-                "nl": "5"
+                "nl": "5",
+                "en": "5"
               },
               "score": 45
             },
             {
               "choice": {
-                "nl": "4"
+                "nl": "4",
+                "en": "4"
               },
               "score": 30
             },
             {
               "choice": {
-                "nl": "3"
+                "nl": "3",
+                "en": "3"
               },
               "score": 20
             },
             {
               "choice": {
-                "nl": "2"
+                "nl": "2",
+                "en": "2"
               },
               "score": 10
             },
             {
               "choice": {
-                "nl": "1"
+                "nl": "1",
+                "en": "1"
               },
               "score": 5
             },
             {
               "choice": {
-                "nl": "0"
+                "nl": "0",
+                "en": "0"
               },
               "score": 0
             }
@@ -760,7 +843,8 @@
         }
       ],
       "name": {
-        "nl": "M15 - Precisie"
+        "nl": "M15 - Precisie",
+        "en": "M15 - Precision"
       },
       "id": "M15"
     }

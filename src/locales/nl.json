@@ -1,7 +1,9 @@
 {
   "global": {
     "btn_save": "Opslaan",
-    "btn_cancel": "Annuleer"
+    "btn_cancel": "Annuleer",
+    "name": "Naam",
+    "totalScore": "Totale score"
   },
   "header": {
     "menu": {
@@ -16,17 +18,38 @@
     "menu": {
       "save": "@:global.btn_save",
       "reset": "Herstarten",
-      "totalScore": "Totale score"
+      "totalScore": "@:global.totalScore"
     },
     "saveScoreSheetForm": {
       "title": "Scoreformulier opslaan?",
-      "name": "Naam",
-      "totalScore": "Totale score",
+      "name": "@:global.name",
+      "totalScore": "@:global.totalScore",
       "save": "@:global.btn_save",
       "cancel": "@:global.btn_cancel"
     }
   },
   "mission": {
     "missionScore": "Missie score:"
+  },
+  "builder": {
+    "generalInformation": "Algemene informatie",
+    "id": "Id",
+    "name" : "@:global.name",
+    "image" : "Afbeelding",
+    "images" : "Afbeeldingen",
+    "mission": "Missie",
+    "missionParts": {
+      "type": "Soort",
+      "description": "Omschrijving",
+      "score": "Score",
+      "addNewPart": "Missie onderdeel toevoegen",
+      "text": "Tekst",
+      "addNewOption": "Nieuwe optie",
+      "missionParts": "Missie onderdelen"
+    },
+    "addMission": "Missie toevoegen",
+    "save": "@:global.btn_save",
+    "preview": "Voorbeeld",
+    "challengeBuilder": "Uitdaging bouwen"
   }
 }

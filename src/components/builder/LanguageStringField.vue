@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import {store} from "@/preferences";
+
 export default {
   name: "LanguageStringField",
   props: {
@@ -30,10 +32,15 @@ export default {
     return {
       //todo central place for supported languages
       supportedLanguages: lang,
-      selectedLanguage: lang[0].code
+      selectedLanguage: store.state.inputLanguage,
+      globalState: store.state
     }
   },
-
+  watch: {
+    "globalState.inputLanguage": function (val) {
+      this.selectedLanguage = val
+    },
+  },
 }
 </script>
 

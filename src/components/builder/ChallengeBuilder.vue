@@ -1,19 +1,19 @@
 <template>
   <div class="screen">
     <div id="builder" class="form">
-      <h1>Challenge builder</h1>
-
+      <h1>{{$t('builder.challengeBuilder')}}</h1>
+      <language-string-field-config></language-string-field-config>
       <fieldset>
-        <legend><h2>Algemene informatie</h2></legend>
-        <label class="form-row">Id:
+        <legend><h2>{{$t('builder.generalInformation')}}</h2></legend>
+        <label class="form-row">{{$t('builder.id')}}:
           <input class="form-row-input" type="text" v-model="backingJson.id" id="challengeId"/>
         </label>
-        <label class="form-row">Naam:
+        <label class="form-row">{{$t('builder.name')}}:
           <language-string-field class="form-row-input" v-model="backingJson.name" id="challengeName"/>
         </label>
 
         <!-- Using a label as wrapper messes with the click detection for the delete button-->
-        <span class="form-row"><label for="challengeImage">Afbeelding:</label>
+        <span class="form-row"><label for="challengeImage">{{$t('builder.image')}}:</label>
           <image-input class="form-row-input"
                        v-model="backingJson.logo"
                        id="challengeImage"
@@ -36,14 +36,14 @@
         />
       </draggable>
 
-      <button class="btn-primary" v-on:click="addMission">Missie toevoegen</button>
+      <button class="btn-primary" v-on:click="addMission">{{$t('builder.addMission')}}</button>
 
 
-      <button class="btn-succes" v-on:click="download">Opslaan</button>
+      <button class="btn-succes" v-on:click="download">{{$t('builder.save')}}</button>
     </div>
 
     <div id="preview">
-      <h1>Preview</h1>
+      <h1>{{$t('builder.preview')}}</h1>
       <challenge v-if="backingJson"
                  :challengeJson="backingJson"
       >
@@ -65,11 +65,12 @@ import hashService from "@/services/hashService";
 import {MissionModel} from "@/models/MissionModel";
 import {getImageSrc} from "@/services/imageRetriever";
 import axios from "axios"
+import LanguageStringFieldConfig from "@/components/builder/LanguageStringFieldConfig";
 
 
 export default {
   name: "ChallengeBuilder",
-  components: {ImageInput, Challenge, LanguageStringField, MissionBuilder, draggable},
+  components: {LanguageStringFieldConfig, ImageInput, Challenge, LanguageStringField, MissionBuilder, draggable},
   props: {
     backingJson: Object
   },

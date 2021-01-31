@@ -1,22 +1,22 @@
 <template>
   <fieldset class="container form">
-    <legend><h2>Missie</h2></legend>
+    <legend><h2>{{$t('builder.mission')}}</h2></legend>
 
     <button v-on:click="remove" class="btn-danger">X</button>
 
 
-    <label class="form-row">Name:
+    <label class="form-row">{{$t('builder.name')}}:
       <language-string-field class="form-row-input" v-model="missionJson.name" id="missionName"/>
     </label>
 
     <!-- Using a label as wrapper messes with the click detection for the delete button-->
-    <span class="form-row"><label>Afbeeldingen:</label>
+    <span class="form-row"><label>{{$t('builder.images')}}:</label>
       <image-input class="form-row-input" mode="multiple" v-model="missionJson.images" :fallback-path="challengeId"></image-input>
     </span>
 
     <br>
     <fieldset>
-      <legend><h3>Missie onderdelen</h3></legend>
+      <legend><h3>{{$t('builder.missionParts.missionParts')}}</h3></legend>
       <draggable id="missionParts" v-model="missionJson.missionParts">
         <mission-part-builder
             v-for="missionPart in missionJson.missionParts"
@@ -28,7 +28,7 @@
       </draggable>
     </fieldset>
 
-    <button class="btn-primary" v-on:click="addMissionPart">Missie onderdeel toevoegen</button>
+    <button class="btn-primary" v-on:click="addMissionPart">{{$t('builder.missionParts.addNewPart')}}</button>
 
   </fieldset>
 </template>
